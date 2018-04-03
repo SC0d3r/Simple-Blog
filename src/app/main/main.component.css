@@ -1,0 +1,15 @@
+main{
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1;
+}
+
+.left-side{
+  background:rgba(32, 35, 185, 0.61);
+  height:500px;
+}
+
+.right-side{
+  background:rgba(13, 194, 119, 0.61);
+  height:500px;
+}
