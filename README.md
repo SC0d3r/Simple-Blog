@@ -7,4 +7,4 @@
 # Todo
 
 #### 1 - Make blog `Responsive`
-#### 2 - Add support for older browsers that does not support `grid layout`
+#### 2 - Add support for older browsers that do not support `grid layout`
