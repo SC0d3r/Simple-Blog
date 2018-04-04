@@ -1,4 +1,4 @@
-<header (window:resize) = "onResize($event)">
+<header (window:resize)="onResize($event)">
   <div class="avatar">
     <img src="/assets/images/first.png" alt="avatar picture of writer">
   </div>
@@ -8,10 +8,18 @@
   <div *ngIf="!isSmallScreen" class="links">
     <div>About Me</div>
     <div>Contact Me</div>
-    <div>Subscribe</div>
+    <div><mat-icon >done_all</mat-icon> Subscribe</div>
   </div>
-  <div class='nav-icons' *ngIf="isSmallScreen">
-    <mat-icon>home</mat-icon>
+  <div (click)="toggleNav()" class='nav-icons' *ngIf="isSmallScreen">
+    <!-- <mat-icon>view_headline</mat-icon> -->
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>view_headline</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item><mat-icon>work</mat-icon>About Me</button>
+      <button mat-menu-item><mat-icon>feedback</mat-icon>Contact Me</button>
+      <button mat-menu-item><mat-icon>done_all</mat-icon>Subscribe</button>
+    </mat-menu>
   </div>
   <div class='icon'>
     <mat-icon>search</mat-icon>

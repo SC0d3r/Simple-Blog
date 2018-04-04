@@ -10,15 +10,21 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.isSmallScreen = true;
+    this._showOrRemoveLinks(window.outerWidth);
   }
   onResize(e){
     const width = e.target.outerWidth;
-    console.log(width);
-    if(width <= 800){
+    // console.log(width);
+    this._showOrRemoveLinks(width);
+  }
+
+  private _showOrRemoveLinks(width: any) {
+    if (width <= 800) {
       this.isSmallScreen = true;
-    }else {
+    }
+    else {
       this.isSmallScreen = false;
     }
   }
+
 }

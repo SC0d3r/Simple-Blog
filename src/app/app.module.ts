@@ -9,7 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { BoardComponent } from './board/board.component';
 
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,10 @@ import {MatIconModule} from '@angular/material/icon';
   imports: [
     BrowserModule,
     NoopAnimationsModule,
-    MatIconModule
+
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
