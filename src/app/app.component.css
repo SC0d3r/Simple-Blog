@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css?family=Crete+Round');
 @import url('https://fonts.googleapis.com/css?family=Sanchez');
 @import url('https://fonts.googleapis.com/css?family=Handlee');
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 *{
   margin:0px;
 }
@@ -13,5 +15,5 @@
   "main sidenote"
   "footer"; */
   /* grid-template-columns: repeat(1fr,12); */
-  grid-template-rows: 1fr auto auto auto;
+  grid-template-rows: 1fr repeat(auto-fill,1fr);
 }
