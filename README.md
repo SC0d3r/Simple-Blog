@@ -2,7 +2,8 @@
 
 ## `Work in progress`
  
-<br>
+<img src ='./example.png' alt='an example of the blog'>
+
 
 # Todo
 
