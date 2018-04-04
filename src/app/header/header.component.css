@@ -1,10 +1,26 @@
 header{
   display: grid;
-  grid-template-columns: 150px 0.5fr minmax(auto , 400px) 1fr;
+  /* grid-template-columns: 150px 0.5fr minmax(auto , 400px) 1fr; */
+  grid-template-columns: 150px 3fr 1fr 1fr; 
   grid-template-rows: 1fr 20px;
   /* width:100%; */
   /* height:100px; */
   /* background:red; */
+}
+@media (min-width:600px){
+  header{
+    grid-template-columns: 150px 3fr 2fr 1fr; 
+  }
+}
+@media (min-width:700px){
+  header{
+    grid-template-columns: 150px 2fr 3fr 1fr; 
+  }
+}
+@media (min-width:900px){
+  header{
+    grid-template-columns: 150px 1fr 2fr 1fr; 
+  }
 }
 .links{
   display: grid;
@@ -35,6 +51,13 @@ header{
   cursor: pointer;
 
 }
+.nav-icons{
+  justify-self: end;
+  /* border: 1px solid yellow; */
+  align-self:center;
+  cursor: pointer;
+}
+
 .writerName{
   align-self: center;
   justify-self: start;
