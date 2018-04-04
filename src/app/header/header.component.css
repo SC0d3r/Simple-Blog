@@ -1,6 +1,6 @@
 header{
   display: grid;
-  grid-template-columns: 200px 1fr 3fr;
+  grid-template-columns: 150px 0.5fr minmax(auto , 400px) 1fr;
   grid-template-rows: 1fr 20px;
   /* width:100%; */
   /* height:100px; */
@@ -12,14 +12,28 @@ header{
   grid-auto-flow: column;
   justify-items: center;
   font-family: 'Lobster', cursive;
-  font-size:105%;
+  font-size:120%;
+  color:rgba(87, 84, 56, 0.993);
 }
 .links >div {
-  margin:auto;
+  /* margin:auto; */
+  align-self: center;
+  /* justify-self: start; */
   cursor: pointer;
+}
+.links div:first-child{
+  justify-self: center;
 }
 .avatar{
   justify-self:end;
+}
+.icon{
+  /* margin:auto; */
+  justify-self: end;
+  align-self:center;
+  margin-right: 10%;
+  cursor: pointer;
+
 }
 .writerName{
   align-self: center;
