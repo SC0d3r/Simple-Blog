@@ -4,7 +4,8 @@
   grid-template-rows: 1fr 0.2fr;
   grid-auto-rows : 350px;
   /* height: 200px; */
-  background:rgba(120, 198,211, 1);
+  /* background:rgba(120, 198,211, 1); */
+  background:linear-gradient(rgb(10,38,72), rgb(23,50,87));
 }
 .programmer-img{
   /* margin: auto; */
@@ -24,7 +25,7 @@
 @media (min-width:700px){
   .main{
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 55vh;
     /* grid-auto-rows : none; */
   }
 }
@@ -47,6 +48,7 @@
 }
 .article-title h1{
   /* border: 1px solid rgb(212, 212, 223); */
+  color:rgba(241, 241, 191, 0.938);
   text-align: center;
   font-family: 'Crete Round', serif;
 }
