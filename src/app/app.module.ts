@@ -13,13 +13,15 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { FixedBoardComponent } from './fixed-board/fixed-board.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
     FooterComponent,
-    BoardComponent
+    BoardComponent,
+    FixedBoardComponent
   ],
   imports: [
     BrowserModule,
