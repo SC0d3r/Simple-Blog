@@ -1,0 +1,26 @@
+.main{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  /* height: 200px; */
+  background:rgba(120, 198,211, 1);
+}
+.programmer-img{
+  margin: auto;
+}
+
+.article-title{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  margin: auto;
+  justify-items: center;
+}
+
+.article-title h3{
+  color:rgba(243, 243, 241, 0.938);
+  font-family: 'Kaushan Script', cursive;
+}
+.article-title h1{
+  font-family: 'Crete Round', serif;
+}
