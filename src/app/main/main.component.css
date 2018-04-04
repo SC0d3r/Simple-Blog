@@ -40,10 +40,10 @@ main{
   }
 }
 
-.item{
-  /* border:1px solid red; */
+/* .item{
+  border:1px solid red;
   
-}
+} */
 
 .item-grid{
   display: grid;
