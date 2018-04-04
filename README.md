@@ -1,3 +1,10 @@
 # Simple Blog
 
-## Work in progress
+## `Work in progress`
+ 
+<br>
+
+# Todo
+
+#### 1 - Make blog `Responsive`
+#### 2 - Add support for older browsers that does not support `grid layout`
