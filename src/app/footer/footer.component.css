@@ -1,5 +1,34 @@
 footer{
   align-self: end;
   display: grid;
-  background: red;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 8px;
+  background: rgba(240, 234, 234, 0.966);
+  justify-items:center;
+  margin-top:15px;
+}
+.me{
+  font-family: 'Chicle', cursive;
+  font-size: 115%;
+}
+.me mat-icon{
+  /* margin-top:15px; */
+  display: inline-block;
+  position: relative;
+  top:5px;
+  left:-5px;
+}
+
+.social-networks img{
+  cursor: pointer;
+  /* color:blue; */
+}
+.quote{
+  font-size: 120%;
+  font-family: 'Lobster', cursive;
+}
+.rights{
+  font-size: 90%;
+  align-self: end;
 }
