@@ -2,7 +2,7 @@ header{
   display: grid;
   /* grid-template-columns: 150px 0.5fr minmax(auto , 400px) 1fr; */
   grid-template-columns: 150px 3fr 1fr 1fr; 
-  grid-template-rows: 1fr 20px;
+  grid-template-rows: 1fr 5px;
   /* width:100%; */
   /* height:100px; */
   /* background:red; */
@@ -63,11 +63,12 @@ header{
   justify-self: start;
   font-family: 'Chicle', cursive;
   font-size:150%;
-
+  
   /* background:red; */
 }
 
 .seprator{
   grid-column: 1/ -1;
-  background:rgba(221, 205, 57, 0.63);
+    /* border: 1px solid yellow; */
+  /* background:rgba(221, 205, 57, 0.63); */
 }

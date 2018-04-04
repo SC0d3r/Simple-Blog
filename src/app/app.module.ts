@@ -11,6 +11,8 @@ import { BoardComponent } from './board/board.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import {MatButtonModule} from '@angular/material/button';
 
     MatIconModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
