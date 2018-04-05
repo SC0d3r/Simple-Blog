@@ -4,7 +4,8 @@ footer{
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-row-gap: 8px;
-  background: rgba(240, 234, 234, 0.966);
+  /* background: rgba(240, 234, 234, 0.966); */
+  background: #fff;
   justify-items:center;
   /* margin-top:15px; */
 }
