@@ -51,9 +51,6 @@
   -ms-filter: blur(1px);
   filter: blur(1px);
 }
-.text:hover svg{
-  /* visibility: visible; */
-}
 
 
 
