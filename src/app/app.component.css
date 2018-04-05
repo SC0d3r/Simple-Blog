@@ -11,9 +11,7 @@
 }
 .main-container{
   display: grid;
-  /* grid-template-areas:"header"
-  "main sidenote"
-  "footer"; */
-  /* grid-template-columns: repeat(1fr,12); */
   grid-template-rows: 1fr repeat(auto-fill,1fr);
 }
+
+
