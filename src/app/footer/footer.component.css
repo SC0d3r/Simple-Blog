@@ -6,7 +6,7 @@ footer{
   grid-row-gap: 8px;
   background: rgba(240, 234, 234, 0.966);
   justify-items:center;
-  margin-top:15px;
+  /* margin-top:15px; */
 }
 .me{
   font-family: 'Chicle', cursive;
