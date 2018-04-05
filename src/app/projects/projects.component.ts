@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-
+  dummy = [1,2,3,4,2,3,4];
   constructor() { }
 
   ngOnInit() {
