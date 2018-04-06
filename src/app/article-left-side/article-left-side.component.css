@@ -1,6 +1,8 @@
 main{
   display: grid;
   /* border : 1px solid red; */
+  position: fixed;
+  height: 100vh;
   background: #222f3e;
 }
 
@@ -51,27 +53,19 @@ main{
   /* border:1px solid wheat; */
   padding: 6%;
   padding-bottom: 10%;
-  font-size: 98%;
+  font-size: 99%;
+  line-height: 150%;
   justify-self: center;
   color : #d1d8e0;
+  
+}
 
-}
-@keyframes rotationClockwise {
-  0% { transform: rotate(0deg)}
-  50%,100% { transform: rotate(360deg)}
-}
-@keyframes rotationAntiClockwise {
-  0% { transform: rotate(360deg)}
-  50%,100% { transform: rotate(0deg)}
-}
-@keyframes moveForward{
-  0% {left : 0px}
-  50%,100% {left : 79%}
-}
-@keyframes moveBackward{
-  0% {left : 79%}
-  50%,100% {left : 0px}
-}
+/* @media (max-width:1212px){
+  .vote h3{
+    border:1px solid wheat;
+    font-size: 1.2vw;
+  }
+} */
 @keyframes rotateMoveBackAndForth{
   0%{
     transform: rotate(0deg);
@@ -86,15 +80,56 @@ main{
     left : 0px;
   }
 }
+
+@media (max-width : 1140px){
+  @keyframes rotateMoveBackAndForth{
+    0%{
+      transform: rotate(0deg);
+      left : 0px;
+    }
+    50%{
+      transform: rotate(360deg);
+      left : 69%;
+    }
+    100%{
+      transform: rotate(0deg);
+      left : 0px;
+    }
+  }
+  /* nav{
+    border:1px solid yellow;
+  } */
+}
 nav{
   display: grid;
   justify-content: start;
   /* border:1px solid yellow; */
   padding-top : 30%;
+  /* height : 50px; */
 }
 nav button{
-  position: relative;
+  /* position: relative; */
+  align-self: end;
   animation : 6s rotateMoveBackAndForth 1s infinite;
   /* animation-fill-mode: forwards; */
   /* animation-iteration-count: infinite; */
 }
+
+
+.glow {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: glow;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-name: glow;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 0px #ff3f34; }
+  to { text-shadow: 0 0 20px #ff3f34; }
+}
+
