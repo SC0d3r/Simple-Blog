@@ -14,3 +14,4 @@
 #### 2 - Add support for older browsers that do not support `grid layout`
 #### ~~3 - Add view for `Articles`~~
 #### 4 - Add `Comment` section for Articles
+#### ~~5 - Add `Server Side` rendering support with angular universal~~
