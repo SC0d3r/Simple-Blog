@@ -92,21 +92,25 @@ header{
 .item-grid .item-text{
   /* border:1px solid yellow; */
   display: grid;
-  padding-left:8%;
-  padding-top:1%;
-   grid-auto-rows: 1fr;
-  grid-auto-columns: 1fr;
+  padding-left:7.6%;
+  padding-top:2%;
+   /* grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr; */
 }
 .item-grid .item-text h4{
   /* text-align: center; */
-  margin-top:-1.5%;
-  font-family: 'Handlee', cursive;
+  margin-top:2.3%;
+  /* font-family: 'Handlee', cursive; */
+  font-family: 'Tajawal', sans-serif;
   font-size:110%;
   color:#57606f;
+  /* border:1px solid red; */
+  padding-right : 12px;
 }
 .item-grid .item-text h3{
   font-family: 'Sanchez', serif;
-  color:rgba(37, 7, 37, 0.623);
+  color:#2f3542;
+
 }
 
 
