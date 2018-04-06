@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { dummyArticle } from './dummyArticle';
 
 @Component({
   selector: 'app-article-right-side',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-right-side.component.css']
 })
 export class ArticleRightSideComponent implements OnInit {
-
-  constructor() { }
+  article : any;
+  constructor() {
+    this.article = dummyArticle;
+   }
 
   ngOnInit() {
   }
