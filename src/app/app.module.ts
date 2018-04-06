@@ -14,6 +14,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ArticleComponent } from './article/article.component';
+import { ArticleLeftSideComponent } from './article-left-side/article-left-side.component';
+import { ArticleRightSideComponent } from './article-right-side/article-right-side.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     FixedBoardComponent,
     InsightsComponent,
     TopFooterComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    ArticleComponent,
+    ArticleLeftSideComponent,
+    ArticleRightSideComponent
   ],
   imports: [
     BrowserModule,
