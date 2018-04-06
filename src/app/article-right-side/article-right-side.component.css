@@ -1,0 +1,22 @@
+header{
+  /* border:1px solid blue; */
+  text-align: center;
+  padding : 5% 0;
+}
+header h1{
+  font-family: 'Lobster', cursive;
+  font-size : 300%;
+}
+.content{
+  /* border:1px solid red; */
+  padding-left: 10%;
+  padding-right: 5%;
+  padding-bottom:5%;
+  
+}
+.content p {
+  line-height: 155%;
+  font-size: 110%;
+  font-family: sans-serif;
+  text-indent: 3%;
+}
