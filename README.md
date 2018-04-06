@@ -1,4 +1,4 @@
-# Simple Blog
+# **Simple Blog**
 
 ## `Work in progress`
 
@@ -8,9 +8,9 @@
 <img src ='./example2.png' alt='another example of the blog'>
 
 
-# Todo
+# **Todo**
 
 #### 1 - Make blog `Responsive`
 #### 2 - Add support for older browsers that do not support `grid layout`
-#### 3 - Add view for `Articles`
+#### ~~3 - Add view for `Articles`~~
 #### 4 - Add `Comment` section for Articles
