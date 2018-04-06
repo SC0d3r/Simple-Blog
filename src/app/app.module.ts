@@ -32,7 +32,7 @@ import { ArticleRightSideComponent } from './article-right-side/article-right-si
     ArticleRightSideComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),
     NoopAnimationsModule,
 
     MatIconModule,
