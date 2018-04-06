@@ -1,0 +1,100 @@
+main{
+  display: grid;
+  /* border : 1px solid red; */
+  background: #222f3e;
+}
+
+.author{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-items: center;
+  align-items: center;
+  /* border : 1px solid yellow; */
+  padding-top : 10%;
+}
+.author img{
+  /* border : 1px solid yellow; */
+  /* border-radius: 100%; */
+  /* display: inline-block; */
+  /* width: 128px;
+  height: 128px; */
+  padding-left : 12px;
+  /* justify-self: center; */
+}
+
+.author .username{
+  /* border : 1px solid black; */
+  font-family: 'Chicle', cursive;
+  font-size:150%;
+  color : wheat;
+}
+
+
+.article-details{
+  display: grid;
+  /* border : 1px solid yellowgreen; */
+  justify-content: center;
+  padding : 30% 0;
+  color : #8395a7;
+}
+
+.vote{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  /* border:1px solid red; */
+  justify-items: center;
+  /* text-align: center; */
+}
+.vote h3{
+  grid-column: 1 / -1;
+  /* border:1px solid wheat; */
+  padding: 6%;
+  padding-bottom: 10%;
+  font-size: 98%;
+  justify-self: center;
+  color : #d1d8e0;
+
+}
+@keyframes rotationClockwise {
+  0% { transform: rotate(0deg)}
+  50%,100% { transform: rotate(360deg)}
+}
+@keyframes rotationAntiClockwise {
+  0% { transform: rotate(360deg)}
+  50%,100% { transform: rotate(0deg)}
+}
+@keyframes moveForward{
+  0% {left : 0px}
+  50%,100% {left : 79%}
+}
+@keyframes moveBackward{
+  0% {left : 79%}
+  50%,100% {left : 0px}
+}
+@keyframes rotateMoveBackAndForth{
+  0%{
+    transform: rotate(0deg);
+    left : 0px;
+  }
+  50%{
+    transform: rotate(360deg);
+    left : 79%;
+  }
+  100%{
+    transform: rotate(0deg);
+    left : 0px;
+  }
+}
+nav{
+  display: grid;
+  justify-content: start;
+  /* border:1px solid yellow; */
+  padding-top : 30%;
+}
+nav button{
+  position: relative;
+  animation : 6s rotateMoveBackAndForth 1s infinite;
+  /* animation-fill-mode: forwards; */
+  /* animation-iteration-count: infinite; */
+}
