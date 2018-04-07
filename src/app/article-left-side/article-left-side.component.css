@@ -3,7 +3,8 @@ main{
   /* border : 1px solid red; */
   position: fixed;
   height: 100vh;
-  background: #222f3e;
+  /* background: #222f3e; */
+  background: #1e272e;
 }
 
 .author{
