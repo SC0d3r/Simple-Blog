@@ -3,6 +3,12 @@ header{
   text-align: center;
   padding : 5% 0;
 }
+header img{
+  /* border:1px solid blue; */
+  height : 30vh;
+  /* width : 40vw; */
+  margin-bottom : 5%;
+}
 header h1{
   font-family: 'Lobster', cursive;
   font-size : 300%;
