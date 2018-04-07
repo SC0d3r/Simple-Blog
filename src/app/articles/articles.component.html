@@ -4,17 +4,17 @@
 <main>
     
 
-    <div *ngFor="let project of projects" class='item'>
+    <div *ngFor="let article of articles" class='item'>
       <!-- <div class='hover-link'>
         <mat-icon width='128px' height='128px'>link</mat-icon>
       </div> -->
       <div class='item-grid'>
         <div class='item-header'>
-          <img src="/assets/images/{{project.img}}" alt="a picture for item">
+          <img src="/assets/images/{{article.img.src}}" alt="{{article.img.alt}}">
         </div>
         <div class='item-text'>
-          <h3>{{project.title}}</h3>
-          <h4>{{project.description}}</h4>
+          <h3>{{article.title}}</h3>
+          <h4>{{article.description}}</h4>
         </div>
         <!-- <div class='details'>
           <div class='details-month'>

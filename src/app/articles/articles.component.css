@@ -40,16 +40,6 @@ header{
   font-family: 'Pacifico', cursive;
   color:#3d3d3d;
 }
-.projects{
-  grid-column: 1 / -1;
-  font-size:150%;
-  justify-self: center;
-  font-family: 'Pacifico', cursive;
-  color:#3d3d3d;
-  /* border: 1px solid yellow; */
-  margin-bottom:50px;
-  margin-top:50px;
-}
 
 .item{
   /* border:1px solid #ced6e0; */
