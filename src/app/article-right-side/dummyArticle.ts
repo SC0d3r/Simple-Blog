@@ -1,5 +1,9 @@
 export const dummyArticle = {
   title : 'Coding with Clarity',
+  img : {
+    src : 'js.png',
+    alt : ''
+  },
   body : `
   Imagine you’re working on a home project and you pick up a drill to drive a screw into a wall. When you pull the drill away from the screw, you discover that this drill has an interesting feature: it squirts a quick-drying drywall compound over the driven screw to hide it. Well, that’s great if you want to paint over the screw, but that’s not always the case. You shouldn’t have to get a second drill just to drill a hole in something. The drill would be much more usable and reliable if it just did one thing, and it would also be flexible enough to use in a variety of situations.
 
