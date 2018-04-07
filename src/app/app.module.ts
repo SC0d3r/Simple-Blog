@@ -19,6 +19,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AppRoutingModule } from './/app-routing.module';
+import { ArticlesInfoService } from './services/articles-info.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { AppRoutingModule } from './/app-routing.module';
     MatMenuModule,
     MatProgressBarModule
   ],
-  providers: [],
+  providers: [ArticlesInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
