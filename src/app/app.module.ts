@@ -21,6 +21,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AppRoutingModule } from './/app-routing.module';
 import { ArticlesInfoService } from './services/articles-info.service';
 
+
+import { MarkdownModule } from 'angular2-markdown';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +42,8 @@ import { ArticlesInfoService } from './services/articles-info.service';
     BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),
     AppRoutingModule,
     NoopAnimationsModule,
+
+    MarkdownModule.forRoot(),
 
     MatIconModule,
     MatButtonModule,
