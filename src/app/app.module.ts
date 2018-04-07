@@ -17,6 +17,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ArticleComponent } from './article/article.component';
 import { ArticleLeftSideComponent } from './article-left-side/article-left-side.component';
 import { ArticleRightSideComponent } from './article-right-side/article-right-side.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,12 @@ import { ArticleRightSideComponent } from './article-right-side/article-right-si
     ProjectsComponent,
     ArticleComponent,
     ArticleLeftSideComponent,
-    ArticleRightSideComponent
+    ArticleRightSideComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),
+    AppRoutingModule,
     NoopAnimationsModule,
 
     MatIconModule,
