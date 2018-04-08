@@ -21,7 +21,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AppRoutingModule } from './/app-routing.module';
 import { ArticlesInfoService } from './services/articles-info.service';
 
-
+import { DisqusModule } from "ngx-disqus";
 import { MarkdownModule } from 'angular2-markdown';
 
 @NgModule({
@@ -44,6 +44,7 @@ import { MarkdownModule } from 'angular2-markdown';
     NoopAnimationsModule,
 
     MarkdownModule.forRoot(),
+    DisqusModule.forRoot('sasan-kelishani'),
 
     MatIconModule,
     MatButtonModule,
