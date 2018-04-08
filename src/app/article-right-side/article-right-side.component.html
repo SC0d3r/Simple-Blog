@@ -12,17 +12,21 @@
       </markdown>
     </p>
     <div class="feeback">
-      Did you find this article usefull ?
-      <!-- <div class="dislike"> -->
-        <button mat-mini-fab [style.backgroundColor] = "'#c23616'">
-          <mat-icon >thumb_down</mat-icon>
+      <div class="voted" *ngIf='isVoted'>
+        Thanks &nbsp;
+        <button mat-icon-button color="accent">
+          <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
         </button>
-      <!-- </div> -->
-      <!-- <div class="like"> -->
-        <button mat-mini-fab [style.backgroundColor] = "'#44bd32'">
-          <mat-icon >thumb_up</mat-icon>
+      </div>
+      <div *ngIf='!isVoted'>
+        Did you find this article usefull ?
+        <button (click)='onVote("dislike")' mat-mini-fab [style.backgroundColor]="'#c23616'">
+          <mat-icon>thumb_down</mat-icon>
         </button>
-      <!-- </div> -->
+        <button (click)='onVote("like")' mat-mini-fab [style.backgroundColor]="'#44bd32'">
+          <mat-icon>thumb_up</mat-icon>
+        </button>
+      </div>
     </div>
 
 
@@ -31,5 +35,8 @@
         Comments
       </header>
     </div>
+    <br>
+    <br>
+    <disqus [identifier]="pageID"></disqus>
   </div>
 </article>

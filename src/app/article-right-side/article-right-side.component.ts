@@ -11,10 +11,16 @@ import { MarkdownService } from 'angular2-markdown';
 })
 export class ArticleRightSideComponent implements OnInit {
   article: any;
+  pageID = '';
+  isVoted : boolean;
   constructor(private _aritcleInfo: ArticlesInfoService,
     private _route: ActivatedRoute,
     private _markdown: MarkdownService
   ) {
+    // TODO : store the ip of reader 
+    // every ip one vote only!
+    this.isVoted = false;
+
     const articleID = this._route.snapshot.paramMap.get('id');
     this._aritcleInfo.fetchArticleByID(articleID)
       .subscribe(art => this.article = art);
@@ -25,6 +31,11 @@ export class ArticleRightSideComponent implements OnInit {
       // console.log(img);
       return `<img src = "${src}" style = "/*border : 1px solid red;*/width : 80%;display : block;margin:5% auto;">`;
     }
+    this.pageID = `/article/${this.article.id}`;
   }
 
+  onVote(vote : 'like' | 'dislike'){
+    //Todo : store the vote and the ip of that person
+    this.isVoted = true;
+  }
 }
