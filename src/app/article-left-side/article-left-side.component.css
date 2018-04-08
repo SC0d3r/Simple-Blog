@@ -3,7 +3,6 @@ main{
   /* border : 1px solid red; */
   position: fixed;
   height: 100vh;
-  /* background: #222f3e; */
   background: #1e272e;
 }
 
@@ -37,36 +36,50 @@ main{
   display: grid;
   /* border : 1px solid yellowgreen; */
   justify-content: center;
-  padding : 30% 0;
+  padding : 10% 0;
   color : #8395a7;
 }
 
-.vote{
+.profile{
+  /* border : 1px solid red; */
+  margin-top : 20%;  
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  /* border:1px solid red; */
+  grid-template-columns:1fr;
+  grid-template-rows: 1fr 2fr;
   justify-items: center;
-  /* text-align: center; */
+  align-items: center;
 }
-.vote h3{
-  grid-column: 1 / -1;
-  /* border:1px solid wheat; */
-  padding: 6%;
-  padding-bottom: 10%;
-  font-size: 99%;
-  line-height: 150%;
-  justify-self: center;
-  color : #d1d8e0;
-  
+.profile nav{
+  /* border : 1px solid yellowgreen; */
+  /* grid-column: 1 / -1; */
+  /* font-size : 120%; */
+  display: grid;
+  grid-row-gap: 20px;
+  color : #F8EFBA;
 }
 
-/* @media (max-width:1212px){
-  .vote h3{
-    border:1px solid wheat;
-    font-size: 1.2vw;
-  }
-} */
+.profile .meida{
+  /* border : 1px solid red; */
+  width : 55%;
+  justify-items: center;
+  /* padding : 0 2%; */
+  /* align-self: center; */
+  display: grid;
+  /* grid-column-gap:%; */
+  grid-template-columns:1fr 1fr 1fr;
+  
+}
+.profile .meida img{
+  cursor: pointer;
+
+}
+.profile .meida img:hover{
+  opacity: 0.5;
+}
+.profile .meida #telegram{
+  /* border : 1px solid blue; */
+  margin-top : 4px;
+}
 @keyframes rotateMoveBackAndForth{
   0%{
     transform: rotate(0deg);
@@ -101,14 +114,14 @@ main{
     border:1px solid yellow;
   } */
 }
-nav{
+nav.home-page{
   display: grid;
   justify-content: start;
   /* border:1px solid yellow; */
-  padding-top : 30%;
+  /* padding-top : 30%; */
   /* height : 50px; */
 }
-nav button{
+nav.home-page button{
   /* position: relative; */
   align-self: end;
   animation : 6s rotateMoveBackAndForth 1s infinite;
