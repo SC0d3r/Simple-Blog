@@ -1,9 +1,9 @@
 <!-- <div class="navAnimations"></div> -->
 
 <header (window:resize)="onResize($event)" #header>
-    <div class="bgImage" #bgImage>
+  <div class="bgImage" #bgImage>
 
-      </div>
+  </div>
 
   <div class="avatar" #avatar>
     <img src="/assets/images/avatar.png" alt="avatar picture of writer">
@@ -12,9 +12,9 @@
     Sasan Kelishani
   </div>
   <div *ngIf="!isSmallScreen" class="links" #links>
-    <div (click) = "openAboutMe()" #aboutMeButton>About Me</div>
+    <div (click)="openAboutMe()" #aboutMeButton>About Me</div>
     <div #contactMeButton>Contact Me</div>
-    <div class = 'subscribeBtn' (click)="openSubscribe()" #subscribeButton>
+    <div class='subscribeBtn' (click)="openSubscribe()" #subscribeButton>
       <mat-icon>done_all</mat-icon> Subscribe
     </div>
   </div>
@@ -44,23 +44,25 @@
   Well-versed in all phases of the software development lifecycle, with a strong working knowledge of algorithms and data
   structures. Proven success engineering customized solutions improving business processes, operations and profitability.
 </div>
-<div (click) = "cancelTransition()" class="cancelTransition" #cancelTranstion>
-  <button mat-raised-button color = 'primary'>Back</button>
+<div (click)="cancelTransition()" class="cancelTransition" #cancelTranstion>
+  <button mat-raised-button color='primary'>Back</button>
 </div>
-
+<div (click)="saveEmail()" class="cancelTransition" #saveEmail>
+  <button mat-raised-button [style.backgroundColor] ="'#009432'">Save</button>
+</div>
 <div class="email" #email>
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <input matInput  [formControl]="emailFormControl"
-                 [errorStateMatcher]="matcher">
-          <mat-placeholder class="placeholder" #placeholder>Email</mat-placeholder>
-          <mat-hint>myEmail@example.com</mat-hint>
-          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </form>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+      <mat-placeholder class="placeholder" #placeholder>Email</mat-placeholder>
+      <mat-hint>myEmail@example.com</mat-hint>
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is
+        <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
 </div>

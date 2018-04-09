@@ -72,6 +72,10 @@
   opacity: 1;
   transform: translateX(68vw);
 }
+.save-email-transition{
+  opacity: 1;
+  transform: translateX(61vw);
+}
 .cancelTransition-email-transition{
   opacity: 0;
   transform: translateX(150vw);

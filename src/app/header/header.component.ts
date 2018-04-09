@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('subscribeButton') private _subscribeButton : ElementRef;
   @ViewChild('aboutMeButton') private _aboutMeButton : ElementRef;
   @ViewChild('contactMeButton') private _contactMeButton : ElementRef;
+  @ViewChild('saveEmail') private _saveEmail : ElementRef;
   // @ViewChild('links') private _links : ElementRef;
 
   emailFormControl = new FormControl('', [
@@ -79,6 +80,7 @@ export class HeaderComponent implements OnInit {
     const email : HTMLDivElement= this._email.nativeElement;
     const placeholder : HTMLDivElement= this._placeholder.nativeElement;
     const subscribeButton : HTMLDivElement= this._subscribeButton.nativeElement;
+    const saveEmail : HTMLDivElement= this._saveEmail.nativeElement;
     
     aboutMeButton.classList.add('zero-opacity');
     contactMeButton.classList.add('zero-opacity');
@@ -92,6 +94,7 @@ export class HeaderComponent implements OnInit {
     email.classList.add('email-transition');
     placeholder.classList.add('emial-placeholder-color-transition');
     subscribeButton.classList.add('subscribeBtn-transition');
+    saveEmail.classList.add('save-email-transition');
   }
   
   openAboutMe(){
@@ -136,6 +139,7 @@ export class HeaderComponent implements OnInit {
     const cancelTranstion : HTMLDivElement= this._cancelTranstion.nativeElement;
     const email : HTMLDivElement= this._email.nativeElement;
     const placeholder : HTMLDivElement= this._placeholder.nativeElement;
+    const saveEmail : HTMLDivElement= this._saveEmail.nativeElement;
     
     
     header.classList.remove('header-transition');
@@ -163,10 +167,13 @@ export class HeaderComponent implements OnInit {
       email.classList.remove('email-transition');
       aboutMeButton.classList.remove('zero-opacity');
       contactMeButton.classList.remove('zero-opacity');
+      saveEmail.classList.remove('save-email-transition');
+      
       cancelTranstion.classList.add('cancelTransition-email-transition');
-      cancelTranstion.classList.add('cancelTransition-email-transition');
+      saveEmail.classList.add('cancelTransition-email-transition');
       setTimeout(()=>{
         cancelTranstion.classList.remove('cancelTransition-email-transition');
+        saveEmail.classList.remove('cancelTransition-email-transition');
       },1500);
     }
 
