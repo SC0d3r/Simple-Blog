@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './/app-routing.module';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -18,11 +19,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { AppRoutingModule } from './/app-routing.module';
+import {MatInputModule} from '@angular/material/input';
+
 import { ArticlesInfoService } from './services/articles-info.service';
 
 import { DisqusModule } from "ngx-disqus";
 import { MarkdownModule } from 'angular2-markdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { MarkdownModule } from 'angular2-markdown';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     NoopAnimationsModule,
 
@@ -49,6 +54,7 @@ import { MarkdownModule } from 'angular2-markdown';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatInputModule,
     MatProgressBarModule
   ],
   providers: [ArticlesInfoService],
