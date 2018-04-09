@@ -1,12 +1,107 @@
+ /* Classes to make the transition if 
+ about me , contact me , ... has been clicked
+  */
+
+
+.cancelTransition{
+  position : absolute;
+  z-index: 1000;
+  left: 0;top: 33vh;
+  opacity: 0;
+  transition: opacity 2s 0.2s,transform 1s 0.5s;
+}
+.cancelTransition button{
+  transition: background-color 3s 2s;
+}
+.cancelTransition-transition{
+  opacity: 1;
+  transform: translateX(68vw);
+}
+.cancelTransition-transition button{
+  background-color: #b71540;
+}
+.aboutMe{
+  position : absolute;
+  z-index: 1000;
+  /* border : 1px solid blue; */
+  margin: auto;
+  left: 0;right: 0;top: 20vh;bottom: 0;
+  height : 20%;
+  font-size : 150%;
+  text-indent: 6px;
+  width : 60%;
+  transform: translateX(-30vw);
+  opacity: 0;
+  transition: opacity 1s 0.6s,transform 1s 0.6s ,color 2s 2s;
+}
+.bgImage{
+  position : absolute;
+  left: 0;top: 0;
+  z-index: -1;
+  /* border : 1px solid blue; */
+  width : 100vw;
+  height : 100vh;
+  opacity : 0;
+  transition: opacity 100s;
+  background-image : url(/assets/images/glass.png);
+  background-repeat: no-repeat;
+  background-size : 100% 100%;
+}
+
+.header-transition{
+  height:100vh;
+  background-color : #2f3640;
+  color :#ecf0f1;
+}
+.bgImage-transition{
+  opacity : 1;
+  z-index: 1000;
+}
+
+.aboutMeText-transition{
+  opacity: 1;
+  transform : translateX(10vh);
+  color :#ecf0f1;
+}
+
+.avatar-transition {
+  transform: translate(22vw,180px);
+}
+.writerName-transition{
+  transform: translate(23vw,180px);
+
+}
+
+.avatar{
+  transition: transform 2s;
+}
+.writerName {
+  transition: transform 2s;
+}
+.links,.icon{
+  transition: opacity 2s;
+}
+.seprator{
+  transition: opacity 1s 2s;
+}
+.zero-opacity {
+  opacity: 0;
+}
+
+
 header{
   display: grid;
+  z-index: -2;
   /* grid-template-columns: 150px 0.5fr minmax(auto , 400px) 1fr; */
   grid-template-columns: 150px 3fr 1fr 1fr; 
-  grid-template-rows: 1fr 5px;
+  grid-template-rows: 110px 5px;
   /* width:100%; */
-  /* height:100px; */
+  height : 110px;
   /* background:red; */
+  transition: height 2.5s,background-color 2s 2s,color 2s 2s;
+  -webkit-transition: height 2.5s,background-color 2s 2s,color 2s 2s;
 }
+
 @media (min-width:600px){
   header{
     grid-template-columns: 150px 3fr 2fr 1fr; 
@@ -41,7 +136,10 @@ header{
   justify-self: center;
 }
 .avatar{
-  justify-self:end;
+  z-index: 1000;
+  justify-self:center;
+  align-self: center;
+  /* border: 1px solid yellow; */
 }
 .icon{
   /* margin:auto; */
@@ -59,6 +157,7 @@ header{
 }
 
 .writerName{
+  z-index: 1000;
   align-self: center;
   justify-self: start;
   font-family: 'Chicle', cursive;
@@ -70,5 +169,37 @@ header{
 .seprator{
   grid-column: 1/ -1;
     /* border: 1px solid yellow; */
+    /* margin-top : 10px;
+    height : 5px; */
   /* background:rgba(221, 205, 57, 0.63); */
+}
+
+
+@keyframes widening{
+  from {
+    width: 0px;
+    height: 0px;
+    transform: skew(90deg,0deg);
+  }
+  to{
+    width : 100vw;
+    height: 100vh;
+    transform: skew(0deg,0deg);
+  }
+}
+.navAnimations{
+  position:absolute;
+  margin : auto;
+  left : 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  z-index: 1000;
+  width: 0px;
+  height: 0px;
+  /* border:1px solid blue; */
+  background : #e1b12c;
+
+  animation: 1s widening;
+  animation-fill-mode: forwards;
 }
