@@ -1,14 +1,21 @@
-<header (window:resize)="onResize($event)">
-  <div class="avatar">
-    <img src="/assets/images/first.png" alt="avatar picture of writer">
+<!-- <div class="navAnimations"></div> -->
+
+<header (window:resize)="onResize($event)" #header>
+    <div class="bgImage" #bgImage>
+
+      </div>
+
+  <div class="avatar" #avatar>
+    <img src="/assets/images/avatar.png" alt="avatar picture of writer">
   </div>
-  <div class="writerName">
+  <div class="writerName" #writerName>
     Sasan Kelishani
   </div>
-  <div *ngIf="!isSmallScreen" class="links">
-    <div>About Me</div>
+  <div *ngIf="!isSmallScreen" class="links" #links>
+    <div (click) = "openAboutMe()">About Me</div>
     <div>Contact Me</div>
-    <div><mat-icon >done_all</mat-icon> Subscribe</div>
+    <div (click)="openDialog()">
+      <mat-icon>done_all</mat-icon> Subscribe</div>
   </div>
   <div (click)="toggleNav()" class='nav-icons' *ngIf="isSmallScreen">
     <!-- <mat-icon>view_headline</mat-icon> -->
@@ -16,15 +23,26 @@
       <mat-icon>view_headline</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item><mat-icon>work</mat-icon>About Me</button>
-      <button mat-menu-item><mat-icon>feedback</mat-icon>Contact Me</button>
-      <button mat-menu-item><mat-icon>done_all</mat-icon>Subscribe</button>
+      <button mat-menu-item>
+        <mat-icon>work</mat-icon>About Me</button>
+      <button mat-menu-item>
+        <mat-icon>feedback</mat-icon>Contact Me</button>
+      <button mat-menu-item>
+        <mat-icon>done_all</mat-icon>Subscribe</button>
     </mat-menu>
   </div>
-  <div class='icon'>
+  <div class='icon' #icon>
     <mat-icon>search</mat-icon>
   </div>
-  <div class="seprator">
-      <mat-progress-bar mode="query"></mat-progress-bar>
+  <div class="seprator" #seprator>
+    <mat-progress-bar mode="query"></mat-progress-bar>
   </div>
 </header>
+<div class="aboutMe" #aboutMe>
+  Solutions-driven programmer with a four-year track record of commended performance in modular and object-oriented programming.
+  Well-versed in all phases of the software development lifecycle, with a strong working knowledge of algorithms and data
+  structures. Proven success engineering customized solutions improving business processes, operations and profitability.
+</div>
+<div (click) = "cancelTransition()" class="cancelTransition" #cancelTranstion>
+  <button mat-raised-button color = 'primary'>Back</button>
+</div>
