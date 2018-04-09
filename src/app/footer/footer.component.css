@@ -20,10 +20,17 @@ footer{
   top:5px;
   left:-5px;
 }
-
+ 
+.social-networks a{
+text-decoration: none;
+/* tex */
+}
 .social-networks img{
   cursor: pointer;
   /* color:blue; */
+}
+.social-networks img:hover{
+  opacity: 0.5;
 }
 .quote{
   font-size: 120%;
