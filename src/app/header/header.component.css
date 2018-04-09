@@ -1,8 +1,63 @@
  /* Classes to make the transition if 
  about me , contact me , ... has been clicked
-  */
+ */
+ 
+.header-bg-email-transition{
+  background-color : #f5cd79;
+} 
+.header-bg-aboutMe-transition {
+  background-color : #2f3640;
+}
+.emial-placeholder-color-transition{
+  color: #f7f1e3;
+}
 
-
+.subscribeBtn{
+  transition: transform 2s 0.5s , font-size 0.2s 4s ease-in;
+}
+.subscribeBtn mat-icon{
+  transition: opacity 2s 2s;
+}
+.subscribeBtn-transition{
+  transform: translate(-40vw,27vh);
+  font-size: 220%;
+}
+.subscribeBtn-transition mat-icon{
+  opacity: 0;
+}
+.email{
+  position : absolute;
+  z-index: 1000;
+  left: 28vw;top: 150vh;
+  /* border : 1px solid blue; */
+  width: 40%;
+  /* display: none; */
+  opacity: 0;
+  transition:  color 1s 1s,opacity 1s 0.5s,transform 1s 0.5s;
+}
+.email mat-form-field input{
+  /* border : 1px solid blue; */
+  min-height: 30px;
+}
+.email .placeholder{
+  /* border : 1px solid red; */
+  /* position: relative; */
+  /* z-index: 1000; */
+  /* top : -10px; */
+  /* display: inline-block; */
+  transition: color 2s 2.5s;
+  margin-bottom: 20px;
+  font-size: 160%;
+}
+.email mat-form-field{
+  /* border : 1px solid yellow; */
+  min-width :100%;
+}
+.email-transition{
+  /* display: block; */
+  opacity : 1;
+  transform: translateY(-100vh);
+}
 .cancelTransition{
   position : absolute;
   z-index: 1000;
@@ -16,6 +71,10 @@
 .cancelTransition-transition{
   opacity: 1;
   transform: translateX(68vw);
+}
+.cancelTransition-email-transition{
+  opacity: 0;
+  transform: translateX(150vw);
 }
 .cancelTransition-transition button{
   background-color: #b71540;
@@ -50,7 +109,6 @@
 
 .header-transition{
   height:100vh;
-  background-color : #2f3640;
   color :#ecf0f1;
 }
 .bgImage-transition{
@@ -69,6 +127,14 @@
 }
 .writerName-transition{
   transform: translate(23vw,180px);
+
+}
+
+.avatar-transition-left {
+  transform: translateX(-80vw);
+}
+.writerName-transition-left{
+  transform: translateX(-80vw);
 
 }
 
