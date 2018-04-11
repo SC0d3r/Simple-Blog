@@ -1,6 +1,6 @@
 import { ArticlesInfoService } from './../services/articles-info.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { Article } from '../services/Article';
 @Component({
   selector: 'app-articles',
@@ -19,6 +19,11 @@ export class ArticlesComponent implements OnInit {
   }
 
   selectArticle(articleID: string) {
-    this._router.navigate(['/article', articleID]);
+    const params : NavigationExtras = {
+      queryParams : {
+        isSelected : true
+      }
+    }
+    this._router.navigate(['/article', articleID] , params);
   }
 }

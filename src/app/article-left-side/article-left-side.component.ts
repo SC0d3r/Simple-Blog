@@ -13,7 +13,12 @@ export class ArticleLeftSideComponent implements OnInit {
   ngOnInit() {
   }
   goHomePage() {
-    this._router.navigate(['/']);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "homePage" : true
+      }
+    };
+    this._router.navigate(['/'],navigationExtras);
   }
   openAboutMe() {
     let navigationExtras: NavigationExtras = {

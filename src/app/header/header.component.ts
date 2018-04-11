@@ -62,10 +62,12 @@ export class HeaderComponent implements OnInit {
     this._showOrRemoveLinks(window.outerWidth);
     const isAboutMeSelected =
       this._router.snapshot.queryParamMap.get('aboutMe');
-    const isContactMeSelected =
+      const isContactMeSelected =
       this._router.snapshot.queryParamMap.get('contactMe');
+      const isHomePageSelected =
+      this._router.snapshot.queryParamMap.get('homePage');
 
-    if (isAboutMeSelected || isContactMeSelected) {
+    if (isAboutMeSelected || isContactMeSelected || isHomePageSelected) {
       this._document.documentElement.scrollTo(0, 0);
       if (isAboutMeSelected)
         setTimeout(() => {
