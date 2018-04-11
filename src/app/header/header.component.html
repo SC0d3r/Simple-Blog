@@ -12,8 +12,8 @@
     Sasan Kelishani
   </div>
   <div *ngIf="!isSmallScreen" class="links" #links>
-    <div (click)="openAboutMe()" #aboutMeButton>About Me</div>
-    <div #contactMeButton>Contact Me</div>
+    <div class='aboutMeBtn' (click)="openAboutMe()" #aboutMeButton>About Me</div>
+    <div class='contactMeBtn' (click)="openContactMe()" #contactMeButton>Contact Me</div>
     <div class='subscribeBtn' (click)="openSubscribe()" #subscribeButton>
       <mat-icon>done_all</mat-icon> Subscribe
     </div>
@@ -48,7 +48,21 @@
   <button mat-raised-button color='primary'>Back</button>
 </div>
 <div (click)="saveEmail()" class="cancelTransition" #saveEmail>
-  <button mat-raised-button [style.backgroundColor] ="'#009432'">Save</button>
+  <button mat-raised-button [style.backgroundColor]="'#009432'">Save</button>
+</div>
+
+<div class="contactMe-links-gmail" #contactMe_links_gmail (click) = 'openGmail()'></div>
+<div class="contactMe-links-telegram" #contactMe_links_telegram (click) = 'openTelegram()'></div>
+<div class="contactMe-links-github" #contactMe_links_github (click) = 'openGithub()'></div>
+<div class="contact-info" #contact_info>
+  <p>
+    sasan.kelishani@gmail.com
+  </p>
+  <br>
+  <br>
+  <p>
+    Phone : 09356087045
+  </p>
 </div>
 <div class="email" #email>
   <form class="example-form">
