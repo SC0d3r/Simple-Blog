@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,11 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleLeftSideComponent implements OnInit {
 
-  constructor(private  _router : Router) { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
   }
-  goHomePage(){
+  goHomePage() {
     this._router.navigate(['/']);
+  }
+  openAboutMe() {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "aboutMe" : true
+      }
+    };
+    this._router.navigate(['/'] , navigationExtras);
+  }
+  openContactMe() {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "contactMe" : true
+      }
+    };
+    this._router.navigate(['/'] , navigationExtras);
   }
 }

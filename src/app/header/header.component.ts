@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormGroupDirective, NgForm, FormControl, Validators } from '@angular/forms';
@@ -50,7 +51,8 @@ export class HeaderComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(@Inject(DOCUMENT) private _document : Document) {
+  constructor(@Inject(DOCUMENT) private _document: Document,
+    private _router: ActivatedRoute) {
     this.isAboutMeOpen = false;
     this.isContactMeOpen = false;
     this.isSubscribeOpen = false;
@@ -58,6 +60,23 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this._showOrRemoveLinks(window.outerWidth);
+    const isAboutMeSelected =
+      this._router.snapshot.queryParamMap.get('aboutMe');
+    const isContactMeSelected =
+      this._router.snapshot.queryParamMap.get('contactMe');
+
+    if (isAboutMeSelected || isContactMeSelected) {
+      this._document.documentElement.scrollTo(0, 0);
+      if (isAboutMeSelected)
+        setTimeout(() => {
+          this.openAboutMe();
+        }, 0);
+      if (isContactMeSelected) 
+      setTimeout(() => {
+        this.openContactMe();
+      }, 0);
+    }
+    // console.log(isAboutMeSelected,isContactMeSelected);
   }
   openGmail() {
     this._document.location.href = 'https://plus.google.com/u/0/101021312938202667659';
