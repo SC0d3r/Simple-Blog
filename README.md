@@ -22,4 +22,4 @@
 #### ~~4 - Add `Comment` section for Articles~~
 #### ~~5 - Add `Server Side` rendering support with angular universal~~
 
-#### 6 - Add `Subscribe` , `Contact Me` and `About Me` pages
+#### ~~6 - Add `Subscribe` , `Contact Me` and `About Me` pages~~
