@@ -26,6 +26,7 @@ import { ArticlesInfoService } from './services/articles-info.service';
 import { DisqusModule } from "ngx-disqus";
 import { MarkdownModule } from 'angular2-markdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotSupportedComponent } from './not-supported/not-supported.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ArticleComponent,
     ArticleLeftSideComponent,
     ArticleRightSideComponent,
-    HomePageComponent
+    HomePageComponent,
+    NotSupportedComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),
