@@ -23,3 +23,5 @@
 #### ~~5 - Add `Server Side` rendering support with angular universal~~
 
 #### ~~6 - Add `Subscribe` , `Contact Me` and `About Me` pages~~
+
+#### 7 - Add `databast` to store votes on artilces
