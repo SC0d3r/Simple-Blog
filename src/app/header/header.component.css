@@ -8,12 +8,99 @@
 .header-bg-aboutMe-transition {
   background-color : #2f3640;
 }
+.header-bg-contactMe-transition {
+  background-color : #60a3bc;
+}
 .emial-placeholder-color-transition{
   color: #f7f1e3;
 }
+.contact-info{
+  text-align: center;
+  font-size: 150%;
+  opacity : 0;
+  position: absolute;
+  left: 34.5vw;bottom: -10vh;
+  width : 30vw;
+  height : 20vh;
+  color: #192a56;
+  /* border : 1px solid black; */
+  /* background-color: aqua; */
+  transition: opacity 2s, transform 2s;
+}
+.contact-info-transition{
+  opacity: 1;
+  transform : translate(0,-25vh);
+}
+.contactMe-links-gmail{
+  cursor: pointer;
+  opacity : 0;
+  position: absolute;
+  left: 32vw;bottom: -10vh;
+  width : 128px;
+  height : 128px;
+  /* border : 1px solid black;
+  background-color: aqua; */
+  background-image : url(/assets/images/contactMe-gmail.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 2s, transform 2s;
+}
+.contactMe-links-telegram{
+  cursor: pointer;
+  opacity : 0;
+  position: absolute;
+  left: 44vw;bottom: -10vh;
+  width : 128px;
+  height : 128px;
+  /* border : 1px solid black;
+  background-color: aqua; */
+  background-image : url(/assets/images/contactMe-telegram.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 2s, transform 2s;
+}
+.contactMe-links-github{
+  cursor: pointer;
+  opacity : 0;
+  position: absolute;
+  left: 56vw;bottom: -10vh;
+  width : 128px;
+  height : 128px;
+  /* border : 1px solid black; */
+  /* background-color: aqua; */
+  background-image : url(/assets/images/contactMe-github.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  transition: opacity 2s, transform 2s;
+}
+.contactMe-links-gmail:hover{
+  opacity: 0.5;
+}
+.contactMe-links-telegram:hover{
+  opacity: 0.5;
+}
+.contactMe-links-github:hover{
+  opacity: 0.5;
+}
+.contactMe-links-transition {
+  opacity: 1;
+  transform: translate(0,-60vh);
+}
+.contactMeBtn {
+  transition: opacity 2s,transform 2s 0.5s , font-size 0.2s 4s ease-in;
+}
 
 .subscribeBtn{
-  transition: transform 2s 0.5s , font-size 0.2s 4s ease-in;
+  transition: opacity 2s,transform 2s 0.5s , font-size 0.2s 4s ease-in;
+}
+
+
+.aboutMeBtn{
+  transition: opacity 2s;
 }
 .subscribeBtn mat-icon{
   transition: opacity 2s 2s;
@@ -22,6 +109,11 @@
   transform: translate(-40vw,27vh);
   font-size: 220%;
 }
+.contactMeBtn-transition{
+  transform: translate(-5vw,5vh);
+  font-size: 220%;
+}
+
 .subscribeBtn-transition mat-icon{
   opacity: 0;
 }
@@ -65,12 +157,25 @@
   opacity: 0;
   transition: opacity 2s 0.2s,transform 1s 0.5s;
 }
+
 .cancelTransition button{
   transition: background-color 3s 2s;
+}
+
+.contactMeBtn-backBtn-transition{
+  opacity: 1;
+  transform: translate(74vw, -22vh);
+}
+.contactMeBtn-backBtn-transition button{
+  background-color: #b71540;
 }
 .cancelTransition-transition{
   opacity: 1;
   transform: translateX(68vw);
+}
+.save-email-transition{
+  opacity: 1;
+  transform: translateX(61vw);
 }
 .cancelTransition-email-transition{
   opacity: 0;
