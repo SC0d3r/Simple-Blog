@@ -1,24 +1,36 @@
 <main>
   <div class="author">
-    <!-- <div class="authorImage"> -->
-    <img src="/assets/images/avatar.png" alt="avatar image of the author" class="avatar">
-    <!-- </div>    -->
-    <div class="username glow">Sasan Kelishani</div>
+    <a [routerLink]="['/']">
+      <img src="/assets/images/avatar.png" alt="avatar image of the author" class="avatar">
+    </a>
+    <a [routerLink]="['/']">
+      <div class="username glow">Sasan Kelishani</div>
+    </a>
   </div>
   <div class="article-details">
     Posted on Jan 3 , 2018
   </div>
   <div class="profile">
     <nav>
-      <button (click) = 'openAboutMe()'  mat-button>
+      <button (click)='openAboutMe()' mat-button>
         About Me
       </button>
       <hr>
-      <button (click) = 'openContactMe()' mat-button>
+      <button (click)='openContactMe()' mat-button>
         Contact Me
       </button>
     </nav>
-
+    <nav class="smallScreen">
+      <div (click)='openAboutMe()'>
+        About Me
+      </div>
+      <div (click)='openContactMe()'>
+        Contact Me
+      </div>
+      <div (click)='openSubscribe()'>
+        Subscribe
+      </div>
+    </nav>
     <nav class="meida">
       <a href="https://plus.google.com/u/0/101021312938202667659">
         <img title='Gmail' src="/assets/images/gmail-white.png" width='38' height='38' alt='Gmail Icon'>

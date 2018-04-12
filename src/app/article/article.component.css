@@ -1,7 +1,16 @@
 main{
   display: grid;
+  /* grid-column-gap: 10px; */
   grid-template-columns: 1fr 4fr;
   /* border:1px solid blue; */
+
   background:#f5f6fa;
   border-bottom: 1.2px solid #d0d0d0;
+}
+
+@media (max-width : 1195px){
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
 }
