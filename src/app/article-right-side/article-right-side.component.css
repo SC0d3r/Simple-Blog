@@ -1,3 +1,4 @@
+
 header{
   /* border:1px solid blue; */
   text-align: center;
@@ -21,7 +22,7 @@ header h1{
   
 }
 .content p {
-  line-height: 155%;
+  line-height: 165%;
   font-size: 110%;
   font-family: sans-serif;
   /* text-indent: 3%; */
@@ -57,4 +58,26 @@ header h1{
   padding: 3%;
   border-radius: 5px;
   /* padding-left : 1%; */
+}
+
+@media (max-width : 770px){
+  article {
+    width : 100vw;
+  }
+  .content{
+    /* border:1px solid red; */
+    padding-left: 4vw;
+    padding-right: 4vw;
+    /* padding-bottom:5%; */
+    
+  }
+
+  
+}
+
+@media (max-width : 324px){
+.content p {
+    line-height: 165%;
+    font-size: 105%;
+  }
 }
