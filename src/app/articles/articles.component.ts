@@ -1,5 +1,5 @@
 import { ArticlesInfoService } from './../services/articles-info.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { Article } from '../services/Article';
 @Component({
@@ -9,6 +9,7 @@ import { Article } from '../services/Article';
 })
 export class ArticlesComponent implements OnInit {
   articles: Article[] = [];
+  @ViewChild('ArticlesHeader') public articleHeader : ElementRef;
   constructor(private _router: Router,
     private _articlesInfo: ArticlesInfoService) {
     this._articlesInfo.fetchArticles()
