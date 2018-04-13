@@ -1,3 +1,4 @@
+import { Article } from './../services/Article';
 import { ActivatedRoute } from '@angular/router';
 import { ArticlesInfoService } from './../services/articles-info.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,32 +11,38 @@ import { MarkdownService } from 'angular2-markdown';
   styleUrls: ['./article-right-side.component.css']
 })
 export class ArticleRightSideComponent implements OnInit {
-  article: any;
+  article: Article;
   pageID = '';
-  isVoted : boolean;
+  userID : any;
+  isVoted: boolean;
   constructor(private _aritcleInfo: ArticlesInfoService,
-    private _route: ActivatedRoute,
+    private _route: ActivatedRoute, 
     private _markdown: MarkdownService
   ) {
-    // TODO : store the ip of reader 
-    // every ip one vote only!
     this.isVoted = false;
-
-    const articleID = this._route.snapshot.paramMap.get('id');
-    this._aritcleInfo.fetchArticleByID(articleID)
-      .subscribe(art => this.article = art);
   }
 
   ngOnInit() {
+    const articleID = this._route.snapshot.paramMap.get('id');
+    this._aritcleInfo.fetchArticleByID(articleID)
+    .subscribe(art => this.article = art);
+    
+    this._aritcleInfo.hasIPVoted(articleID).then(data => {
+      this.isVoted = (<any>data).voted;
+    }).catch(err => {
+      console.log('error in hapIPVoted');
+      console.log(err);
+    });
+    
     this._markdown.renderer.image = (src: string) => {
-      // console.log(img);
       return `<img src = "${src}" style = "/*border : 1px solid red;*/width : 80%;display : block;margin:5% auto;">`;
     }
     this.pageID = `/article/${this.article.id}`;
   }
-
-  onVote(vote : 'like' | 'dislike'){
-    //Todo : store the vote and the ip of that person
+  
+  onVote(vote: 'like' | 'dislike') {
+    if(this.isVoted) return;
     this.isVoted = true;
+    this._aritcleInfo.saveVote(this.article.id , vote);
   }
 }
