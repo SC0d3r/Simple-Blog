@@ -36,4 +36,12 @@ export class ArticleLeftSideComponent implements OnInit {
     };
     this._router.navigate(['/'] , navigationExtras);
   }
+  openSubscribe(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "Subscribe" : true
+      }
+    };
+    this._router.navigate(['/'] , navigationExtras);
+  }
 }
