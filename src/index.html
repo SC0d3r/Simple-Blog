@@ -14,19 +14,4 @@
 <body>
   <app-root></app-root>
 </body>
-
-<script>
-  function slide(shouldGoUp , howManyTimes){
-    if (howManyTimes <= 0) return;
-    
-    const amountToScroll = (shouldGoUp ? -1 : 1) * 8;
-    window.scrollTo(0,window.scrollY + amountToScroll);
-  
-    window.requestAnimationFrame(() => slide(shouldGoUp,howManyTimes-1));
-  }
-  window.addEventListener('wheel', event => {
-    slide(event.deltaY < 0 , 15);
-  });
-</script>
-
 </html>
