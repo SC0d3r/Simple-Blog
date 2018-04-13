@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './/app-routing.module';
@@ -27,6 +28,7 @@ import { DisqusModule } from "ngx-disqus";
 import { MarkdownModule } from 'angular2-markdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotSupportedComponent } from './not-supported/not-supported.component';
+import { DatabaseService } from './services/db/database.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { NotSupportedComponent } from './not-supported/not-supported.component';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -59,7 +62,7 @@ import { NotSupportedComponent } from './not-supported/not-supported.component';
     MatInputModule,
     MatProgressBarModule
   ],
-  providers: [ArticlesInfoService],
+  providers: [ArticlesInfoService,DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
