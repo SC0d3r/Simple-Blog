@@ -5,6 +5,7 @@ import 'reflect-metadata';
 import { enableProdMode } from '@angular/core';
 
 import * as express from 'express';
+import bodyParser = require('body-parser');
 import { join } from 'path';
 
 // Faster server renders w/ Prod mode (dev mode never needed)
@@ -12,6 +13,7 @@ enableProdMode();
 
 // Express server
 const app = express();
+
 
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
@@ -23,6 +25,7 @@ const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/mai
 import { ngExpressEngine } from '@nguniversal/express-engine';
 // Import module map for lazy loading
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+import { router } from './server/api/router';
 
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
@@ -34,10 +37,13 @@ app.engine('html', ngExpressEngine({
 app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));
 
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 // TODO: implement data requests securely
-app.get('/api/*', (req, res) => {
-  res.status(404).send('data requests are not supported');
-});
+// res.status(404).send('data requests are not supported');
+app.use('/api', router);
 
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
