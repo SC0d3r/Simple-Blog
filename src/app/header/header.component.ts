@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormGroupDirective, NgForm, FormControl, Validators } from '@angular/forms';
@@ -52,7 +52,8 @@ export class HeaderComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(@Inject(DOCUMENT) private _document: Document,
-    private _router: ActivatedRoute) {
+    private _route: ActivatedRoute,
+    private _router: Router) {
     this.isAboutMeOpen = false;
     this.isContactMeOpen = false;
     this.isSubscribeOpen = false;
@@ -61,11 +62,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this._showOrRemoveLinks(window.outerWidth);
     const isAboutMeSelected =
-      this._router.snapshot.queryParamMap.get('aboutMe');
-      const isContactMeSelected =
-      this._router.snapshot.queryParamMap.get('contactMe');
-      const isHomePageSelected =
-      this._router.snapshot.queryParamMap.get('homePage');
+      this._route.snapshot.queryParamMap.get('aboutMe');
+    const isContactMeSelected =
+      this._route.snapshot.queryParamMap.get('contactMe');
+    const isHomePageSelected =
+      this._route.snapshot.queryParamMap.get('homePage');
 
     if (isAboutMeSelected || isContactMeSelected || isHomePageSelected) {
       this._document.documentElement.scrollTo(0, 0);
@@ -73,10 +74,13 @@ export class HeaderComponent implements OnInit {
         setTimeout(() => {
           this.openAboutMe();
         }, 0);
-      if (isContactMeSelected) 
-      setTimeout(() => {
-        this.openContactMe();
-      }, 0);
+      if (isContactMeSelected)
+        setTimeout(() => {
+          this.openContactMe();
+        }, 0);
+
+      // this line if for clearing the query params from page url
+      this._router.navigate(['.'], { relativeTo: this._route, queryParams: {} });
     }
     // console.log(isAboutMeSelected,isContactMeSelected);
   }
