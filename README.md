@@ -24,6 +24,7 @@
 
 #### ~~6 - Add `Subscribe` , `Contact Me` and `About Me` pages~~
 
-#### 7 - Add `database` to store votes on artilces
+#### ~~7 - Add `Database` to store votes on artilces~~
 
 #### 8 - Add `Admin` page for posting articles
+#### 9 - Add `Database` to store Articles
