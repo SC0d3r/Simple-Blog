@@ -1,7 +1,6 @@
 import { Article } from './../services/Article';
-import { ActivatedRoute } from '@angular/router';
 import { ArticlesInfoService } from './../services/articles-info.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { MarkdownService } from 'angular2-markdown';
 
@@ -11,23 +10,19 @@ import { MarkdownService } from 'angular2-markdown';
   styleUrls: ['./article-right-side.component.css']
 })
 export class ArticleRightSideComponent implements OnInit {
-  article: Article;
+  @Input('article') article: Article;
   pageID = '';
   userID : any;
   isVoted: boolean;
-  constructor(private _aritcleInfo: ArticlesInfoService,
-    private _route: ActivatedRoute, 
+  constructor(
+    private _aritcleInfo: ArticlesInfoService,
     private _markdown: MarkdownService
   ) {
     this.isVoted = false;
   }
 
   ngOnInit() {
-    const articleID = this._route.snapshot.paramMap.get('id');
-    this._aritcleInfo.fetchArticleByID(articleID)
-    .subscribe(art => this.article = art);
-    
-    this._aritcleInfo.hasIPVoted(articleID).then(data => {
+    this._aritcleInfo.hasIPVoted(this.article.id).then(data => {
       this.isVoted = (<any>data).voted;
     }).catch(err => {
       console.log('error in hapIPVoted');

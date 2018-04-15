@@ -1,5 +1,6 @@
+import { Article } from './../services/Article';
 import { Router, NavigationExtras } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-article-left-side',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-left-side.component.css']
 })
 export class ArticleLeftSideComponent implements OnInit {
-
+  @Input('article') private _article: Article;
   constructor(private _router: Router) { }
 
   ngOnInit() {
