@@ -9,19 +9,17 @@ import { Article } from './Article';
 export class ArticlesInfoService {
   articles: Article[];
   constructor(private _db: DatabaseService) {
-    this.articles = dummyArticles;
+    // this.articles = dummyArticles;
   }
 
   fetchArticles(howMany: number = -1): Observable<Article[]> {
     // -1 means all the articles
-    // return this._db.fetchArticles(howMany)
-    // .map(arts => {
-    //   // console.log('from article info');
-    //   // console.log(arts);
-    //   this.articles = arts;
-    //   return arts;
-    // });
-    return of(this.articles);
+    return this._db.fetchArticles(howMany)
+    .map(arts => {
+      this.articles = arts;
+      return arts;
+    });
+    // return of(this.articles);
   }
 
   fetchArticleByID(id: string): Observable<Article> {
