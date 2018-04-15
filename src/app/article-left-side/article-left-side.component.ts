@@ -8,41 +8,48 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./article-left-side.component.css']
 })
 export class ArticleLeftSideComponent implements OnInit {
+  articleDate: string;
   @Input('article') private _article: Article;
   constructor(private _router: Router) { }
 
   ngOnInit() {
+    const date: any = new Date(this._article.date);
+    const locale = "en-us",
+      month = date.toLocaleString(locale, { month: "short" }),
+      day = date.toLocaleString(locale, { day: "numeric" }),
+      year = date.toLocaleString(locale, { year: "numeric" });
+    this.articleDate = `${month} ${day} , ${year}`;
   }
   goHomePage() {
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "homePage" : true
+        "homePage": true
       }
     };
-    this._router.navigate(['/'],navigationExtras);
+    this._router.navigate(['/'], navigationExtras);
   }
   openAboutMe() {
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "aboutMe" : true
+        "aboutMe": true
       }
     };
-    this._router.navigate(['/'] , navigationExtras);
+    this._router.navigate(['/'], navigationExtras);
   }
   openContactMe() {
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "contactMe" : true
+        "contactMe": true
       }
     };
-    this._router.navigate(['/'] , navigationExtras);
+    this._router.navigate(['/'], navigationExtras);
   }
-  openSubscribe(){
+  openSubscribe() {
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "Subscribe" : true
+        "Subscribe": true
       }
     };
-    this._router.navigate(['/'] , navigationExtras);
+    this._router.navigate(['/'], navigationExtras);
   }
 }
