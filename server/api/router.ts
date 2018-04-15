@@ -3,14 +3,15 @@ import { Router } from 'express';
 import { VotesDB } from '../db/votes/VotesDB';
 import { VotesDBImp } from '../db/votes/VotesDBImp';
 import { ArticlesDB } from '../db/articles/ArticlesDB';
+import { resolve } from 'path';
 
 export const router = Router();
 
 const PORT = process.env.PORT || 4000;
 const hostName = process.env.host || `http://localhost:${PORT}`;
 
-const votesDB : VotesDB = new VotesDBImp();
-const articlesDB : ArticlesDB = new ArticlesDBImp();
+const votesDB: VotesDB = new VotesDBImp();
+const articlesDB: ArticlesDB = new ArticlesDBImp();
 
 router.post('/votes/checkIP', (req, res) => {
   const ip = getClientIPAddress(req);
@@ -41,9 +42,9 @@ router.post('/votes/saveVote', (req, res) => {
 
 router.post('/articles/save', (req, res) => {
   const article = req.body.article;
-  if(!article) return res.json({isSaved : false});
+  if (!article) return res.json({ isSaved: false });
   articlesDB.saveArticle(article);
-  res.json({isSaved : true});
+  res.json({ isSaved: true });
 });
 
 router.get('/articles/:howMany', (req, res) => {
@@ -53,12 +54,31 @@ router.get('/articles/:howMany', (req, res) => {
   });
 });
 
+router.post('/articles/image', (req, res) => {
+  // console.log('from router');
+  // console.log((<any>req).files);
+  if (!(<any>req).files)
+    return res.status(400).send('No files were uploaded.');
+
+  const articleImage = (<any>req).files.articleImage;
+  const imageSavePath = resolve(process.cwd(),
+    'dist','browser', 'assets', 'images', 'uploads', articleImage.name);
+  // console.log(imageSavePath);
+  articleImage.mv(imageSavePath, function (err) {
+    if (err) {
+      console.log(err);
+      return res.status(500).send(err);
+    }
+    res.json({upload : 'Successful'});
+  });
+});
+
 router.get('*', (req, res) => {
   res.redirect(hostName);
 });
 
 
 function getClientIPAddress(req) {
-  return (req.headers['x-forwarded-for'] || '').split(',')[0] 
-      || req.connection.remoteAddress;
+  return (req.headers['x-forwarded-for'] || '').split(',')[0]
+    || req.connection.remoteAddress;
 };
