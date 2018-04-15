@@ -67,7 +67,8 @@ var CollegeCourse = (function() {
 You shouldn’t have to modify a class because another class changes. This is a classic case of tight coupling. Constructor parameters can be passed as an object with the receiving object having fallback default values, which loosens coupling and means code won’t break when you add new parameters.
 `,
     img: { src: 'js.png', alt: '' },
-    tags: []
+    tags: [],
+    date : 314134134312431
   },
   {
     id : 'asd23e2ad21e',
@@ -87,7 +88,8 @@ We’re going to add a “cut” to an index page full of text—a teaser paragr
 Let’s start by setting up an HTML document that links out to an external stylesheet and external script file—nothing fancy. Both our stylesheet and script files are empty with .css and .js extensions, for now—I like to keep my CSS in a /css subdirectory and my JavaScript in a /js subdirectory, but do whatever makes you most comfortable.
     `,
     img: { src: 'js2.svg', alt: '' },
-    tags: []
+    tags: [],
+    date : 314134134312431
   },
   {
     id : '21asd234ff4gfh5',
@@ -116,6 +118,7 @@ Comcast isn’t the only organization that does this. Hotels, airports, and othe
 Many web designers and developers mistakenly believe that JavaScript support is a given or that issues with JavaScript drifted off with the decline of IE 8, but these three stories are all recent, and none of them concerned a browser support issue. If these stories tell you anything, it’s that you need to develop the 1964 Chrysler Imperial5 of websites—sites that soldier on even when they are getting pummeled from all sides. After all, devices, browsers, plugins, servers, networks, and even the routers that ultimately deliver your sites all have a say in how (and what) content actually gets to your users.
     `,
     img: { src: 'js3.jpg', alt: '' },
-    tags: []
+    tags: [],
+    date : 314134134312431
   }
 ];
