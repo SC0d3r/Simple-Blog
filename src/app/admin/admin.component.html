@@ -5,7 +5,11 @@
     </h1>
   </header>
   <div class="main">
-    <div class="image"></div>
+    <div class="image">
+      <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name = 'file' #file>
+      </form>
+    </div>
     <div class="title">
       <mat-form-field>
         <input matInput placeholder="Title" value="" [(ngModel)] = "title">
