@@ -26,5 +26,5 @@
 
 #### ~~7 - Add `Database` to store votes on artilces~~
 
-#### 8 - Add `Admin` page for posting articles
-#### 9 - Add `Database` to store Articles
+#### ~~8 - Add `Admin` page for posting articles~~
+#### ~~9 - Add `Database` to store Articles~~
