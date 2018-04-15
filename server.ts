@@ -8,6 +8,7 @@ import * as express from 'express';
 import bodyParser = require('body-parser');
 import { join } from 'path';
 
+const fileUpload = require('express-fileupload');
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 
@@ -41,6 +42,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
+
+app.use(fileUpload());
 // TODO: implement data requests securely
 // res.status(404).send('data requests are not supported');
 app.use('/api', router);
