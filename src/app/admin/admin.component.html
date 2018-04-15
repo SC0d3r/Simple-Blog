@@ -1,0 +1,36 @@
+<div class="container">
+  <header>
+    <h1>
+      Admin Page
+    </h1>
+  </header>
+  <div class="main">
+    <div class="image"></div>
+    <div class="title">
+      <mat-form-field>
+        <input matInput placeholder="Title" value="" [(ngModel)] = "title">
+      </mat-form-field>
+
+    </div>
+    <div class="shortDescription">
+      <mat-form-field>
+        <textarea [(ngModel)] = "shortDescription" matInput placeholder="Short Description" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="body">
+      <mat-form-field>
+        <textarea [(ngModel)] = "body" matInput placeholder="Body Of Article" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="100"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="tags">
+      <mat-form-field>
+        <mat-placeholder>CSV Tags</mat-placeholder>
+        <input [(ngModel)] = "tags" matInput value="">
+      </mat-form-field>
+    </div>
+    <div class="buttons">
+      <button (click) = "onPreview()" mat-raised-button color='warn'[style.backgroundColor] = "''">Preview</button>
+      <button (click) = "onPost()" mat-raised-button color = 'primary'[style.backgroundColor] = "''">Post</button>
+    </div>
+  </div>
+</div>

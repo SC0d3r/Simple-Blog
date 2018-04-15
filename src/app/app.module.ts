@@ -29,6 +29,7 @@ import { MarkdownModule } from 'angular2-markdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotSupportedComponent } from './not-supported/not-supported.component';
 import { DatabaseService } from './services/db/database.service';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DatabaseService } from './services/db/database.service';
     ArticleLeftSideComponent,
     ArticleRightSideComponent,
     HomePageComponent,
-    NotSupportedComponent
+    NotSupportedComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),

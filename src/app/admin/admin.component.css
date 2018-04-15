@@ -1,0 +1,91 @@
+.container{
+  background-color : #ecf0f1;
+}
+.container header{
+  background-color : #3d3d3d;
+  width : 100vw;
+  height: 30vh;
+  color : #ffda79;
+  font-size : 150%;   
+  text-align : center;
+}
+.container header h1{
+  padding-top: 5vh;
+}
+.main{
+  box-shadow: 0px 10px 10px #d1ccc0;
+  background-color : #fff;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows : repeat(auto-fill , 1fr);
+  /* border : 1px solid blue; */
+  margin : auto;
+  width : 80vw;
+  justify-items: center;
+  z-index: 2234;
+  margin-top:-4vh;
+}
+
+.main .image{
+  /* border : 1px solid yellow; */
+  background-image : url(/assets/images/upload.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width : 50vw;
+  height : 20vw;
+  margin-top : 4vh;
+}
+.main .image:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.main .title{
+  padding-top : 5vh;
+  /* border : 1px solid red; */
+  /* align-self: center; */
+}
+
+.main .shortDescription{
+  padding-top : 5vh;
+  /* border : 1px solid darkgreen; */
+  /* align-self: center; */
+  /* min-width: 25vw; */
+  
+}
+.main .shortDescription mat-form-field{
+  min-width: 28vw;
+}
+
+.main .body{
+  /* border : 1px solid darkgreen; */
+  padding-top : 5vh;
+}
+
+.main .body mat-form-field{
+  min-width: 60vw;
+}
+.main .tags{
+  padding : 5vh 0;
+  /* border : 1px solid darkgreen; */
+}
+.main .tags mat-form-field{
+  min-width: 25vw;
+}
+.main .tags mat-form-field{
+  text-align : center;
+}
+
+.main .buttons{
+  /* border : 1px solid darkgreen; */
+  padding-top : 10vh;
+  padding-bottom : 5vh;
+  /* justify-self: end; */
+}
+.main .buttons button:last-child{
+  margin-left : 1vw;
+}
+.main .buttons button{
+  font-size : 120%;
+}
