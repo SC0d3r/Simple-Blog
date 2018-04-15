@@ -1,6 +1,8 @@
-export const dummyArticles = [
+import { Article } from './Article';
+export const dummyArticles : Article[] = [
   {
     id : 'aswe13213fsdsd',
+    shortDescription : '',
     title: 'Coding with Clarity',
     body: `
 
@@ -70,6 +72,7 @@ You shouldn’t have to modify a class because another class changes. This is a 
   {
     id : 'asd23e2ad21e',
     title: 'JavaScript for Web Designers: DOM Scripting',
+    shortDescription : '',
     body: `
     Everything we do with JavaScript falls within the scope of a single object: window. The window object represents, predictably enough, the entire browser window. It contains the entire DOM, as well as—and this is the tricky part—the whole of JavaScript.
 
@@ -89,6 +92,7 @@ Let’s start by setting up an HTML document that links out to an external style
   {
     id : '21asd234ff4gfh5',
     title: 'Interaction Is an Enhancement',
+    shortDescription : '',
     body: `
     In architecting its new platform, Gawker Media had embraced JavaScript as the delivery mechanism for its content. It would send a hollow HTML shell to the browser and then load the actual page content via JavaScript. The common wisdom was that this approach would make these sites appear more “app like” and “modern.” But on launch day, a single error in the JavaScript code running the platform brought the system to its knees. That one solitary error caused a lengthy “site outage”—I use that term liberally because the servers were actually still working—for every Gawker property and lost the company countless page views and ad impressions.
 

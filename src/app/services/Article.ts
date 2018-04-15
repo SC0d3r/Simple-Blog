@@ -1,6 +1,7 @@
 export interface Article {
   id : string;
   title: string;
+  shortDescription : string;
   img: {
     src: string,
     alt: string
