@@ -1,12 +1,16 @@
-import { VotesDBImp } from '../db/VotesDBImp';
+import { ArticlesDBImp } from './../db/articles/ArticlesDBImp';
 import { Router } from 'express';
+import { VotesDB } from '../db/votes/VotesDB';
+import { VotesDBImp } from '../db/votes/VotesDBImp';
+import { ArticlesDB } from '../db/articles/ArticlesDB';
 
 export const router = Router();
 
 const PORT = process.env.PORT || 4000;
 const hostName = process.env.host || `http://localhost:${PORT}`;
 
-const votesDB = new VotesDBImp();
+const votesDB : VotesDB = new VotesDBImp();
+const articlesDB : ArticlesDB = new ArticlesDBImp();
 
 router.post('/votes/checkIP', (req, res) => {
   const ip = getClientIPAddress(req);
@@ -33,6 +37,20 @@ router.post('/votes/saveVote', (req, res) => {
   // console.log(`saving vote ${vote} for article ${articleID} and ip ${ip}`);
   //TODO : sanitizing
   votesDB.saveVote(articleID, <string>ip, vote);
+});
+
+router.post('/articles/save', (req, res) => {
+  const article = req.body.article;
+  if(!article) return res.json({isSaved : false});
+  articlesDB.saveArticle(article);
+  res.json({isSaved : true});
+});
+
+router.get('/articles/:howMany', (req, res) => {
+  const howMany = +req.params.howMany;
+  articlesDB.fetchArticles(howMany).then(articles => {
+    res.json(articles);
+  });
 });
 
 router.get('*', (req, res) => {
