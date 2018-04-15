@@ -4,18 +4,24 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { dummyArticles } from './dummyArticles';
 import { Article } from './Article';
-import { DB } from './db/DB';
 
 @Injectable()
 export class ArticlesInfoService {
   articles: Article[];
   constructor(private _db: DatabaseService) {
-    this.articles = dummyArticles;
+    // this.articles = dummyArticles;
   }
 
   fetchArticles(howMany: number = -1): Observable<Article[]> {
     // -1 means all the articles
-    return of(this.articles);
+    return this._db.fetchArticles(howMany)
+    .map(arts => {
+      console.log('from article info');
+      console.log(arts);
+      this.articles = arts;
+      return arts;
+    });
+    // return of(this.articles);
   }
 
   fetchArticleByID(id: string): Observable<Article> {
@@ -28,6 +34,9 @@ export class ArticlesInfoService {
   }
   saveVote(articleID: string, vote: 'like' | 'dislike') {
     return this._db.saveVote(articleID, vote);
+  }
+  saveArticle(article : Article){
+    this._db.saveArticle(article);
   }
 
 }
