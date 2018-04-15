@@ -48,4 +48,13 @@ export class DatabaseService {
     // -1 means all
     return this._httpClient.get<Article[]>(articlesURL+'/'+howMany);
   }
+
+  uploadImage(formData : FormData){
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'multipart/form-data'
+    //   })
+    // };
+    this._httpClient.post(articlesURL+'/image',formData).toPromise();
+  }
 }
