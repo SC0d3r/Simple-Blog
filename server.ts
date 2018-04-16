@@ -27,6 +27,7 @@ import { ngExpressEngine } from '@nguniversal/express-engine';
 // Import module map for lazy loading
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import { router } from './server/api/router';
+import { router as authRouter } from './server/auth/router';
 
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
@@ -47,7 +48,7 @@ app.use(fileUpload());
 // TODO: implement data requests securely
 // res.status(404).send('data requests are not supported');
 app.use('/api', router);
-
+app.use('/auth',authRouter);
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
