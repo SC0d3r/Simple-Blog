@@ -50,11 +50,6 @@ export class DatabaseService {
   }
 
   uploadImage(formData : FormData){
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'multipart/form-data'
-    //   })
-    // };
     this._httpClient.post(articlesURL+'/image',formData).toPromise();
   }
 }
