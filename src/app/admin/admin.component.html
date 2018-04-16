@@ -5,13 +5,22 @@
     </h1>
   </header>
   <div class="main">
-    <div class="toggle">
-      <mat-slide-toggle #slideToggle labelPosition='before'>
-        <h3>Post Article</h3>
-      </mat-slide-toggle>
-    </div>
-    <div class="imageName" *ngIf = "imageName.length !== 0">
-        <span [style.backgroundColor]="'#44bd32'">[Image Name]</span><h3>{{imageName}}</h3>
+    
+    <nav>
+      <div class='links'>
+        <a [routerLink] = "['/']">
+          <mat-icon title="home">home</mat-icon>
+        </a>
+      </div>
+      <div class="toggle">
+        <mat-slide-toggle #slideToggle labelPosition='before'>
+          <h3>Post Article</h3>
+        </mat-slide-toggle>
+      </div>
+    </nav>
+    <div class="imageName" *ngIf="imageName.length !== 0">
+      <span [style.backgroundColor]="'#44bd32'">[Image Name]</span>
+      <h3>{{imageName}}</h3>
     </div>
     <div class="image" (click)="openSelectImage()">
       <form action="" method="post" enctype="multipart/form-data">
