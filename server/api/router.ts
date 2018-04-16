@@ -61,8 +61,10 @@ router.post('/articles/image', (req, res) => {
     return res.status(400).send('No files were uploaded.');
 
   const articleImage = (<any>req).files.articleImage;
+  const imageName = req.body.imageName;
+  // console.log(`from server name of the image ${imageName}`);
   const imageSavePath = resolve(process.cwd(),
-    'dist','browser', 'assets', 'images', 'uploads', articleImage.name);
+    'dist','browser', 'assets', 'images', 'uploads', imageName);
   // console.log(imageSavePath);
   articleImage.mv(imageSavePath, function (err) {
     if (err) {
