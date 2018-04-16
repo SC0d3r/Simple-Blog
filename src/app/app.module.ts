@@ -32,6 +32,8 @@ import { DisqusModule } from "ngx-disqus";
 import { MarkdownModule } from 'angular2-markdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatabaseService } from './services/db/database.service';
+import { AuthGuardService } from './services/route-guards/auth-guard.service';
+import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,7 @@ import { DatabaseService } from './services/db/database.service';
     MatProgressBarModule,
     MatSlideToggleModule
   ],
-  providers: [ArticlesInfoService,DatabaseService],
+  providers: [ArticlesInfoService,DatabaseService, AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
