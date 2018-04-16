@@ -10,7 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { TopFooterComponent } from './top-footer/top-footer.component';
 import { InsightsComponent } from './insights/insights.component';
 import { FixedBoardComponent } from './fixed-board/fixed-board.component';
-import { ArticlesComponent } from './articles/articles.component';
+import { ArticlesComponent, ArticlesAdminSettingsDialog } from './articles/articles.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleLeftSideComponent } from './article-left-side/article-left-side.component';
 import { ArticleRightSideComponent } from './article-right-side/article-right-side.component';
@@ -25,6 +25,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatInputModule} from '@angular/material/input';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { ArticlesInfoService } from './services/articles-info.service';
 
@@ -36,11 +37,15 @@ import { AuthGuardService } from './services/route-guards/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
+  entryComponents : [
+    ArticlesAdminSettingsDialog
+  ],
   declarations: [
     AppComponent,
     HeaderComponent,
     FixedBoardComponent,
     InsightsComponent,
+    ArticlesAdminSettingsDialog,
     ArticlesComponent,
     FooterComponent,
     TopFooterComponent,
@@ -63,6 +68,7 @@ import { AuthService } from './services/auth/auth.service';
     MarkdownModule.forRoot(),
     DisqusModule.forRoot('sasan-kelishani'),
 
+    MatDialogModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,

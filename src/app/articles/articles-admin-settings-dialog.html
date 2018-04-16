@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Hi Admin</h1>
+<div mat-dialog-content>
+  <p>Choose the Action </p>
+</div>
+<br>
+<br>
+<div mat-dialog-actions>
+  <button mat-button color="warn" (click)="onDelete()">Delete</button>
+  <button mat-button cdkFocusInitial (click) = "onEdit()" [style.color] = "'#009432'">Edit</button>
+</div>
