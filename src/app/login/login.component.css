@@ -73,3 +73,7 @@
   width : 22%;
   height : 13%;
 }
+
+.main .login mat-icon{
+  cursor: pointer;
+}
