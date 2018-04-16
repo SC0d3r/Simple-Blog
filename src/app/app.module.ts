@@ -21,6 +21,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatInputModule} from '@angular/material/input';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { ArticlesInfoService } from './services/articles-info.service';
 
@@ -62,7 +63,8 @@ import { AdminComponent } from './admin/admin.component';
     MatButtonModule,
     MatMenuModule,
     MatInputModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSlideToggleModule
   ],
   providers: [ArticlesInfoService,DatabaseService],
   bootstrap: [AppComponent]
