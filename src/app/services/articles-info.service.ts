@@ -15,10 +15,10 @@ export class ArticlesInfoService {
   fetchArticles(howMany: number = -1): Observable<Article[]> {
     // -1 means all the articles
     return this._db.fetchArticles(howMany)
-    .map(arts => {
-      this.articles = arts;
-      return arts;
-    });
+      .map(arts => {
+        this.articles = arts;
+        return arts;
+      });
     // return of(this.articles);
   }
 
@@ -33,13 +33,14 @@ export class ArticlesInfoService {
   saveVote(articleID: string, vote: 'like' | 'dislike') {
     return this._db.saveVote(articleID, vote);
   }
-  saveArticle(article : Article){
+  saveArticle(article: Article) {
     this._db.saveArticle(article);
   }
-  uploadImage(file : File){
+  uploadImage(file: File, imageName: string) {
     //create form data
-    const formData : FormData = new FormData();
+    const formData: FormData = new FormData();
     formData.append("articleImage", file);
+    formData.append("imageName" , imageName);
     this._db.uploadImage(formData);
   }
 }
