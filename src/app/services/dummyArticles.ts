@@ -2,7 +2,10 @@ import { Article } from './Article';
 export const dummyArticles : Article[] = [
   {
     id : 'aswe13213fsdsd',
-    shortDescription : '',
+    shortDescription : `
+    Working code isn’t necessarily good code. 
+Your code also needs to be easy to read, understand, and modify. It needs clarity, and to achieve that, it has to be organized well ...
+    `,
     title: 'Coding with Clarity',
     body: `
 
