@@ -30,7 +30,7 @@ export class ArticleRightSideComponent implements OnInit {
     });
     
     this._markdown.renderer.image = (src: string) => {
-      return `<img src = "${src}" style = "/*border : 1px solid red;*/width : 80%;display : block;margin:5% auto;">`;
+      return `<img src = "${src}" style = "/*border : 1px solid red;*/width : 95%;display : block;margin:5% auto;">`;
     }
     this.pageID = `/article/${this.article.id}`;
   }
