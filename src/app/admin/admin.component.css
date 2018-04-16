@@ -33,6 +33,14 @@
   padding-top : 3vh;
   color : #1e3799;
 }
+::ng-deep .main .toggle .mat-slide-toggle-thumb{
+  /* border : 1px solid blue; */
+  min-height : 25px;
+}
+::ng-deep .main .toggle .mat-slide-toggle-bar{
+  min-height : 20px;
+  min-width: 35px;
+}
 
 .main .image{
   /* border : 1px solid yellow; */
