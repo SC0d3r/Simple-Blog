@@ -48,7 +48,13 @@
   opacity: 0.5;
   cursor: pointer;
 }
-
+.main .imageName{
+  justify-self: start;
+  padding-left : 10vw;
+  opacity: 0.5;
+  font-size: 90%;
+  /* border : 1px solid yellow; */
+}
 .main .title{
   padding-top : 5vh;
   /* border : 1px solid red; */

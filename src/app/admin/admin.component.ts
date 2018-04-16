@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
   shortDescription: string = '';
   body: string = '';
   tags: string = '';
+  imageName : string = '';
   @ViewChild('file') private _file: ElementRef;
 
   constructor(private _articleInfo: ArticlesInfoService) {
@@ -38,15 +39,17 @@ export class AdminComponent implements OnInit {
     }
 
     // TODO : Sanitize image file name
+    const imageName = makeImageNameUnique(imageFile.name);
+    this.imageName = imageName;
     const newArticle = createArticle(
-      imageFile.name,
+      imageName,
       this.title,
       this.shortDescription,
       this.body,
       this.tags);
 
     this._articleInfo.saveArticle(newArticle);
-    this._articleInfo.uploadImage(imageFile);
+    this._articleInfo.uploadImage(imageFile , imageName);
     this._reset();
   }
   private _reset() {
@@ -68,8 +71,9 @@ export class AdminComponent implements OnInit {
       console.log('select an image or file exceeds the 1mg limit');
       return;
     }
-
-    this._articleInfo.uploadImage(imageFile);
+    const imageName = makeImageNameUnique(imageFile.name);
+    this.imageName = imageName;
+    this._articleInfo.uploadImage(imageFile,imageName);
 
     //reseting the upload file input
     fileElement.value = ''; 
@@ -107,4 +111,9 @@ function fileSizeExceeds1MG(size: number) {
   size /= 1000;//turn into kb
   size /= 1000;//turn into mg
   return size > 1;
+}
+
+function makeImageNameUnique(imgName : string) : string{
+  const [name , ext] = imgName.split('.');
+  return `${name}-${guid()}.${ext}`;
 }
