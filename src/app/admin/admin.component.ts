@@ -14,16 +14,16 @@ export class AdminComponent implements OnInit {
   tags: string = '';
   @ViewChild('file') private _file: ElementRef;
 
-  constructor(private _articleInfo: ArticlesInfoService) { }
+  constructor(private _articleInfo: ArticlesInfoService) {
+  }
 
   ngOnInit() {
     // TODO : editin article
   }
-  
   onPost() {
     const fileElement: HTMLInputElement = this._file.nativeElement;
     const imageFile = fileElement.files[0];
-    console.log(imageFile);
+    // console.log(imageFile);
 
     if (imageFile === undefined || fileSizeExceeds1MG(imageFile.size)) {
       console.log('select an image or file exceeds the 1mg limit');
@@ -55,6 +55,25 @@ export class AdminComponent implements OnInit {
     this.body = '';
     this.tags = '';
   }
+
+  openSelectImage(){
+    const fileElement: HTMLInputElement = this._file.nativeElement;
+    fileElement.click();
+  }
+
+  onUpload() {
+    const fileElement: HTMLInputElement = this._file.nativeElement;
+    const imageFile = fileElement.files[0];
+    if (imageFile === undefined || fileSizeExceeds1MG(imageFile.size)) {
+      console.log('select an image or file exceeds the 1mg limit');
+      return;
+    }
+
+    this._articleInfo.uploadImage(imageFile);
+
+    //reseting the upload file input
+    fileElement.value = ''; 
+  }
   onPreview() {
     //TODO : show how the article looks in the blog
   }
@@ -84,7 +103,7 @@ function guid() {
     + (new Date()).getTime().toString(36);
 }
 
-function fileSizeExceeds1MG(size : number){
+function fileSizeExceeds1MG(size: number) {
   size /= 1000;//turn into kb
   size /= 1000;//turn into mg
   return size > 1;
