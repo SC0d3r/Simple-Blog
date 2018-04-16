@@ -1,0 +1,75 @@
+.main{
+  width : 100vw;
+  height : 100vh;
+  background-color : #dfe4ea;
+  /* border : 1px solid yellow; */
+}
+.main .login {
+  position : absolute;
+  display: flex;
+  flex-direction: column;
+  left: 0;top: 0;bottom: 0;right: 0;
+  margin : auto;
+  background-color : #f1f2f6;
+  width : 30vw;
+  height : 63vh;
+  box-shadow: 8px 8px 5px #ccc;
+  /* border : 1px solid blue; */
+}
+@media (max-width : 1065px){
+  .main .login {
+    width : 35vw;
+  }
+}
+@media (max-width : 949px){
+  .main .login {
+    width : 39vw;
+  }
+}
+@media (max-width : 759px){
+  .main .login {
+    width : 43vw;
+  }
+}
+@media (max-width : 690px){
+  .main .login {
+    width : 48vw;
+  }
+}
+@media (max-width : 618px){
+  .main .login {
+    width : 55vw;
+  }
+}
+@media (max-width : 515px){
+  .main .login {
+    width : 62vw;
+  }
+}
+@media (max-width : 433px){
+  .main .login {
+    width : 70vw;
+  }
+}
+@media (max-width : 380px){
+  .main .login {
+    width : 99vw;
+  }
+}
+.main .login h2{
+  text-align : center;
+  font-family: 'Pacifico', cursive;
+  padding : 4%;
+  padding-bottom : 0;
+}
+.main .login form{
+  display: flex;
+  flex-direction: column;
+  width : 80%;
+  margin : auto;
+}
+.main .login button {
+  margin : auto;
+  width : 22%;
+  height : 13%;
+}

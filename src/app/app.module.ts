@@ -15,6 +15,9 @@ import { ArticleComponent } from './article/article.component';
 import { ArticleLeftSideComponent } from './article-left-side/article-left-side.component';
 import { ArticleRightSideComponent } from './article-right-side/article-right-side.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NotSupportedComponent } from './not-supported/not-supported.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
 
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
@@ -28,9 +31,7 @@ import { ArticlesInfoService } from './services/articles-info.service';
 import { DisqusModule } from "ngx-disqus";
 import { MarkdownModule } from 'angular2-markdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NotSupportedComponent } from './not-supported/not-supported.component';
 import { DatabaseService } from './services/db/database.service';
-import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AdminComponent } from './admin/admin.component';
     ArticleRightSideComponent,
     HomePageComponent,
     NotSupportedComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),

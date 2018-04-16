@@ -1,0 +1,20 @@
+<div class="main">
+  <div class="login">
+    <h2>Login</h2>
+    <form>
+      <mat-form-field>
+        <input matInput #input placeholder="Username" maxlength="20">
+        <mat-hint align="start">{{input.value.length === 0 ? "Max 20 characters" : ''}}</mat-hint>
+        <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+      </mat-form-field>
+      <br>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+
+    </form>
+    <button mat-raised-button><h3>Login</h3></button>      
+  </div>
+</div>
