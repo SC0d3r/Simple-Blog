@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   login(){
     if(this.password.length === 0 || this.username.length === 0)
       return;
-    this._auth.login().subscribe(isLogged => {
+    this._auth.login(this.username,this.password).then(isLogged => {
       this._router.navigate(['/admin']);
     });
   }
