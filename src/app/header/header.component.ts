@@ -1,8 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject, HostListener, PLATFORM_ID } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormGroupDirective, NgForm, FormControl, Validators } from '@angular/forms';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -52,6 +52,7 @@ export class HeaderComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(@Inject(DOCUMENT) private _document: Document,
+  @Inject(PLATFORM_ID) public plafromID: any,
     private _route: ActivatedRoute,
     private _router: Router) {
     this.isAboutMeOpen = false;
@@ -60,7 +61,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._showOrRemoveLinks(window.outerWidth);
+    if (isPlatformBrowser(this.plafromID)) {
+      this._showOrRemoveLinks(window.outerWidth);
+    }
     const isAboutMeSelected =
       this._route.snapshot.queryParamMap.get('aboutMe');
     const isContactMeSelected =
@@ -95,6 +98,7 @@ export class HeaderComponent implements OnInit {
   openGithub() {
     this._document.location.href = 'https://github.com/SC0d3r';
   }
+  @HostListener("window:resize", ["$event"])
   onResize(e) {
     const width = e.target.outerWidth;
     // console.log(width);
