@@ -7,6 +7,7 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync(resolve(process.cwd(), 'server', 'db', 'articles', './db.json'));
 
 export class ArticlesDBImp implements ArticlesDB {
+  
   private _db: any;
   constructor() {
     this._db = low(adapter);
@@ -19,6 +20,11 @@ export class ArticlesDBImp implements ArticlesDB {
     //TODO : sanitizing
     this._db.get('articles').push(article).write();
   }
+  
+  delArticle(articleID: string): Promise<boolean> {
+    throw new Error("Method not implemented.");
+  }
+
   fetchArticles(howMany: number = -1): Promise<Article[]> {
     if (howMany === -1) {
       // means all the articles
