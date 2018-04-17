@@ -26,6 +26,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatInputModule} from '@angular/material/input';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { ArticlesInfoService } from './services/articles-info.service';
 
@@ -74,7 +75,8 @@ import { AuthService } from './services/auth/auth.service';
     MatMenuModule,
     MatInputModule,
     MatProgressBarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule
   ],
   providers: [ArticlesInfoService,DatabaseService, AuthGuardService, AuthService],
   bootstrap: [AppComponent]
