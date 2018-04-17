@@ -9,4 +9,5 @@ export interface Article {
   body: string;
   tags: string[];
   date : number;
+  innerBodyImages : string[];
 }

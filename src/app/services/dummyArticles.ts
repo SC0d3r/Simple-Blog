@@ -71,7 +71,8 @@ You shouldn’t have to modify a class because another class changes. This is a 
 `,
     img: { src: 'js.png', alt: '' },
     tags: [],
-    date : Date.now()
+    date : Date.now(),
+    innerBodyImages : []
   },
   {
     id : 'asd23e2ad21e',
@@ -92,7 +93,8 @@ Let’s start by setting up an HTML document that links out to an external style
     `,
     img: { src: 'js2.svg', alt: '' },
     tags: [],
-    date : Date.now()
+    date : Date.now(),
+    innerBodyImages : []
   },
   {
     id : '21asd234ff4gfh5',
@@ -122,6 +124,7 @@ Many web designers and developers mistakenly believe that JavaScript support is 
     `,
     img: { src: 'js3.jpg', alt: '' },
     tags: [],
-    date : Date.now()
+    date : Date.now(),
+    innerBodyImages : []
   }
 ];
