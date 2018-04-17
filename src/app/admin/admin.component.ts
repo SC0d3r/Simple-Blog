@@ -12,7 +12,7 @@ export class AdminComponent implements OnInit {
   shortDescription: string = '';
   body: string = '';
   tags: string = '';
-  imageName : string = '';
+  imageName: string = '';
   @ViewChild('file') private _file: ElementRef;
 
   constructor(private _articleInfo: ArticlesInfoService) {
@@ -49,7 +49,7 @@ export class AdminComponent implements OnInit {
       this.tags);
 
     this._articleInfo.saveArticle(newArticle);
-    this._articleInfo.uploadImage(imageFile , imageName);
+    this._articleInfo.uploadImage(imageFile, imageName);
     this._reset();
   }
   private _reset() {
@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
     this.tags = '';
   }
 
-  openSelectImage(){
+  openSelectImage() {
     const fileElement: HTMLInputElement = this._file.nativeElement;
     fileElement.click();
   }
@@ -73,10 +73,10 @@ export class AdminComponent implements OnInit {
     }
     const imageName = makeImageNameUnique(imageFile.name);
     this.imageName = imageName;
-    this._articleInfo.uploadImage(imageFile,imageName);
+    this._articleInfo.uploadImage(imageFile, imageName);
 
     //reseting the upload file input
-    fileElement.value = ''; 
+    fileElement.value = '';
   }
   onPreview() {
     //TODO : show how the article looks in the blog
@@ -87,6 +87,8 @@ function notValid(x: string) {
   return typeof x !== 'string' || x.length === 0;
 }
 function createArticle(img, title, shortDesc, body, tags) {
+  const innerBodyImages = getInnerBodyImages(body);
+  console.log(innerBodyImages);
   const article: Article = {
     id: guid(),
     img: {
@@ -97,11 +99,22 @@ function createArticle(img, title, shortDesc, body, tags) {
     shortDescription: shortDesc,
     body,
     tags,
-    date: Date.now()
+    date: Date.now(),
+    innerBodyImages
   }
   return article;
 }
 
+function getInnerBodyImages(articleBody: string): string[] {
+  // eg : ![alt](/assets/images/js2.svg)
+  const getImageAltAndUrls = /\!\[.+\]\((.+)\)/g;
+
+  //eg : /assets/images/js2.svg
+  const patternImageUrlOnly = /(?<=\()(.+)(?=\))/g;
+  
+  return articleBody.match(getImageAltAndUrls)
+    .map(altWithUrl => altWithUrl.match(patternImageUrlOnly)[0]);
+}
 function guid() {
   return Math.random().toString(36).substring(2)
     + (new Date()).getTime().toString(36);
@@ -113,7 +126,7 @@ function fileSizeExceeds1MG(size: number) {
   return size > 1;
 }
 
-function makeImageNameUnique(imgName : string) : string{
-  const [name , ext] = imgName.split('.');
+function makeImageNameUnique(imgName: string): string {
+  const [name, ext] = imgName.split('.');
   return `${name}-${guid()}.${ext}`;
 }
