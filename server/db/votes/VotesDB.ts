@@ -8,5 +8,6 @@ interface ArticleVote {
 
 export interface VotesDB {
   saveVote(articleID : string , ip : string , vote : Vote) : Promise<boolean>;
+  delVotes(articleID : string) : Promise<boolean>;
   getVotes(articleID : string) : Promise<IpVoteMap>;
 }

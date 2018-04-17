@@ -27,6 +27,11 @@ export class VotesDBImp implements VotesDB {
       .write();
     return Promise.resolve(true);
   }
+  delVotes(articleID: string): Promise<boolean> {
+    const isDeleted = this._db.get('votes')
+      .unset(articleID).write();
+    return Promise.resolve(isDeleted);
+  }
   getVotes(articleID: string): Promise<IpVoteMap> {
     const articleIPVoteMap = this._db.get(`votes.${articleID}`)
       .value();
