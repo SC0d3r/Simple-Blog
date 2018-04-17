@@ -107,10 +107,10 @@ function createArticle(img, title, shortDesc, body, tags) {
 
 function getInnerBodyImages(articleBody: string): string[] {
   // eg : ![alt](/assets/images/js2.svg)
-  const getImageAltAndUrls = /\!\[.+\]\((.+)\)/g;
+  const getImageAltAndUrls = new RegExp("\\!\\[.+\\]\\((.+)\\)","g");
 
   //eg : /assets/images/js2.svg
-  const patternImageUrlOnly = /(?<=\()(.+)(?=\))/g;
+  const patternImageUrlOnly = new RegExp("(?<=\\()(.+)(?=\\))","g");
   
   return articleBody.match(getImageAltAndUrls)
     .map(altWithUrl => altWithUrl.match(patternImageUrlOnly)[0]);
