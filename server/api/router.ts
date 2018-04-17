@@ -47,6 +47,13 @@ router.post('/articles/save', (req, res) => {
   res.json({ isSaved: true });
 });
 
+router.post('/articles/delete', (req, res) => {
+  const articleID = req.body.articleID;
+  articlesDB.delArticle(articleID).then(isOk => {
+    res.json({ isDeleted: isOk });
+  });
+});
+
 router.get('/articles/:howMany', (req, res) => {
   const howMany = +req.params.howMany;
   articlesDB.fetchArticles(howMany).then(articles => {
