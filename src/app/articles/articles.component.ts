@@ -3,7 +3,7 @@ import { ArticlesInfoService } from './../services/articles-info.service';
 import { Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { Article } from '../services/Article';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
@@ -60,20 +60,25 @@ export class ArticlesAdminSettingsDialog implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ArticlesAdminSettingsDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private _articleInfo: ArticlesInfoService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     console.log(`article id is ${this.data.articleID}`);
   }
 
-  onDelete(){
-    // TODO : implement deleting the article from site and db
+  onDelete() {
+    this.dialogRef.close();
+    this._articleInfo.delArticle(this.data.articleID).then(isDeleted => {
+      const action = isDeleted ? "Successful" : "Failed";
+      this._snackBar.open("Article Deletion", action, {
+        duration: 2000,
+      });
+    });
   }
-  onEdit(){
+  onEdit() {
     // TODO : implement editing the article in site and db
   }
-  // onNoClick(): void {
-  //   this.dialogRef.close();
-  // }
 
 }
