@@ -12,19 +12,39 @@ const authURL = environment.host + '/auth';
 @Injectable()
 export class AuthService {
   isLoggedIn = false;
-  constructor(private _httpClient: HttpClient) { }
+  private _attempts: number;
+  private _isTimeoutSet: boolean;
+  constructor(private _httpClient: HttpClient) {
+    this._attempts = 0;
+    this._isTimeoutSet = false;
+  }
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
   login(username: string, password: string): Promise<boolean> {
-    const p = (<any>hash).sha256().update(password).digest('hex');
+    if (this._attempts === 3) {
+      this._giveAccessAfter(1000 * 60 * 3);
+      return Promise.reject(new Error('Too many attempts retry after 3 min'));
+    }
+    const p = (<any>hash).sha256().update(password + username).digest('hex');
+    this._attempts++;
     return this._httpClient.get(authURL).toPromise().then(data => {
       const hash = (<any>data).auth;
       const isOk = hash === p;
+      if (isOk) this._attempts = 0;
       this.isLoggedIn = isOk;
       return isOk;
     });
+  }
+
+  private _giveAccessAfter(ms: number) {
+    if(this._isTimeoutSet) return;
+    this._isTimeoutSet = true;
+    setTimeout(() => {
+      this._attempts = 0;
+      this._isTimeoutSet = false;
+    }, ms);
   }
 
   logout(): void {
