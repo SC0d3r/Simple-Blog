@@ -39,7 +39,12 @@ router.post('/votes/saveVote', (req, res) => {
   //TODO : sanitizing
   votesDB.saveVote(articleID, <string>ip, vote);
 });
-
+router.post('/votes/delVotes', (req, res) => {
+  const articleID = req.body.articleID;
+  votesDB.delVotes(articleID).then(isOk => {
+    res.json({isDeleted : isOk});
+  });
+});
 router.post('/articles/save', (req, res) => {
   const article = req.body.article;
   if (!article) return res.json({ isSaved: false });
