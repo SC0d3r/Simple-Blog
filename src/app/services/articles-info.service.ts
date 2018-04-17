@@ -36,11 +36,21 @@ export class ArticlesInfoService {
   saveArticle(article: Article) {
     this._db.saveArticle(article);
   }
+  delArticle(articleID: string) {
+    return this._db.delArticle(articleID).then(data => {
+      if (data.isDeleted) {
+        const index = this.articles.findIndex(art => art.id === articleID);
+        if (index >= 0) this.articles.splice(index, 1);
+        else console.error('something strange happend article deleted in server but not in client');
+      }
+      return data.isDeleted;
+    });
+  }
   uploadImage(file: File, imageName: string) {
     //create form data
     const formData: FormData = new FormData();
     formData.append("articleImage", file);
-    formData.append("imageName" , imageName);
+    formData.append("imageName", imageName);
     this._db.uploadImage(formData);
   }
 }
