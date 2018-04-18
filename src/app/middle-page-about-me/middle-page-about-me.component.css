@@ -10,7 +10,7 @@
 .main .content{
   /* border : 1px solid red; */
   display: grid;
-  background-color :#222f3e ;
+  background-color :#0a3d62;
   align-self: center;
   /* grid-template-columns: 1fr; */
   grid-template-rows: 1fr 3fr 1fr;
@@ -33,7 +33,7 @@
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   justify-self: center;
-  border-top: 20px solid #222f3e;
+  border-top: 20px solid #0a3d62;
   align-self: end;
   transform: translateY(100%);
 }
