@@ -36,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatabaseService } from './services/db/database.service';
 import { AuthGuardService } from './services/route-guards/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
+import { MiddlePageAboutMeComponent } from './middle-page-about-me/middle-page-about-me.component';
 import { InterestsComponent } from './interests/interests.component';
 
 @NgModule({
@@ -57,6 +58,8 @@ import { InterestsComponent } from './interests/interests.component';
     HomePageComponent,
     NotSupportedComponent,
     AdminComponent,
+    LoginComponent,
+    MiddlePageAboutMeComponent,
     InterestsComponent
   ],
   imports: [

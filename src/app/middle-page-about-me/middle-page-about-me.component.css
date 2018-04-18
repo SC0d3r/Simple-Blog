@@ -1,0 +1,59 @@
+.main{
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  /* border : 1px solid blue; */
+  background-color :#f7f1e3 ;
+  height : 60vh;
+  padding-top : 10vh;
+}
+
+.main .content{
+  /* border : 1px solid red; */
+  display: grid;
+  background-color :#222f3e ;
+  align-self: center;
+  /* grid-template-columns: 1fr; */
+  grid-template-rows: 1fr 3fr 1fr;
+  height : 60vh;
+  
+}
+.main .content .arrowDown{
+  /* border : 1px solid red; */
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  justify-self: center;
+  border-top: 20px solid #f7f1e3;
+}
+.main .content .arrowUp{
+  /* border : 1px solid red; */
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  justify-self: center;
+  border-top: 20px solid #222f3e;
+  align-self: end;
+  transform: translateY(100%);
+}
+.main .content .innerContent{
+  /* border : 1px solid yellow; */
+  height : 40vh;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+}
+.main .content .innerContent .image{
+  /* border : 1px solid green; */
+  background-image : url(/assets/images/avatarMe.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.main .content .innerContent .aboutMeText{
+  align-self: center;
+  padding-top : 10px;
+  padding-right : 10%;
+  font-size: 1.6vw;
+  color : #f5f6fa;
+}
