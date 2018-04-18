@@ -1,14 +1,21 @@
 <article>
   <header>
-    <img src="/assets/images/uploads/{{article.img.src}}" alt="{{article.img.alt}}">
+    <img src="/assets/images/uploads/{{article?.img.src}}" alt="{{article?.img.alt}}">
     <h1>
-      {{article.title}}
+      {{article?.title}}
     </h1>
   </header>
   <div class="content">
-    <p>
-      <markdown>
-        {{article.body}}
+    <!-- this one is for seo to have the source of the html 
+    fills in with article -->
+    <p [innerHTML]="body" *ngIf="isServer">
+    </p>
+
+    <!-- this is for when angular kicks in 
+    this one shows whole markdown with it's css
+    unlike the other one -->
+    <p *ngIf="isBrowser">
+      <markdown [data]="article?.body">
       </markdown>
     </p>
     <div class="feeback">

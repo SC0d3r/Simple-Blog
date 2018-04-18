@@ -1,25 +1,33 @@
 import { Article } from './../services/Article';
 import { Router, NavigationExtras } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-article-left-side',
   templateUrl: './article-left-side.component.html',
   styleUrls: ['./article-left-side.component.css']
 })
-export class ArticleLeftSideComponent implements OnInit {
+export class ArticleLeftSideComponent implements OnChanges {
   articleDate: string;
-  @Input('article') private _article: Article;
+  @Input() article: Article;
   constructor(private _router: Router) { }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    const newArticle : SimpleChanges = <any>changes.article;
 
-  ngOnInit() {
-    const date: any = new Date(this._article.date);
-    const locale = "en-us",
-      month = date.toLocaleString(locale, { month: "short" }),
-      day = date.toLocaleString(locale, { day: "numeric" }),
-      year = date.toLocaleString(locale, { year: "numeric" });
-    this.articleDate = `${month} ${day} , ${year}`;
+    if(newArticle.currentValue === undefined) return;
+    
+    const articleDate = (<any>newArticle).currentValue.date;
+    if(articleDate){
+      const date: any = new Date(articleDate);
+      const locale = "en-us",
+        month = date.toLocaleString(locale, { month: "short" }),
+        day = date.toLocaleString(locale, { day: "numeric" }),
+        year = date.toLocaleString(locale, { year: "numeric" });
+      this.articleDate = `${month} ${day} , ${year}`;
+    }
   }
+  
   goHomePage() {
     let navigationExtras: NavigationExtras = {
       queryParams: {
