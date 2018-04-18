@@ -61,7 +61,7 @@ export class DatabaseService {
         const [isArticleDeleted, isArtilceVotesDeleted] = results;
         return {
           isDeleted: (<{ isDeleted: boolean }>isArticleDeleted).isDeleted &&
-          (<{ isDeleted: boolean }>isArtilceVotesDeleted).isDeleted
+            (<{ isDeleted: boolean }>isArtilceVotesDeleted).isDeleted
         };
       });
   }
@@ -70,7 +70,17 @@ export class DatabaseService {
     // -1 means all
     return this._httpClient.get<Article[]>(articlesURL + '/' + howMany);
   }
-
+  fetchArticleByID(id: string) {
+    return this._httpClient
+      .get<{ article: Article, found: boolean }>(articlesURL + '/id/' + id)
+      .map(data => {
+        const { article, found } = data;
+        if (!found) {
+          console.error(`article with id ${id} not found in db`);
+        }
+        return article || [];
+      });
+  }
   uploadImage(formData: FormData) {
     this._httpClient.post(articlesURL + '/image', formData).toPromise();
   }

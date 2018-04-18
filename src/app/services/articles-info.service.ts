@@ -2,6 +2,8 @@ import { DatabaseService } from './db/database.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import 'rxjs/add/operator/mergeMap';
+
 import { dummyArticles } from './dummyArticles';
 import { Article } from './Article';
 
@@ -22,9 +24,17 @@ export class ArticlesInfoService {
     // return of(this.articles);
   }
 
-  fetchArticleByID(id: string): Observable<Article> {
-    const article = this.articles.filter(art => art.id === id);
-    return of(article[0]);
+  fetchArticleByID(id: string): Observable<Article | null> {
+    if(this.articles){
+      const article = this.articles.filter(art => art.id === id);
+      return of(article[0]);
+    }else {
+      //first time visit [not called fetchArticles method before]
+      return this._db.fetchArticleByID(id).mergeMap(maybeArticle => {
+        if(maybeArticle) return of(maybeArticle);
+        return of(null);// article not found WEIRD
+      });
+    }
   }
 
   hasIPVoted(articleID: string): Promise<Object> {

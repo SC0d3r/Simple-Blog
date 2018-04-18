@@ -65,6 +65,14 @@ router.get('/articles/:howMany', (req, res) => {
     res.json(articles);
   });
 });
+router.get('/articles/id/:id', (req, res) => {
+  const id : string = req.params.id;
+  articlesDB.fetchByID(id).then(article => {
+    res.json({article,found : true});
+  }).catch(err => {
+    res.json({found : false});
+  })
+});
 
 router.post('/articles/image', (req, res) => {
   // console.log('from router');

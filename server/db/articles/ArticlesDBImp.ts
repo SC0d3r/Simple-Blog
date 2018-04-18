@@ -8,6 +8,7 @@ const adapter = new FileSync(resolve(process.cwd(), 'server', 'db', 'articles', 
 
 export class ArticlesDBImp implements ArticlesDB {
 
+
   private _db: any;
   constructor() {
     this._db = low(adapter);
@@ -37,7 +38,7 @@ export class ArticlesDBImp implements ArticlesDB {
       'images', 'uploads');
 
     removablePictures.forEach(imageName => {
-      const imagePath = join(uploadsDir , basename(imageName));
+      const imagePath = join(uploadsDir, basename(imageName));
       unlink(imagePath, function (err) {
         if (err) return console.log(err);
         console.log(`image ${basename(imageName)} deleted successfully!`);
@@ -54,5 +55,12 @@ export class ArticlesDBImp implements ArticlesDB {
     } else {
       return Promise.resolve(this._db.get('articles').take(howMany).value());
     }
+  }
+
+  fetchByID(id: string): Promise<Article> {
+    const article = this._db.get('articles')
+      .find({ id }).value();
+    if(article) return Promise.resolve(article);
+    return Promise.reject(`Article not found with ID [${id}]`);
   }
 }

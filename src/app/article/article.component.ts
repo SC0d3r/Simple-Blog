@@ -20,7 +20,12 @@ export class ArticleComponent implements OnInit {
   ngOnInit() {
     const articleID = this._route.snapshot.paramMap.get('id');
     this._aritcleInfo.fetchArticleByID(articleID)
-    .subscribe(art => this.article = art);
+    .subscribe(art => {
+      if(art) this.article = art;
+      else {
+        this._router.navigate(['/']);
+      }
+    });
 
     const isSelected = this._route.snapshot.queryParamMap.get('selected');
     if(isSelected) this._document.documentElement.scrollTo(0,0);
