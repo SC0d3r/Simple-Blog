@@ -36,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatabaseService } from './services/db/database.service';
 import { AuthGuardService } from './services/route-guards/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
+import { InterestsComponent } from './interests/interests.component';
 
 @NgModule({
   entryComponents : [
@@ -56,7 +57,7 @@ import { AuthService } from './services/auth/auth.service';
     HomePageComponent,
     NotSupportedComponent,
     AdminComponent,
-    LoginComponent
+    InterestsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),

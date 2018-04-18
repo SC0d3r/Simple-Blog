@@ -1,0 +1,38 @@
+.main{
+  background-color : #f7f1e3;
+  /* border : 1px solid blue; */
+  display : grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  height : 60vh;
+}
+.main .item{
+  /* border : 1px solid red; */
+  display : grid;
+  grid-template-rows: 3fr 1fr;
+}
+
+.main .item .image{
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center;
+  /* border: green 1px solid; */
+}
+.main .item .text{
+  align-self: center;
+  justify-self: center;
+  font-family: 'Chicle', cursive;
+  /* font-size: 150%; */
+  /* border: springgreen 1px solid; */
+}
+
+.robotics {
+  background-image : url(/assets/images/wallE.png);
+}
+.webDev {
+  background-image : url(/assets/images/webDev.png);
+}
+
+.ai {
+  background-image : url(/assets/images/ai.png);
+}
