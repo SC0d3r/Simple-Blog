@@ -72,7 +72,7 @@ header{
   display: inline-block;
   /* border:1px solid yellow; */
 }
-.typewriter h2 span{
+.typewriter .anim{
   width : 0;
   display: inline-block;
   /* width:45%; */
@@ -84,18 +84,22 @@ header{
   letter-spacing: .15em; /* Adjust as needed */
   /* -webkit-animation-delay: 10s; */
   animation: 
-    typing 5s steps(30, end) infinite,
+    typing 5s steps(30, end),
     blinking-cursor .5s step-end infinite;
     -webkit-animation-delay: 1s; /* Safari 4.0 - 8.0 */
     animation-delay: 1s;
     -webkit-animation-fill-mode:forwards;
      animation-fill-mode:forwards;
 }
-
+.none{
+  display: none;
+}
 /* The typing effect */
 @keyframes typing {
   0% { width: 0 }
-  50%,100% { width: 100% }
+  30%,100% { 
+    width: 100%;
+  }
   
 }
 
