@@ -20,10 +20,12 @@ export class FixedBoardComponent implements OnInit {
     const span2 : HTMLSpanElement = this.span2.nativeElement;
     span.addEventListener(whichAnimationEvent(), event => {
       span.style.display = 'none';
+      span.style.animationName = '';
       this.shouldStart = true;
     });
     span2.addEventListener(whichAnimationEvent(), event => {
       span2.style.display = 'none';
+      span2.style.animationName = '';
       this.shouldStart2 = true;
     });
   }
