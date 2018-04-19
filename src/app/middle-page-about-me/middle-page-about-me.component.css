@@ -54,6 +54,7 @@
   align-self: center;
   padding-top : 10px;
   padding-right : 10%;
-  font-size: 1.6vw;
+  font-size: calc(14px + 0.5vw);
+  line-height: 4vh;
   color : #f5f6fa;
 }
