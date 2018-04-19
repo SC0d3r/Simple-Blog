@@ -4,12 +4,7 @@
 <br>
 
 # Looks
-<img src ='./example.png' alt='an example of the blog'>
-<br>
-<br>
 
---- 
-<br>
 <br>
 <img src ='./example2.png' alt='another example of the blog'>
 
