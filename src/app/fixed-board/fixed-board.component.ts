@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-fixed-board',
@@ -10,24 +11,26 @@ export class FixedBoardComponent implements OnInit {
   shouldStart2 : boolean;
   @ViewChild('spa') spa: ElementRef;
   @ViewChild('span2') span2: ElementRef;
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private _platformID : Object) {
     this.shouldStart = false;
     this.shouldStart2 = false;
   }
 
   ngOnInit() {
-    const span: HTMLSpanElement = this.spa.nativeElement;
-    const span2 : HTMLSpanElement = this.span2.nativeElement;
-    span.addEventListener(whichAnimationEvent(), event => {
-      span.style.display = 'none';
-      span.style.animationName = '';
-      this.shouldStart = true;
-    });
-    span2.addEventListener(whichAnimationEvent(), event => {
-      span2.style.display = 'none';
-      span2.style.animationName = '';
-      this.shouldStart2 = true;
-    });
+    if(isPlatformBrowser(this._platformID)){
+      const span: HTMLSpanElement = this.spa.nativeElement;
+      const span2 : HTMLSpanElement = this.span2.nativeElement;
+      span.addEventListener(whichAnimationEvent(), event => {
+        span.style.display = 'none';
+        span.style.animationName = '';
+        this.shouldStart = true;
+      });
+      span2.addEventListener(whichAnimationEvent(), event => {
+        span2.style.display = 'none';
+        span2.style.animationName = '';
+        this.shouldStart2 = true;
+      });
+    }
   }
 
 }
