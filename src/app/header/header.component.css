@@ -191,7 +191,8 @@
   margin: auto;
   left: 0;right: 0;top: 20vh;bottom: 0;
   height : 20%;
-  font-size : 150%;
+  font-size : calc(14px + 0.5vw);
+  line-height: 4vh;
   text-indent: 6px;
   width : 60%;
   transform: translateX(-30vw);
