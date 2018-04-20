@@ -25,7 +25,8 @@
   font-size:calc(25px + 3vw);
   align-self:center;
   font-family: 'Pacifico', cursive;
-  color:#130f40;
+  color:#f1c40f;
+  text-shadow: 5px 5px 6px #2c3e50;
 }
 
 
