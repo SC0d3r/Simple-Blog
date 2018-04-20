@@ -6,7 +6,8 @@ header{
 }
 header img{
   /* border:1px solid blue; */
-  height : 30vh;
+  max-height : 53vh;
+  max-width: 80%;
   /* width : 40vw; */
   margin-bottom : 5%;
 }

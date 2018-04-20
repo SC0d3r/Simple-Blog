@@ -29,7 +29,7 @@ export class ArticleRightSideComponent implements OnChanges, OnInit {
   }
   ngOnInit(): void {
     this._markdown.renderer.image = (src: string) => {
-      return `<img src = "${src}" style = "/*border : 1px solid red;*/width : 95%;display : block;margin:5% auto;">`;
+      return `<img src = "${src}" style = "/*border : 1px solid red;*/max-width : 90%;display : block;margin:5% auto;">`;
     }
   }
   ngOnChanges(changes: SimpleChanges): void {
