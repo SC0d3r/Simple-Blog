@@ -67,7 +67,7 @@
 @media(max-width : 900px){
   .main .content{
     /* height : 80vh; */
-    border : 1px solid turquoise;
+    /* border : 1px solid turquoise; */
     
   }
   .main .content .innerContent{
@@ -83,7 +83,7 @@
     /* background-size: 200px 200px; */
     align-self: top;
     /* width : 60vw; */
-    top : 0;
+    /* top : 0; */
     height : 26vh;
   }
   .main .content .innerContent .aboutMeText{
@@ -107,5 +107,8 @@
   .main .content .innerContent{
     /* border : 1px solid wheat; */
     height : 90vh;
+  }
+  .main .content .innerContent .image{
+    top : 0;
   }
 }
