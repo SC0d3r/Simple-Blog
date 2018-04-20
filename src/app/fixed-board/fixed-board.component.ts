@@ -26,9 +26,9 @@ export class FixedBoardComponent implements OnInit {
         this.shouldStart = true;
       });
       span2.addEventListener(whichAnimationEvent(), event => {
-        span2.style.display = 'none';
-        span2.style.animationName = '';
-        this.shouldStart2 = true;
+        // span2.style.display = 'none';
+        // span2.style.animationName = '';
+        // this.shouldStart2 = true;
       });
     }
   }
