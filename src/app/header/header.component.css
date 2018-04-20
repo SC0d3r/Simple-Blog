@@ -309,9 +309,16 @@ header{
 }
 .avatar{
   z-index: 1000;
-  justify-self:center;
-  align-self: center;
+  /* justify-self:center; */
+  /* align-self: top; */
+  position: relative;
+  top : -11px;
+  background-image : url(/assets/images/myAvatar.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center 19px;
   /* border: 1px solid yellow; */
+  border-radius: 50%;
 }
 .icon{
   /* margin:auto; */
