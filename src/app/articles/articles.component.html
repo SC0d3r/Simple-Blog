@@ -1,24 +1,21 @@
 <header>
-    <h2 #ArticlesHeader>Works And Projects</h2>
+  <h2 #ArticlesHeader>Works And Projects</h2>
 </header>
-<main>
-    
 
-    <div *ngFor="let article of articles" class='item' 
-      (click) = "selectArticle(article.id)">
-      <div class="settings" *ngIf = "isUserAdmin">
-        <mat-icon (click) = "openSettings(article.id,$event)" title='settings'>settings</mat-icon>
+<main>
+  <article *ngFor="let article of articles" class='item' (click)="selectArticle(article.id)">
+    <div class="settings" *ngIf="isUserAdmin">
+      <mat-icon (click)="openSettings(article.id,$event)" title='settings'>settings</mat-icon>
+    </div>
+    <div class='item-grid'>
+      <div class='item-header'>
+        <img src="/assets/images/{{article.img.src}}" alt="{{article.img.alt}}">
+        <!-- <img src="/assets/images/{{article.img.src}}" alt="{{article.img.alt}}"> -->
       </div>
-      <div class='item-grid'>
-        <div class='item-header'>
-          <img src="/assets/images/uploads/{{article.img.src}}" alt="{{article.img.alt}}">
-          <!-- <img src="/assets/images/{{article.img.src}}" alt="{{article.img.alt}}"> -->
-        </div>
-        <div class='item-text'>
-          <h3>{{article.title}}</h3>
-          <h4>{{article.shortDescription}}</h4>
-        </div>
+      <div class='item-text'>
+        <h3>{{article.title}}</h3>
+        <h4>{{article.shortDescription}}</h4>
       </div>
     </div>
-  
-  </main>
+  </article>
+</main>
