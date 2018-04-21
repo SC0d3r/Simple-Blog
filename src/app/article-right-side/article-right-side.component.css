@@ -29,6 +29,19 @@ header h1{
   /* text-indent: 3%; */
 }
 
+.tags{
+  margin-top : 18px;
+  font-size: calc(12px + 0.4vw);
+  /* font-family: 'Pacifico', cursive; */
+  font-family: 'Chicle', cursive;
+}
+.tags .tag{
+  background-color : #dfe4ea;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-right: 3px;
+  padding : 4px;
+  /* border : 1px soild blue; */
+}
 
 .feeback{
   /* width : 60vw; */

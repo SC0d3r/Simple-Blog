@@ -4,6 +4,12 @@
     <h1>
       {{article?.title}}
     </h1>
+    <!-- <div class="tags">
+      [&nbsp;
+      <span class="tag" *ngFor="let tag of article?.tags">
+        {{tag}}</span>
+      ]
+    </div> -->
   </header>
   <div class="content">
     <!-- this one is for seo to have the source of the html 
@@ -18,6 +24,12 @@
       <markdown [data]="article?.body">
       </markdown>
     </p>
+    <div class="tags">
+      [&nbsp;
+      <span class="tag" *ngFor="let tag of article?.tags">
+        {{tag}}</span>
+      ]
+    </div>
     <div class="feeback">
       <div class="voted" *ngIf='isVoted'>
         Thanks &nbsp;
