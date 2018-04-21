@@ -70,7 +70,7 @@ var CollegeCourse = (function() {
 You shouldn’t have to modify a class because another class changes. This is a classic case of tight coupling. Constructor parameters can be passed as an object with the receiving object having fallback default values, which loosens coupling and means code won’t break when you add new parameters.
 `,
     img: { src: 'js.png', alt: '' },
-    tags: [],
+    tags: ['programming','js'],
     date : Date.now(),
     innerBodyImages : []
   },
