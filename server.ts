@@ -8,6 +8,7 @@ import * as express from 'express';
 import bodyParser = require('body-parser');
 import { join } from 'path';
 
+
 const fileUpload = require('express-fileupload');
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
@@ -17,6 +18,8 @@ const app = express();
 
 
 const PORT = process.env.PORT || 4000;
+const hostName = process.env.host || `http://localhost:${PORT}`;
+
 const DIST_FOLDER = join(process.cwd(), 'dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
@@ -59,5 +62,5 @@ app.get('*', (req, res) => {
 
 // Start up the Node server
 app.listen(PORT, () => {
-  console.log(`Node server listening on http://localhost:${PORT}`);
+  console.log(`Node server listening on ${hostName}`);
 });
