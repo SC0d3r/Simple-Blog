@@ -46,7 +46,7 @@ export class AdminComponent implements OnInit {
       this.title,
       this.shortDescription,
       this.body,
-      this.tags);
+      this.tags.trim().split(','));
 
     this._articleInfo.saveArticle(newArticle);
     this._articleInfo.uploadImage(imageFile, imageName);
