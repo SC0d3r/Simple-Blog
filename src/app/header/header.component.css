@@ -265,7 +265,7 @@ header{
   display: grid;
   z-index: -2;
   /* grid-template-columns: 150px 0.5fr minmax(auto , 400px) 1fr; */
-  grid-template-columns: 150px 3fr 2fr; 
+  grid-template-columns: 100px 3fr 2fr; 
   grid-template-rows: 110px 5px;
   /* width:100%; */
   height : 110px;
@@ -317,17 +317,17 @@ header{
 }
 .nav-icons{
   justify-self: end;
-  /* border: 1px solid yellow; */
   align-self:center;
   cursor: pointer;
 }
 
 .writerName{
+  /* border: 1px solid yellow; */
   z-index: 1000;
   align-self: center;
   justify-self: start;
   font-family: 'Chicle', cursive;
-  font-size:150%;
+  font-size:calc(16px + 0.5vw);
   
   /* background:red; */
 }

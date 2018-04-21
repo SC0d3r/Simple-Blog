@@ -113,3 +113,12 @@
     top : 0;
   }
 }
+@media(max-width : 321px){
+  .main .content .innerContent{
+    /* border : 1px solid wheat; */
+    height : 110vh;
+  }
+  .main .content .innerContent .image{
+    top : 0;
+  }
+}

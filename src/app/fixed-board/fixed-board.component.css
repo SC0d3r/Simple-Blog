@@ -65,6 +65,12 @@
     font-weight: bold;
   }
 }
+@media(max-width : 321px){
+  .quote{
+    font-size: calc(9px + 0.5vw);
+    font-weight: bold;
+  }
+}
 .quote i{
   transform: scale(3.5);
   position: relative;

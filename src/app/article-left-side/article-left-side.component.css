@@ -174,7 +174,7 @@ nav.home-page button{
     
   }
   .author{
-    grid-column-gap: 6vh;
+    /* grid-column-gap: 2vh; */
     /* border : 1px solid blue; */
     justify-items: normal;
   }
@@ -183,7 +183,7 @@ nav.home-page button{
     /* justify-self: center; */
   }
   .author a:first-child{
-    text-align: end;
+    text-align: center;
     /* border : 1px solid yellow;  */
   }
   .author .username{
