@@ -61,8 +61,8 @@
   align-self: center;
   padding-top : 10px;
   padding-right : 10%;
-  font-size: calc(15px + 0.5vw);
-  line-height: 4vh;
+  font-size: calc(15px + 0.42vw);
+  line-height: calc(20px + 0.6vw);
   color : #f5f6fa;
 }
 @media(max-width : 900px){

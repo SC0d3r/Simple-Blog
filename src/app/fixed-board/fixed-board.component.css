@@ -26,24 +26,27 @@
   align-self:center;
   font-family: 'Pacifico', cursive;
   color:#f1c40f;
-  text-shadow: 5px 5px 6px #2c3e50;
+  text-shadow: 5px 5px 6px #304c68;
 }
 
 
 .quote{
   /* border: 1px solid red; */
   font-size: calc(16px + 1.8vw);
+  text-shadow : 5px 5px 6px #2c3e50;
+  font-weight: bold;
   align-self:end;
   /* height : 20%; */
   /* margin: auto; */
   /* text-align: center; */
   padding:7%;
-  background: rgba(255, 255, 254, 0.062);
-  color:#f5f6fa;
+  background: rgba(255, 255, 254, 0.05);
+  color:#f7f1e3;
 }
-/* .quote i{
-  font-size: calc(16px + 2vw);
-} */
+.quote i{
+  font-size: calc(5px + 1.8vw);
+  text-shadow: none;
+}
 @media(max-width : 830px){
   .quote{
     font-size: calc(16px + 1vw);
@@ -81,7 +84,7 @@
 header{
   display: flex;
   justify-content: center;
-  font-size:calc(16px + 0.6vw);
+  font-size:calc(5px + 1.05vw);
   text-align: center;
   background-color:#f7f1e3;
   padding:5%;
