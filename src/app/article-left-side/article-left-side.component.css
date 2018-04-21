@@ -47,7 +47,7 @@ main{
 }
 .profile{
   /* border : 1px solid red; */
-  margin-top : 20%;  
+  margin-top : 5%;  
   display: grid;
   grid-template-columns:1fr;
   grid-template-rows: 1fr 2fr;
@@ -68,7 +68,7 @@ main{
 }
 .profile .meida{
   /* border : 1px solid red; */
-  width : 55%;
+  width : 58%;
   justify-items: center;
   /* padding : 0 2%; */
   /* align-self: center; */
@@ -90,18 +90,19 @@ main{
 }
 
 nav.home-page{
-  display: grid;
-  justify-content: start;
+  align-self: center;
+  position: relative;
+  top : -5%;
+  color : #222f3e;/*#222f3e*/
+  /* opacity: ; */
   /* border:1px solid yellow; */
-  /* padding-top : 30%; */
-  /* height : 50px; */
+  text-align: center;
 }
 nav.home-page button{
-  /* position: relative; */
-  align-self: end;
-  animation : 6s rotateMoveBackAndForth 1s infinite;
-  /* animation-fill-mode: forwards; */
-  /* animation-iteration-count: infinite; */
+  transform: scale(2);
+  align-self: center;
+  justify-self: center;
+  /* animation : 6s rotateMoveBackAndForth 1s infinite; */
 }
 
 
