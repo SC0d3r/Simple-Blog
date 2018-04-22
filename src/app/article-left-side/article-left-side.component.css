@@ -1,4 +1,4 @@
-main{
+.main{
   display: grid;
   /* border : 1px solid red; */
   position: fixed;
@@ -107,7 +107,7 @@ nav.home-page button{
 
 
 @media (max-width : 1195px){
-  main {
+  .main {
     position: static;
     width : 100vw;
     height : 150px;
