@@ -12,6 +12,7 @@ import { MarkdownService } from 'angular2-markdown';
 })
 export class ArticleRightSideComponent implements OnChanges, OnInit {
   @Input() article: Article;
+  @Input() views: number;
   pageID = '';
   userID: any;
   isVoted: boolean;
@@ -39,7 +40,7 @@ export class ArticleRightSideComponent implements OnChanges, OnInit {
     }
     const newArticle: SimpleChanges = <any>changes.article;
     // console.log(newArticle);
-    if (newArticle.currentValue === undefined) return;
+    if (newArticle === undefined || newArticle.currentValue === undefined) return;
     // this.article = newArticle.currentValue;
     this.body = this._markdown.compile(this.article.body);
     this._aritcleInfo.hasIPVoted(this.article.id).then(data => {
