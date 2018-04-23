@@ -88,7 +88,7 @@ function notValid(x: string) {
 }
 function createArticle(img, title, shortDesc, body, tags) {
   const innerBodyImages = getInnerBodyImages(body);
-  console.log(innerBodyImages);
+  // console.log(innerBodyImages);
   const article: Article = {
     id: guid(),
     img: {
