@@ -5,9 +5,9 @@ import 'reflect-metadata';
 import { enableProdMode } from '@angular/core';
 
 import * as express from 'express';
+import * as morgan from 'morgan';
 import bodyParser = require('body-parser');
 import { join } from 'path';
-
 
 const fileUpload = require('express-fileupload');
 // Faster server renders w/ Prod mode (dev mode never needed)
@@ -15,7 +15,7 @@ enableProdMode();
 
 // Express server
 const app = express();
-
+app.use(morgan(':remote-addr :remote-user :method :url :status :res[content-length] - :response-time ms'));
 
 const PORT = process.env.PORT || 4000;
 const hostName = process.env.host || `http://localhost:${PORT}`;
