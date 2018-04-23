@@ -38,6 +38,7 @@ import { AuthGuardService } from './services/route-guards/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
 import { MiddlePageAboutMeComponent } from './middle-page-about-me/middle-page-about-me.component';
 import { InterestsComponent } from './interests/interests.component';
+import { ViewsService } from './services/views/views.service';
 
 @NgModule({
   entryComponents : [
@@ -82,7 +83,7 @@ import { InterestsComponent } from './interests/interests.component';
     MatSlideToggleModule,
     MatSnackBarModule
   ],
-  providers: [ArticlesInfoService,DatabaseService, AuthGuardService, AuthService],
+  providers: [ArticlesInfoService,DatabaseService, AuthGuardService, AuthService, ViewsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
