@@ -112,8 +112,10 @@ function getInnerBodyImages(articleBody: string): string[] {
   //eg : /assets/images/js2.svg
   const patternImageUrlOnly = new RegExp("(?<=\\()(.+)(?=\\))","g");
   
-  return articleBody.match(getImageAltAndUrls)
-    .map(altWithUrl => altWithUrl.match(patternImageUrlOnly)[0]);
+  const matches =  articleBody.match(getImageAltAndUrls);
+  if(matches)
+    return matches.map(altWithUrl => altWithUrl.match(patternImageUrlOnly)[0]);
+  return [];
 }
 function guid() {
   return Math.random().toString(36).substring(2)
