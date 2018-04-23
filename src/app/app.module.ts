@@ -40,6 +40,9 @@ import { MiddlePageAboutMeComponent } from './middle-page-about-me/middle-page-a
 import { InterestsComponent } from './interests/interests.component';
 import { ViewsService } from './services/views/views.service';
 
+
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { RecaptchaModule } from 'ng-recaptcha';
 @NgModule({
   entryComponents : [
     ArticlesAdminSettingsDialog
@@ -65,8 +68,10 @@ import { ViewsService } from './services/views/views.service';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),
+    RecaptchaModule.forRoot(),
     HttpClientModule,
     FormsModule,
+    RecaptchaFormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     NoopAnimationsModule,

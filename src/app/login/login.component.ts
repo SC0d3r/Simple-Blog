@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   tooManyAttempts: string;
+  captcha : string;
+  YOUR_SITE_KEY : string = "6LcXGFUUAAAAAOgpKASmkx86Mo96tT5Xq9tfgZEL";
   constructor(private _auth: AuthService, private _router: Router) {
     this.hide = true;
     this.tooManyAttempts = '';
@@ -31,5 +33,9 @@ export class LoginComponent implements OnInit {
         setTimeout(() => this.tooManyAttempts = '', 2000);
       }
     });
+  }
+
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
   }
 }

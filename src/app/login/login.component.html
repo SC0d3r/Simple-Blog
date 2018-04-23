@@ -15,6 +15,14 @@
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
 
+      <br>
+      <re-captcha
+      [(ngModel)]="captcha"
+      name="captcha"
+      required
+      siteKey="6LcXGFUUAAAAAOgpKASmkx86Mo96tT5Xq9tfgZEL"
+    ></re-captcha>
+
     </form>
     <button mat-raised-button (click)="login()"><h3>Login</h3></button>      
   </div>
