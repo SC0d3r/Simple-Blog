@@ -1,9 +1,11 @@
+import { ViewsDB } from './../db/views/ViewsDB';
 import { ArticlesDBImp } from './../db/articles/ArticlesDBImp';
 import { Router } from 'express';
 import { VotesDB } from '../db/votes/VotesDB';
 import { VotesDBImp } from '../db/votes/VotesDBImp';
 import { ArticlesDB } from '../db/articles/ArticlesDB';
 import { resolve } from 'path';
+import { ViewsDBImp } from '../db/views/ViewsDBImp';
 
 export const router = Router();
 
@@ -12,6 +14,7 @@ const hostName = process.env.host || `http://localhost:${PORT}`;
 
 const votesDB: VotesDB = new VotesDBImp();
 const articlesDB: ArticlesDB = new ArticlesDBImp();
+const viewsDB : ViewsDB = new ViewsDBImp();
 
 router.post('/votes/checkIP', (req, res) => {
   const ip = getClientIPAddress(req);
@@ -92,6 +95,27 @@ router.post('/articles/image', (req, res) => {
       return res.status(500).send(err);
     }
     res.json({upload : 'Successful'});
+  });
+});
+
+
+router.get('/article/veiws/:id', (req, res) => {
+  const articleID : string = req.params.id;
+  viewsDB.getArticleViews(articleID).then(visits => {
+    res.json({visits});
+  });
+});
+router.post('/article/veiws', (req, res) => {
+  const articleID : string = req.body.articleID;
+  const ip = getClientIPAddress(req);
+  viewsDB.increaseArticleView(articleID , ip).then(visits => {
+    res.json({visits});
+  });
+});
+router.post('/article/veiws/delete', (req, res) => {
+  const articleID : string = req.body.articleID;
+  viewsDB.delArticleViews(articleID).then(isDeleted => {
+    res.json({isDeleted});
   });
 });
 
