@@ -1,3 +1,4 @@
+import { ViewsService } from './../views/views.service';
 import { Observable } from 'rxjs/Observable';
 import { Article } from './../Article';
 import { Injectable } from '@angular/core';
@@ -10,7 +11,8 @@ const articlesURL = apiURL + '/articles';
 @Injectable()
 export class DatabaseService {
 
-  constructor(private _httpClient: HttpClient) {
+  constructor(private _httpClient: HttpClient,
+  private _views : ViewsService) {
   }
 
   //votes
@@ -56,12 +58,14 @@ export class DatabaseService {
     const delArtilceVotes = this._httpClient.post(
       votesURL + '/delVotes', { articleID }, httpOptions
     ).toPromise();
-    return Promise.all([delArticle, delArtilceVotes]).then(
+    const delArticleViews = this._views.delArticleViews(articleID);
+    return Promise.all([delArticle, delArtilceVotes , delArticleViews]).then(
       results => {
-        const [isArticleDeleted, isArtilceVotesDeleted] = results;
+        const [isArticleDeleted, isArtilceVotesDeleted,isArtilceViewsDeleted] = results;
         return {
           isDeleted: (<{ isDeleted: boolean }>isArticleDeleted).isDeleted &&
-            (<{ isDeleted: boolean }>isArtilceVotesDeleted).isDeleted
+            (<{ isDeleted: boolean }>isArtilceVotesDeleted).isDeleted &&
+            isArtilceViewsDeleted.isDeleted
         };
       });
   }
