@@ -17,7 +17,7 @@ const articlesDB: ArticlesDB = new ArticlesDBImp();
 const viewsDB : ViewsDB = new ViewsDBImp();
 
 router.post('/votes/checkIP', (req, res) => {
-  const ip = getClientIPAddress(req);
+  const ip = req.ip;//getClientIPAddress(req);
 
   // console.log(req.body);
   // console.log(`ip address of client is ${ip}`);
@@ -36,7 +36,7 @@ router.post('/votes/checkIP', (req, res) => {
 });
 
 router.post('/votes/saveVote', (req, res) => {
-  const ip = getClientIPAddress(req);
+  const ip = req.ip;//getClientIPAddress(req);
   const { articleID, vote } = req.body;
   // console.log(`saving vote ${vote} for article ${articleID} and ip ${ip}`);
   //TODO : sanitizing
@@ -107,7 +107,7 @@ router.get('/article/veiws/:id', (req, res) => {
 });
 router.post('/article/veiws', (req, res) => {
   const articleID : string = req.body.articleID;
-  const ip = getClientIPAddress(req);
+  const ip = req.ip;//getClientIPAddress(req);
   viewsDB.increaseArticleView(articleID , ip).then(visits => {
     res.json({visits});
   });
