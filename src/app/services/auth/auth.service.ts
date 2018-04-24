@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
@@ -14,13 +14,21 @@ export class AuthService {
   isLoggedIn = false;
   private _attempts: number;
   private _isTimeoutSet: boolean;
+  // store the URL so we can redirect after logging in
+  redirectUrl: string;
   constructor(private _httpClient: HttpClient) {
     this._attempts = 0;
     this._isTimeoutSet = false;
   }
-
-  // store the URL so we can redirect after logging in
-  redirectUrl: string;
+  checkCaptcha(response : string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    this._httpClient.post(authURL + '/captcha' , {captchaResponse : response},httpOptions)
+    .toPromise();
+  }
 
   login(username: string, password: string): Promise<boolean> {
     if (this._attempts === 3) {
