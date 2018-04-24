@@ -17,6 +17,8 @@
 
       <br>
       <re-captcha
+      (resolved)="resolved($event)"
+      
       [(ngModel)]="captcha"
       name="captcha"
       required
