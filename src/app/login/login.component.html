@@ -26,6 +26,6 @@
     ></re-captcha>
 
     </form>
-    <button mat-raised-button (click)="login()"><h3>Login</h3></button>      
+    <button mat-raised-button [disabled] = "!isCaptchaSuccess" (click)="login()"><h3>Login</h3></button>      
   </div>
 </div>

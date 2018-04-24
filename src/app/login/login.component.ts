@@ -14,9 +14,11 @@ export class LoginComponent implements OnInit {
   tooManyAttempts: string;
   captcha : string;
   YOUR_SITE_KEY : string = "6LcXGFUUAAAAAOgpKASmkx86Mo96tT5Xq9tfgZEL";
+  isCaptchaSuccess : boolean;
   constructor(private _auth: AuthService, private _router: Router) {
     this.hide = true;
     this.tooManyAttempts = '';
+    this.isCaptchaSuccess = false;
   }
 
   ngOnInit() {
@@ -36,8 +38,9 @@ export class LoginComponent implements OnInit {
   }
 
   resolved(captchaResponse: string) {
-    this._auth.checkCaptcha(captchaResponse);
-    
-    console.log(`Resolved captcha with response ${captchaResponse}:`);
+    this._auth.checkCaptcha(captchaResponse).then(({isPassed}) => {
+      this.isCaptchaSuccess = isPassed;
+    });
+    // console.log(`Resolved captcha with response ${captchaResponse}:`);
   }
 }

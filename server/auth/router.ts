@@ -11,6 +11,9 @@ const hostName = process.env.host || `http://localhost:${PORT}`;
 // add guard for spamming password 
 // give three min delay after 3 attempts
 router.post('/', (req, res) => {
+  if(!req.session.isCaptchaSuccessful){
+    return res.json({ authenticated: false });
+  }
   const postedHash = req.body.usernamePasswordHash;
   if (postedHash === authHash) {
     req.session.isAdmin = true;
@@ -35,13 +38,15 @@ router.post('/captcha', (req, res) => {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
     },
-    body: data
+    form: data
   };
   request(options, function (error, response, body) {
     if (error) {
       console.error(error);
     }
-    console.log(response);
+    const isPassed = JSON.parse(response.body).success;
+    req.session.isCaptchaSuccessful = isPassed;
+    res.json({isPassed});
   });
 });
 router.get('*', (req, res) => {

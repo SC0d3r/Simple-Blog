@@ -20,14 +20,15 @@ export class AuthService {
     this._attempts = 0;
     this._isTimeoutSet = false;
   }
-  checkCaptcha(response : string){
+  checkCaptcha(response: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    this._httpClient.post(authURL + '/captcha' , {captchaResponse : response},httpOptions)
-    .toPromise();
+    return this._httpClient.post<{ isPassed: boolean }>
+      (authURL + '/captcha', { captchaResponse: response }, httpOptions)
+      .toPromise();
   }
 
   login(username: string, password: string): Promise<boolean> {
@@ -38,7 +39,7 @@ export class AuthService {
     const p = (<any>hash).sha256().update(password + username).digest('hex');
     this._attempts++;
     return this._httpClient.post<{ authenticated: boolean }>(authURL,
-      { usernamePasswordHash: p }).toPromise().then(({authenticated}) => {
+      { usernamePasswordHash: p }).toPromise().then(({ authenticated }) => {
         const isOk = authenticated;
         if (isOk) this._attempts = 0;
         this.isLoggedIn = isOk;
