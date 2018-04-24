@@ -29,12 +29,15 @@ router.post('/captcha', (req, res) => {
     remoteip: req.ip
   };
   // make a post request
-  request({
+  const options = {
     url: googleCapthchURL,
     method: "POST",
-    json: true,   // <--Very important!!!
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+    },
     body: data
-  }, function (error, response, body) {
+  };
+  request(options, function (error, response, body) {
     if (error) {
       console.error(error);
     }
