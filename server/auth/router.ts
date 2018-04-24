@@ -3,7 +3,7 @@ import * as request from 'request';
 
 export const router = Router();
 const userAuth = require('./admin-user.json');
-const { authHash } = userAuth;
+const { authHash , googleCaptchaSecret } = userAuth;
 
 const PORT = process.env.PORT || 4000;
 const hostName = process.env.host || `http://localhost:${PORT}`;
@@ -27,7 +27,7 @@ router.post('/captcha', (req, res) => {
   const googleCapthchURL = "https://www.google.com/recaptcha/api/siteverify";
   const captchaResponse = req.body.captchaResponse;
   const data = {
-    secret: "6LcXGFUUAAAAAKskWhOIXCpx45lhch86XYw-UxVL",
+    secret: googleCaptchaSecret,
     response: captchaResponse,
     remoteip: req.ip
   };
