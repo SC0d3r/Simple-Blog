@@ -6,6 +6,7 @@ import { enableProdMode } from '@angular/core';
 
 import * as express from 'express';
 import * as morgan from 'morgan';
+import * as session from 'express-session';
 import bodyParser = require('body-parser');
 import { join } from 'path';
 
@@ -16,6 +17,13 @@ enableProdMode();
 // Express server
 const app = express();
 app.use(morgan(':remote-addr :remote-user :method :url :status :res[content-length] - :response-time ms'));
+app.set('trust proxy', 1); // trust first proxy
+app.use(session({
+  secret: 'My Pashmi Pishik Is Awesome',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
 
 const PORT = process.env.PORT || 4000;
 const hostName = process.env.host || `http://localhost:${PORT}`;

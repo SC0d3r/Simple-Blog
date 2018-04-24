@@ -14,10 +14,10 @@ const hostName = process.env.host || `http://localhost:${PORT}`;
 
 const votesDB: VotesDB = new VotesDBImp();
 const articlesDB: ArticlesDB = new ArticlesDBImp();
-const viewsDB : ViewsDB = new ViewsDBImp();
+const viewsDB: ViewsDB = new ViewsDBImp();
 
 router.post('/votes/checkIP', (req, res) => {
-  const ip = req.ip;//getClientIPAddress(req);
+  const ip = req.ip;
 
   // console.log(req.body);
   // console.log(`ip address of client is ${ip}`);
@@ -36,19 +36,26 @@ router.post('/votes/checkIP', (req, res) => {
 });
 
 router.post('/votes/saveVote', (req, res) => {
-  const ip = req.ip;//getClientIPAddress(req);
+  const ip = req.ip;
   const { articleID, vote } = req.body;
   // console.log(`saving vote ${vote} for article ${articleID} and ip ${ip}`);
   //TODO : sanitizing
   votesDB.saveVote(articleID, <string>ip, vote);
 });
 router.post('/votes/delVotes', (req, res) => {
+  if (!req.session.isAdmin) {
+    return res.json({ isDeleted: false });
+  }
   const articleID = req.body.articleID;
   votesDB.delVotes(articleID).then(isOk => {
-    res.json({isDeleted : isOk});
+    res.json({ isDeleted: isOk });
   });
 });
 router.post('/articles/save', (req, res) => {
+  // console.log(req.session.isAdmin);
+  if (!req.session.isAdmin) {
+    return res.json({ isSaved: false });
+  }
   const article = req.body.article;
   if (!article) return res.json({ isSaved: false });
   articlesDB.saveArticle(article);
@@ -56,6 +63,9 @@ router.post('/articles/save', (req, res) => {
 });
 
 router.post('/articles/delete', (req, res) => {
+  if (!req.session.isAdmin) {
+    return res.json({ isDeleted: false });
+  }
   const articleID = req.body.articleID;
   articlesDB.delArticle(articleID).then(isOk => {
     res.json({ isDeleted: isOk });
@@ -69,15 +79,18 @@ router.get('/articles/:howMany', (req, res) => {
   });
 });
 router.get('/articles/id/:id', (req, res) => {
-  const id : string = req.params.id;
+  const id: string = req.params.id;
   articlesDB.fetchByID(id).then(article => {
-    res.json({article,found : true});
+    res.json({ article, found: true });
   }).catch(err => {
-    res.json({found : false});
+    res.json({ found: false });
   })
 });
 
 router.post('/articles/image', (req, res) => {
+  if (!req.session.isAdmin) {
+    return res.json({ upload: 'Failed' });
+  }
   // console.log('from router');
   // console.log((<any>req).files);
   if (!(<any>req).files)
@@ -87,44 +100,41 @@ router.post('/articles/image', (req, res) => {
   const imageName = req.body.imageName;
   // console.log(`from server name of the image ${imageName}`);
   const imageSavePath = resolve(process.cwd(),
-    'dist','browser', 'assets', 'images', 'uploads', imageName);
+    'dist', 'browser', 'assets', 'images', 'uploads', imageName);
   // console.log(imageSavePath);
   articleImage.mv(imageSavePath, function (err) {
     if (err) {
       console.log(err);
       return res.status(500).send(err);
     }
-    res.json({upload : 'Successful'});
+    res.json({ upload: 'Successful' });
   });
 });
 
 
 router.get('/article/veiws/:id', (req, res) => {
-  const articleID : string = req.params.id;
+  const articleID: string = req.params.id;
   viewsDB.getArticleViews(articleID).then(visits => {
-    res.json({visits});
+    res.json({ visits });
   });
 });
 router.post('/article/veiws', (req, res) => {
-  const articleID : string = req.body.articleID;
-  const ip = req.ip;//getClientIPAddress(req);
-  viewsDB.increaseArticleView(articleID , ip).then(visits => {
-    res.json({visits});
+  const articleID: string = req.body.articleID;
+  const ip = req.ip;
+  viewsDB.increaseArticleView(articleID, ip).then(visits => {
+    res.json({ visits });
   });
 });
 router.post('/article/veiws/delete', (req, res) => {
-  const articleID : string = req.body.articleID;
+  if (!req.session.isAdmin) {
+    return res.json({ isDeleted: false });
+  }
+  const articleID: string = req.body.articleID;
   viewsDB.delArticleViews(articleID).then(isDeleted => {
-    res.json({isDeleted});
+    res.json({ isDeleted });
   });
 });
 
 router.get('*', (req, res) => {
   res.redirect(hostName);
 });
-
-
-function getClientIPAddress(req) {
-  return (req.headers['x-forwarded-for'] || '').split(',')[0]
-    || req.connection.remoteAddress;
-};

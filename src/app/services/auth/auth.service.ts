@@ -29,17 +29,17 @@ export class AuthService {
     }
     const p = (<any>hash).sha256().update(password + username).digest('hex');
     this._attempts++;
-    return this._httpClient.get(authURL).toPromise().then(data => {
-      const hash = (<any>data).auth;
-      const isOk = hash === p;
-      if (isOk) this._attempts = 0;
-      this.isLoggedIn = isOk;
-      return isOk;
-    });
+    return this._httpClient.post<{ authenticated: boolean }>(authURL,
+      { usernamePasswordHash: p }).toPromise().then(({authenticated}) => {
+        const isOk = authenticated;
+        if (isOk) this._attempts = 0;
+        this.isLoggedIn = isOk;
+        return isOk;
+      });
   }
 
   private _giveAccessAfter(ms: number) {
-    if(this._isTimeoutSet) return;
+    if (this._isTimeoutSet) return;
     this._isTimeoutSet = true;
     setTimeout(() => {
       this._attempts = 0;
