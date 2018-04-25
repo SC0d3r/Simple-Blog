@@ -16,7 +16,7 @@ enableProdMode();
 
 // Express server
 const app = express();
-app.use(morgan(':remote-addr :remote-user :method :url :status :res[content-length] - :response-time ms'));
+app.use(morgan(':remote-addr :remote-user :method :url :status :res[content-length] [referrer] :referrer - :response-time ms'));
 app.set('trust proxy', 1); // trust first proxy
 app.use(session({
   secret: 'My Pashmi Pishik Is Awesome',
