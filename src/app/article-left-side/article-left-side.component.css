@@ -115,6 +115,7 @@ nav.home-page button{
     grid-template-rows: 150px;
   }
   .author{
+    /* border:1px solid yellow; */
     /* align-self: center; */
     grid-template-columns: 1fr 1fr;
     padding-top: 0px;
@@ -123,10 +124,12 @@ nav.home-page button{
     max-width: 80%;
   }
   .article-details{
+    /* border:1px solid red; */
     align-self: center;
     padding: 0px;
   }
   .profile{
+    /* border:1px solid blue; */
     margin-top : 0px;
     grid-template-rows: 1fr;
     grid-template-columns:1fr;
@@ -165,7 +168,7 @@ nav.home-page button{
 }
 
 @media (max-width : 690px){
-  main {
+  .main {
     position: static;
     width : 100vw;
     height : 300px;
