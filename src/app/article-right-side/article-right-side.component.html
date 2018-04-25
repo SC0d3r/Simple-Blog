@@ -25,10 +25,12 @@
       </markdown>
     </p>
     <div class="tags">
-      [&nbsp;
-      <span class="tag" *ngFor="let tag of article?.tags">
-        {{tag}}</span>
-      ]
+      <div class="tags-body">
+        [&nbsp;
+        <span class="tag" *ngFor="let tag of article?.tags">
+          {{tag}}</span>
+        ]
+      </div>
       <div class="views" title='views'>
         <mat-icon>visibility</mat-icon>
         <span>{{views || 0}}</span>
