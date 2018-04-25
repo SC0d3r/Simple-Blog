@@ -42,11 +42,20 @@ export class ArticleComponent implements OnInit {
         }
       });
 
-    const isSelected = this._route.snapshot.queryParamMap.get('selected');
-    if (isSelected) this._document.documentElement.scrollTo(0, 0);
-    // this line if for clearing the query params from page url
-    this._router.navigate(['.'], { relativeTo: this._route, queryParams: {} });
+    
+    this._document.documentElement.scrollTo(0, 0);
+    
+    // with above line of code it will go to the top of the page
+    // even if we use forward arrow of browser
+    // if you dont want that ,comment top and uncomment below
+    // and add attr fragment="top" to the articles routerLink
 
+    // const shouldGoToTheTop = this._route.snapshot.fragment;
+    // if (shouldGoToTheTop) {
+    //   // this line if for clearing the query params from page url
+    //   this._document.documentElement.scrollTo(0, 0);
+    //   this._router.navigate(['.'], { relativeTo: this._route, fragment: null, replaceUrl: true });
+    // }
   }
 
 }
