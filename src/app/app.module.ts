@@ -43,6 +43,7 @@ import { ViewsService } from './services/views/views.service';
 
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { TagsComponent } from './tags/tags.component';
 @NgModule({
   entryComponents : [
     ArticlesAdminSettingsDialog
