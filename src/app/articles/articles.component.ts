@@ -1,6 +1,6 @@
 import { AuthService } from './../services/auth/auth.service';
 import { ArticlesInfoService } from './../services/articles-info.service';
-import { Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Inject, Input } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { Article } from '../services/Article';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
@@ -12,17 +12,32 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/
 export class ArticlesComponent implements OnInit {
   articles: Article[] = [];
   isUserAdmin: boolean;
+  articlesNotFetchedYet: boolean = true;
   @ViewChild('ArticlesHeader') public articleHeader: ElementRef;
+  @Input() title: string;
+  @Input() tagged: string;
   constructor(private _router: Router,
     private _articlesInfo: ArticlesInfoService,
     private _auth: AuthService,
     public dialog: MatDialog) {
-    this._articlesInfo.fetchArticles()
-      .subscribe(arts => this.articles = arts);
     this.isUserAdmin = false;
   }
 
   ngOnInit() {
+    console.log(this.tagged);
+    if (this.tagged === undefined) {
+      this._articlesInfo.fetchArticles()
+        .subscribe(arts => {
+          this.articles = arts;
+          this.articlesNotFetchedYet = false;
+        });
+    } else {
+      this._articlesInfo.fetchArticlesByTag(this.tagged)
+        .subscribe(arts => {
+          this.articles = arts;
+          this.articlesNotFetchedYet = false;
+        });
+    }
     this.isUserAdmin = this._auth.isLoggedIn;
   }
 
