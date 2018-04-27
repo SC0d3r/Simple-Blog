@@ -45,10 +45,16 @@ header h1{
   /* border : 1px solid red; */
 }
 .tags .tag{
+  text-decoration: none;
+  color : #227093;
+  /* color : #2980b9; */
   background-color : #dfe4ea;
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin-right: 3px;
   padding : 4px;
+}
+.tags .tag:hover{
+  background-color : #d2dae2;
 }
 .views{
   position: absolute;
