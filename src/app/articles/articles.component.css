@@ -1,3 +1,4 @@
+
 main{
   /* border : 1px solid blue; */
   display: grid;
@@ -22,6 +23,40 @@ header{
   color:#3d3d3d;
 }
 
+.noArticle{
+  text-align: center;
+  font-size: calc(13px + 0.8vw);
+  background-color  : #b71540; 
+  /* color : #eccc68; */
+  color : #fad390;
+  font-family: 'Chicle', cursive;
+  letter-spacing: 0.1em;
+  text-shadow: 3px 3px 4px #1e272e;
+  /* border:1px solid yellow; */
+  grid-column: 1/-1;
+  padding : calc(13px + 1.5vw);
+}
+.noArticle mat-icon::content{
+  /* border:1px solid red; */
+  position: relative;
+  top : 5px;
+  
+  /* margin-top :15px; */
+}
+
+.loading{
+  /* border:1px solid red; */
+  display: flex;
+  width : 98.8vw;
+}
+.loading mat-progress-spinner{
+  margin:auto;
+  border: #ccc;
+  /* border:1px solid yellow; */
+}
+.loading mat-progress-spinner::ng-deep circle{
+  stroke: #006266;
+}
 .item{
   border:1px solid #d0d0d0;
   border-left:none;

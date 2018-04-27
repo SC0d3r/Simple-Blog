@@ -23,6 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatInputModule} from '@angular/material/input';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -65,7 +66,8 @@ import { TagsComponent } from './tags/tags.component';
     AdminComponent,
     LoginComponent,
     MiddlePageAboutMeComponent,
-    InterestsComponent
+    InterestsComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'sasan-kelishani' }),
@@ -86,6 +88,7 @@ import { TagsComponent } from './tags/tags.component';
     MatMenuModule,
     MatInputModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
     MatSlideToggleModule,
     MatSnackBarModule
   ],

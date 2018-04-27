@@ -3,21 +3,30 @@
 </header>
 
 <main>
-  <article *ngFor="let article of articles" class='item' >
+  <div class="loading" *ngIf="articlesNotFetchedYet && articles.length === 0">
+    <mat-progress-spinner [color]="'warn'" [mode]="'indeterminate'">
+    </mat-progress-spinner>
+  </div>
+  <div class="noArticle" *ngIf="!articlesNotFetchedYet && articles.length === 0">
+    <mat-icon>mood_bad</mat-icon>
+    There is no Article Yet !
+  </div>
+
+  <article *ngFor="let article of articles" class='item'>
     <div class="settings" *ngIf="isUserAdmin">
       <mat-icon (click)="openSettings(article.id,$event)" title='settings'>settings</mat-icon>
     </div>
-    <a  [routerLink] = "['/article/'+article.id]">
-    <div class='item-grid'>
-      <div class='item-header'>
-        <img src="/assets/images/uploads/{{article.img.src}}" alt="{{article.img.alt}}">
-        <!-- <img src="/assets/images/{{article.img.src}}" alt="{{article.img.alt}}"> -->
+    <a [routerLink]="['/article/'+article.id]">
+      <div class='item-grid'>
+        <div class='item-header'>
+          <img src="/assets/images/uploads/{{article.img.src}}" alt="{{article.img.alt}}">
+          <!-- <img src="/assets/images/{{article.img.src}}" alt="{{article.img.alt}}"> -->
+        </div>
+        <div class='item-text'>
+          <h3>{{article.title}}</h3>
+          <h4>{{article.shortDescription}}</h4>
+        </div>
       </div>
-      <div class='item-text'>
-        <h3>{{article.title}}</h3>
-        <h4>{{article.shortDescription}}</h4>
-      </div>
-    </div>
     </a>
   </article>
 </main>
