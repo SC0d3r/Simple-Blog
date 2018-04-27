@@ -19,7 +19,7 @@
   font-size: 150%;
   opacity : 0;
   position: absolute;
-  left: 34.5vw;bottom: -10vh;
+  left: 34.5vw;bottom: 0;
   width : 30vw;
   height : 20vh;
   color: #192a56;
@@ -29,17 +29,17 @@
 }
 .contact-info-transition{
   opacity: 1;
-  transform : translate(0,-25vh);
+  transform : translate(0,-17vh);
 }
 .contactMe-links-gmail{
   cursor: pointer;
   opacity : 0;
   position: absolute;
-  left: 32vw;bottom: -10vh;
+  left: 32vw;bottom: 0;
   width : 128px;
   height : 128px;
-  /* border : 1px solid black;
-  background-color: aqua; */
+  /* border : 1px solid black; */
+  /* background-color: aqua; */
   background-image : url(/assets/images/contactMe-gmail.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -50,11 +50,11 @@
   cursor: pointer;
   opacity : 0;
   position: absolute;
-  left: 44vw;bottom: -10vh;
+  left: 44vw;bottom: 0;
   width : 128px;
   height : 128px;
-  /* border : 1px solid black;
-  background-color: aqua; */
+  /* border : 1px solid black; */
+  /* background-color: aqua; */
   background-image : url(/assets/images/contactMe-telegram.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -65,7 +65,7 @@
   cursor: pointer;
   opacity : 0;
   position: absolute;
-  left: 56vw;bottom: -10vh;
+  left: 56vw;bottom: 0;
   width : 128px;
   height : 128px;
   /* border : 1px solid black; */
@@ -88,7 +88,7 @@
 }
 .contactMe-links-transition {
   opacity: 1;
-  transform: translate(0,-60vh);
+  transform: translate(0,-50vh);
 }
 .contactMeBtn {
   transition: opacity 2s,transform 2s 0.5s , font-size 0.2s 4s ease-in;
@@ -120,7 +120,7 @@
 .email{
   position : absolute;
   z-index: 1000;
-  left: 28vw;top: 150vh;
+  left: 28vw;bottom : 0;
   /* border : 1px solid blue; */
   width: 40%;
   /* display: none; */
@@ -148,7 +148,7 @@
 .email-transition{
   /* display: block; */
   opacity : 1;
-  transform: translateY(-100vh);
+  transform: translateY(-36vh);
 }
 .cancelTransition{
   position : absolute;
@@ -262,6 +262,7 @@
 
 
 header{
+  background-color: #fff;
   display: grid;
   z-index: -2;
   /* grid-template-columns: 150px 0.5fr minmax(auto , 400px) 1fr; */
