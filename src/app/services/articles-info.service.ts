@@ -23,15 +23,25 @@ export class ArticlesInfoService {
       });
     // return of(this.articles);
   }
-
+  fetchArticlesByTag(tagName: string): Observable<Article[]> {
+    const matchTags = tag => tag === tagName;
+    const onlyMatchedTags = article => article.tags.some(matchTags);
+    if (this.articles) {
+      const articles = this.articles.filter(onlyMatchedTags);
+      return of(articles);
+    } else {
+      //first time visit [not called fetchArticles method before]
+      return this._db.fetchArticlesByTag(tagName);
+    }
+  }
   fetchArticleByID(id: string): Observable<Article | null> {
-    if(this.articles){
+    if (this.articles) {
       const article = this.articles.filter(art => art.id === id);
       return of(article[0]);
-    }else {
+    } else {
       //first time visit [not called fetchArticles method before]
       return this._db.fetchArticleByID(id).mergeMap(maybeArticle => {
-        if(maybeArticle) return of(maybeArticle);
+        if (maybeArticle) return of(maybeArticle);
         return of(null);// article not found WEIRD
       });
     }

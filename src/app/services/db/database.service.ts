@@ -12,7 +12,7 @@ const articlesURL = apiURL + '/articles';
 export class DatabaseService {
 
   constructor(private _httpClient: HttpClient,
-  private _views : ViewsService) {
+    private _views: ViewsService) {
   }
 
   //votes
@@ -59,9 +59,9 @@ export class DatabaseService {
       votesURL + '/delVotes', { articleID }, httpOptions
     ).toPromise();
     const delArticleViews = this._views.delArticleViews(articleID);
-    return Promise.all([delArticle, delArtilceVotes , delArticleViews]).then(
+    return Promise.all([delArticle, delArtilceVotes, delArticleViews]).then(
       results => {
-        const [isArticleDeleted, isArtilceVotesDeleted,isArtilceViewsDeleted] = results;
+        const [isArticleDeleted, isArtilceVotesDeleted, isArtilceViewsDeleted] = results;
         return {
           isDeleted: (<{ isDeleted: boolean }>isArticleDeleted).isDeleted &&
             (<{ isDeleted: boolean }>isArtilceVotesDeleted).isDeleted &&
@@ -73,6 +73,9 @@ export class DatabaseService {
   fetchArticles(howMany = -1) {
     // -1 means all
     return this._httpClient.get<Article[]>(articlesURL + '/' + howMany);
+  }
+  fetchArticlesByTag(tagName: string): Observable<Article[]> {
+    return this._httpClient.get<Article[]>(articlesURL + '/tag/' + tagName);
   }
   fetchArticleByID(id: string) {
     return this._httpClient

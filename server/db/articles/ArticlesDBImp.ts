@@ -8,7 +8,6 @@ const adapter = new FileSync(resolve(process.cwd(), 'server', 'db', 'articles', 
 
 export class ArticlesDBImp implements ArticlesDB {
 
-
   private _db: any;
   constructor() {
     this._db = low(adapter);
@@ -60,7 +59,12 @@ export class ArticlesDBImp implements ArticlesDB {
   fetchByID(id: string): Promise<Article> {
     const article = this._db.get('articles')
       .find({ id }).value();
-    if(article) return Promise.resolve(article);
+    if (article) return Promise.resolve(article);
     return Promise.reject(`Article not found with ID [${id}]`);
+  }
+  fetchByTag(tagName: string): Promise<Article[]> {
+    const articles = this._db.get('articles')
+      .filter(art => art.tags.some(_tag => _tag === tagName)).value();
+    return Promise.resolve(articles || []);
   }
 }
