@@ -86,6 +86,12 @@ router.get('/articles/id/:id', (req, res) => {
     res.json({ found: false });
   })
 });
+router.get('/articles/tag/:tagName', (req, res) => {
+  const tagName: string = req.params.tagName;
+  articlesDB.fetchByTag(tagName).then(articles => {
+    res.json(articles);
+  });
+});
 
 router.post('/articles/image', (req, res) => {
   if (!req.session.isAdmin) {
