@@ -43,14 +43,16 @@
   Hi I’m Sasan Kelishani, a front-end web designer and mobile app developer using phone gap , ionic , angular. I’ve spent the
   last 4 years honing my skills in developing web apps and consider myself a forever student. I’m constantly learning web
   technologies and other design related topics, currently playing around with React , FP and Nodejs.
-  <br><br> How I spend my days you asked ? Crafting websites , Exploring On Edge teches , Exercising
   <br>
-  <br> Reach out to <span style='color : #C4E538'>sasan.kelishani@gmail.com</span> to connect!
+  <br> How I spend my days you asked ? Crafting websites , Exploring On Edge teches , Exercising
+  <br>
+  <br> Reach out to
+  <span style='color : #C4E538'>sasan.kelishani@gmail.com</span> to connect!
 </div>
 <div (click)="cancelTransition()" class="cancelTransition" #cancelTranstion>
   <button mat-raised-button color='primary'>Back</button>
 </div>
-<div (click)="saveEmail()" class="cancelTransition" #saveEmail>
+<div (click)="saveSubscriptionEmail()" class="cancelTransition" #saveEmail>
   <button mat-raised-button [style.backgroundColor]="'#009432'">Save</button>
 </div>
 
@@ -68,9 +70,9 @@
   </p>
 </div>
 <div class="email" #email>
-  <form class="example-form">
+  <form class="example-form" #emailSubscriptionForm>
     <mat-form-field class="example-full-width">
-      <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+      <input [(ngModel)]="subscriptionInput" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
       <mat-placeholder class="placeholder" #placeholder>Email</mat-placeholder>
       <mat-hint>myEmail@example.com</mat-hint>
       <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -82,4 +84,10 @@
       </mat-error>
     </mat-form-field>
   </form>
+  <div class="emailHasBeenSaved none" #emailSavedText>
+    Tnx for subscription
+    <button mat-icon-button color="accent">
+      <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+    </button>
+  </div>
 </div>

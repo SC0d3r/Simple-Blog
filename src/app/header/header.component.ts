@@ -1,3 +1,4 @@
+import { DatabaseService } from './../services/db/database.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef, Inject, HostListener, PLATFORM_ID } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -32,6 +33,8 @@ export class HeaderComponent implements OnInit {
   @ViewChild('bgImage') private _bgImage: ElementRef;
   @ViewChild('cancelTranstion') private _cancelTranstion: ElementRef;
   @ViewChild('email') private _email: ElementRef;
+  @ViewChild('emailSubscriptionForm') private _emailSubscriptionForm: ElementRef;
+  @ViewChild('emailSavedText') private _emailSavedText: ElementRef;
   @ViewChild('placeholder') private _placeholder: ElementRef;
   @ViewChild('subscribeButton') private _subscribeButton: ElementRef;
   @ViewChild('aboutMeButton') private _aboutMeButton: ElementRef;
@@ -51,10 +54,13 @@ export class HeaderComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
+  subscriptionInput: string;
+
   constructor(@Inject(DOCUMENT) private _document: Document,
-  @Inject(PLATFORM_ID) public plafromID: any,
+    @Inject(PLATFORM_ID) public plafromID: any,
     private _route: ActivatedRoute,
-    private _router: Router) {
+    private _router: Router,
+    private _db: DatabaseService) {
     this.isAboutMeOpen = false;
     this.isContactMeOpen = false;
     this.isSubscribeOpen = false;
@@ -209,7 +215,26 @@ export class HeaderComponent implements OnInit {
     cancelTranstion.classList.add('cancelTransition-transition');
     // cancelTranstion
   }
+  saveSubscriptionEmail() {
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (
+      this.subscriptionInput === undefined ||
+      this.subscriptionInput.length === 0 ||
+      !emailRegex.test(this.subscriptionInput)) {
+      return;
+    }
 
+    // save to database
+    this._db.saveEmail(this.subscriptionInput);
+
+    // showing tnx text
+    const emailForm: HTMLFormElement = this._emailSubscriptionForm.nativeElement;
+    const tnxText: HTMLDivElement = this._emailSavedText.nativeElement;
+    const saveEmail: HTMLDivElement = this._saveEmail.nativeElement;
+    emailForm.classList.add('none');
+    tnxText.classList.remove('none');
+    saveEmail.classList.add('none');
+  }
   cancelTransition() {
     const avatarDiv: HTMLDivElement = this._avatar.nativeElement;
     const writerName: HTMLDivElement = this._writerName.nativeElement;
@@ -235,6 +260,9 @@ export class HeaderComponent implements OnInit {
     header.classList.remove('header-transition');
     seprator.classList.remove('zero-opacity');
     icon.classList.remove('zero-opacity');
+
+    //if user is already subscribed
+    // saveEmail.classList.remove('none');
 
     cancelTranstion.classList.remove('cancelTransition-transition');
     if (this.isAboutMeOpen) {
