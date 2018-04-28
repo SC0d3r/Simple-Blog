@@ -15,6 +15,18 @@ export class DatabaseService {
     private _views: ViewsService) {
   }
 
+  //Subscription
+  saveEmail(email: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    this._httpClient.post(
+      apiURL + '/subscription',
+      { email },
+      httpOptions).toPromise();
+  }
   //votes
   hasIPVoted(articleID: string): Promise<Object> {
     const httpOptions = {
