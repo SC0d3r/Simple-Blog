@@ -1,3 +1,5 @@
+import { SubscriptionImp } from './../db/subscription/SubscriptionImp';
+import { Subscription } from './../db/subscription/Subscription';
 import { ViewsDB } from './../db/views/ViewsDB';
 import { ArticlesDBImp } from './../db/articles/ArticlesDBImp';
 import { Router } from 'express';
@@ -15,7 +17,14 @@ const hostName = process.env.host || `http://localhost:${PORT}`;
 const votesDB: VotesDB = new VotesDBImp();
 const articlesDB: ArticlesDB = new ArticlesDBImp();
 const viewsDB: ViewsDB = new ViewsDBImp();
+const subscriptionDB : Subscription = new SubscriptionImp();
 
+router.post('/subscription' , (req,res) => {
+  const email = req.body.email;
+  subscriptionDB.saveEmail(email).then(isOk => {
+    res.json({subscription : isOk});
+  });
+});
 router.post('/votes/checkIP', (req, res) => {
   const ip = req.ip;
 
