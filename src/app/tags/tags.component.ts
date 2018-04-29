@@ -1,5 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tags',
@@ -7,16 +9,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tags.component.css']
 })
 export class TagsComponent implements OnInit {
-  tag : string;
+  tag: string;
   constructor(
-    private _route : ActivatedRoute
-  ) { 
+    private _route: ActivatedRoute,
+    @Inject(DOCUMENT) private _document: Document,
+    private _meta: Meta,
+    private _title: Title
+  ) {
     this.tag = '';
+    this._meta.addTag({ name: 'author', content: 'Sasan Kelishani' });
   }
-
+  
   ngOnInit() {
-    console.log(this._route.snapshot.paramMap.get('tagName'));
-    this.tag = this._route.snapshot.paramMap.get('tagName') || '';
+    const tagName = this._route.snapshot.paramMap.get('tagName') || '';
+    this._title.setTitle(`Searching Tag : ${tagName}`);
+    this._meta.addTag({ name: 'description', content: `searching articles for tag ${tagName}`});
+    this._meta.addTag({ name: 'keywords', content: `article,programming,${tagName}` });
+    this.tag = tagName;
+
+    this._document.documentElement.scrollTo(0, 0);
   }
 
 }
