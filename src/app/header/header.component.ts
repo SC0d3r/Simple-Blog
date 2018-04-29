@@ -23,7 +23,8 @@ export class HeaderComponent implements OnInit {
   isAboutMeOpen: boolean;
   isSubscribeOpen: boolean;
   isContactMeOpen: boolean;
-
+  headerExtraPadding: boolean;
+  isBackButtonPressed: boolean;
   @ViewChild('avatar') private _avatar: ElementRef;
   @ViewChild('writerName') private _writerName: ElementRef;
   @ViewChild('header') private _header: ElementRef;
@@ -64,6 +65,8 @@ export class HeaderComponent implements OnInit {
     this.isAboutMeOpen = false;
     this.isContactMeOpen = false;
     this.isSubscribeOpen = false;
+    this.headerExtraPadding = false;
+    this.isBackButtonPressed = true;
   }
 
   ngOnInit() {
@@ -108,6 +111,11 @@ export class HeaderComponent implements OnInit {
   onResize(e) {
     const width = e.target.outerWidth;
     // console.log(width);
+    if (width < 455 && this.isAboutMeOpen) {
+      this.headerExtraPadding = true;
+    } else {
+      this.headerExtraPadding = false;
+    }
     this._showOrRemoveLinks(width);
   }
 
@@ -119,101 +127,137 @@ export class HeaderComponent implements OnInit {
       this.isSmallScreen = false;
     }
   }
-  openSubscribe() {
-    this.isSubscribeOpen = true;
-    const avatarDiv: HTMLDivElement = this._avatar.nativeElement;
-    const writerName: HTMLDivElement = this._writerName.nativeElement;
-    const header: HTMLDivElement = this._header.nativeElement;
-    const seprator: HTMLDivElement = this._seprator.nativeElement;
-    const aboutMeButton: HTMLDivElement = this._aboutMeButton.nativeElement;
-    const contactMeButton: HTMLDivElement = this._contactMeButton.nativeElement;
-    const icon: HTMLDivElement = this._icon.nativeElement;
-    const cancelTranstion: HTMLDivElement = this._cancelTranstion.nativeElement;
-    const email: HTMLDivElement = this._email.nativeElement;
-    const placeholder: HTMLDivElement = this._placeholder.nativeElement;
-    const subscribeButton: HTMLDivElement = this._subscribeButton.nativeElement;
-    const saveEmail: HTMLDivElement = this._saveEmail.nativeElement;
+  openSubscribe(isFromSmallScreen: boolean = false) {
+    this.isBackButtonPressed = false;
+    setTimeout(() => {
+      this.isSubscribeOpen = true;
+      const avatarDiv: HTMLDivElement = this._avatar.nativeElement;
+      const writerName: HTMLDivElement = this._writerName.nativeElement;
+      const header: HTMLDivElement = this._header.nativeElement;
+      const seprator: HTMLDivElement = this._seprator.nativeElement;
+      const aboutMeButton: HTMLDivElement = this._aboutMeButton.nativeElement;
+      const contactMeButton: HTMLDivElement = this._contactMeButton.nativeElement;
+      const subscribeButton: HTMLDivElement = this._subscribeButton.nativeElement;
+      const icon: HTMLDivElement = this._icon.nativeElement;
+      const cancelTranstion: HTMLDivElement = this._cancelTranstion.nativeElement;
+      const email: HTMLDivElement = this._email.nativeElement;
+      const placeholder: HTMLDivElement = this._placeholder.nativeElement;
+      const saveEmail: HTMLDivElement = this._saveEmail.nativeElement;
 
-    aboutMeButton.classList.add('zero-opacity');
-    contactMeButton.classList.add('zero-opacity');
-    avatarDiv.classList.add('avatar-transition-left');
-    writerName.classList.add('writerName-transition-left');
-    header.classList.add('header-transition', 'header-bg-email-transition');
-    seprator.classList.add('zero-opacity');
-    // links.classList.add('zero-opacity');
-    icon.classList.add('zero-opacity');
-    cancelTranstion.classList.add('cancelTransition-transition');
-    email.classList.add('email-transition');
-    placeholder.classList.add('emial-placeholder-color-transition');
-    subscribeButton.classList.add('subscribeBtn-transition');
-    saveEmail.classList.add('save-email-transition');
+      subscribeButton.classList.add('subscribeBtn-transition');
+      if (isFromSmallScreen) {
+        aboutMeButton.classList.add('notVisible');
+        contactMeButton.classList.add('notVisible');
+      }else{
+        aboutMeButton.classList.add('zero-opacity');
+        contactMeButton.classList.add('zero-opacity');
+      }
+      avatarDiv.classList.add('avatar-transition-left');
+      writerName.classList.add('writerName-transition-left');
+      header.classList.add('header-transition', 'header-bg-email-transition');
+      seprator.classList.add('zero-opacity');
+      // links.classList.add('zero-opacity');
+      icon.classList.add('zero-opacity');
+      cancelTranstion.classList.add('cancelTransition-transition');
+      email.classList.add('email-transition');
+      placeholder.classList.add('emial-placeholder-color-transition');
+      saveEmail.classList.add('save-email-transition');
+    }, 0);
   }
 
-  openContactMe() {
-    this.isContactMeOpen = true;
-    const avatarDiv: HTMLDivElement = this._avatar.nativeElement;
-    const writerName: HTMLDivElement = this._writerName.nativeElement;
-    const header: HTMLDivElement = this._header.nativeElement;
-    const seprator: HTMLDivElement = this._seprator.nativeElement;
-    const aboutMeButton: HTMLDivElement = this._aboutMeButton.nativeElement;
-    const contactMeButton: HTMLDivElement = this._contactMeButton.nativeElement;
-    const subscribeButton: HTMLDivElement = this._subscribeButton.nativeElement;
-    const icon: HTMLDivElement = this._icon.nativeElement;
-    const cancelTranstion: HTMLDivElement = this._cancelTranstion.nativeElement;
-    const contactMe_links_gmail: HTMLDivElement = this._contactMe_links_gmail.nativeElement;
-    const contactMe_links_telegram: HTMLDivElement = this._contactMe_links_telegram.nativeElement;
-    const contactMe_links_github: HTMLDivElement = this._contactMe_links_github.nativeElement;
-    const contact_info: HTMLDivElement = this._contact_info.nativeElement;
-
-    avatarDiv.classList.add('avatar-transition-left');
-    writerName.classList.add('writerName-transition-left');
-    header.classList.add('header-transition', 'header-bg-contactMe-transition');
-    seprator.classList.add('zero-opacity');
-    icon.classList.add('zero-opacity');
-    aboutMeButton.classList.add('zero-opacity');
-    contactMeButton.classList.add('contactMeBtn-transition');
-    subscribeButton.classList.add('zero-opacity');
-    cancelTranstion.classList.add('contactMeBtn-backBtn-transition');
-
-    contactMe_links_gmail.classList.add('contactMe-links-transition');
+  openContactMe(isFromSmallScreen: boolean = false) {
+    this.isBackButtonPressed = false;
+    // this.isBackButtonPressed = false;
     setTimeout(() => {
-      contactMe_links_telegram.classList.add('contactMe-links-transition');
-    }, 500);
-    setTimeout(() => {
-      contactMe_links_github.classList.add('contactMe-links-transition');
-    }, 1000);
+      this.isContactMeOpen = true;
+      const avatarDiv: HTMLDivElement = this._avatar.nativeElement;
+      const writerName: HTMLDivElement = this._writerName.nativeElement;
+      const header: HTMLDivElement = this._header.nativeElement;
+      const seprator: HTMLDivElement = this._seprator.nativeElement;
 
-    setTimeout(() => {
-      contact_info.classList.add('contact-info-transition');
-    }, 2000);
+      let aboutMeButton: HTMLDivElement;
+      let contactMeButton: HTMLDivElement;
+      let subscribeButton: HTMLDivElement;
+      contactMeButton = this._contactMeButton.nativeElement;
+      // if (!isFromSmallScreen) {
+        aboutMeButton = this._aboutMeButton.nativeElement;
+        subscribeButton = this._subscribeButton.nativeElement;
+      // }
+      const icon: HTMLDivElement = this._icon.nativeElement;
+      const cancelTranstion: HTMLDivElement = this._cancelTranstion.nativeElement;
+      const contactMe_links_gmail: HTMLDivElement = this._contactMe_links_gmail.nativeElement;
+      const contactMe_links_telegram: HTMLDivElement = this._contactMe_links_telegram.nativeElement;
+      const contactMe_links_github: HTMLDivElement = this._contactMe_links_github.nativeElement;
+      const contact_info: HTMLDivElement = this._contact_info.nativeElement;
+
+      avatarDiv.classList.add('avatar-transition-left');
+      writerName.classList.add('writerName-transition-left');
+      header.classList.add('header-transition', 'header-bg-contactMe-transition');
+      seprator.classList.add('zero-opacity');
+      icon.classList.add('zero-opacity');
+      contactMeButton.classList.add('contactMeBtn-transition');
+      if (isFromSmallScreen) {
+        aboutMeButton.classList.add('notVisible');
+        subscribeButton.classList.add('notVisible');
+      }else{
+        aboutMeButton.classList.add('zero-opacity');
+        subscribeButton.classList.add('zero-opacity');
+      }
+      cancelTranstion.classList.add('contactMeBtn-backBtn-transition');
+
+      contactMe_links_gmail.classList.add('contactMe-links-transition');
+      setTimeout(() => {
+        contactMe_links_telegram.classList.add('contactMe-links-transition');
+      }, 500);
+      setTimeout(() => {
+        contactMe_links_github.classList.add('contactMe-links-transition');
+      }, 1000);
+
+      setTimeout(() => {
+        contact_info.classList.add('contact-info-transition');
+      }, 2000);
+    }, 0);
   }
 
-  openAboutMe() {
-    this.isAboutMeOpen = true;
-    const avatarDiv: HTMLDivElement = this._avatar.nativeElement;
-    const writerName: HTMLDivElement = this._writerName.nativeElement;
-    const header: HTMLDivElement = this._header.nativeElement;
-    const aboutMeText: HTMLDivElement = this._aboutMeText.nativeElement;
-    const seprator: HTMLDivElement = this._seprator.nativeElement;
-    const aboutMeButton: HTMLDivElement = this._aboutMeButton.nativeElement;
-    const contactMeButton: HTMLDivElement = this._contactMeButton.nativeElement;
-    const subscribeButton: HTMLDivElement = this._subscribeButton.nativeElement;
-    const icon: HTMLDivElement = this._icon.nativeElement;
-    const bgImage: HTMLDivElement = this._bgImage.nativeElement;
-    const cancelTranstion: HTMLDivElement = this._cancelTranstion.nativeElement;
+  openAboutMe(isFromSmallScreen: boolean = false) {
 
-    avatarDiv.classList.add('avatar-transition');
-    writerName.classList.add('writerName-transition');
-    header.classList.add('header-transition', 'header-bg-aboutMe-transition');
-    aboutMeText.classList.add('aboutMeText-transition');
-    seprator.classList.add('zero-opacity');
-    aboutMeButton.classList.add('zero-opacity');
-    contactMeButton.classList.add('zero-opacity');
-    subscribeButton.classList.add('zero-opacity');
-    icon.classList.add('zero-opacity');
-    bgImage.classList.add('bgImage-transition');
-    cancelTranstion.classList.add('cancelTransition-transition');
-    // cancelTranstion
+    if (!isFromSmallScreen) this.isBackButtonPressed = false;
+    if (this.isSmallScreen) this.headerExtraPadding = true;
+
+    setTimeout(() => {
+      this.isAboutMeOpen = true;
+      const avatarDiv: HTMLDivElement = this._avatar.nativeElement;
+      const writerName: HTMLDivElement = this._writerName.nativeElement;
+      const header: HTMLDivElement = this._header.nativeElement;
+      const aboutMeText: HTMLDivElement = this._aboutMeText.nativeElement;
+      const seprator: HTMLDivElement = this._seprator.nativeElement;
+      let aboutMeButton: HTMLDivElement;
+      let contactMeButton: HTMLDivElement;
+      let subscribeButton: HTMLDivElement;
+      if (!isFromSmallScreen) {
+        aboutMeButton = this._aboutMeButton.nativeElement;
+        contactMeButton = this._contactMeButton.nativeElement;
+        subscribeButton = this._subscribeButton.nativeElement;
+      }
+      const icon: HTMLDivElement = this._icon.nativeElement;
+      const bgImage: HTMLDivElement = this._bgImage.nativeElement;
+      const cancelTranstion: HTMLDivElement = this._cancelTranstion.nativeElement;
+
+      avatarDiv.classList.add('avatar-transition');
+      writerName.classList.add('writerName-transition');
+      header.classList.add('header-transition', 'header-bg-aboutMe-transition');
+      aboutMeText.classList.add('aboutMeText-transition');
+      seprator.classList.add('zero-opacity');
+      if (!isFromSmallScreen) {
+        aboutMeButton.classList.add('zero-opacity');
+        contactMeButton.classList.add('zero-opacity');
+        subscribeButton.classList.add('zero-opacity');
+        icon.classList.add('zero-opacity');
+      }
+      bgImage.classList.add('bgImage-transition');
+      cancelTranstion.classList.add('cancelTransition-transition');
+      // cancelTranstion
+    }, 0);
   }
   saveSubscriptionEmail() {
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -236,14 +280,22 @@ export class HeaderComponent implements OnInit {
     saveEmail.classList.add('none');
   }
   cancelTransition() {
+    this.isBackButtonPressed = true;
     const avatarDiv: HTMLDivElement = this._avatar.nativeElement;
     const writerName: HTMLDivElement = this._writerName.nativeElement;
     const header: HTMLDivElement = this._header.nativeElement;
     const aboutMeText: HTMLDivElement = this._aboutMeText.nativeElement;
     const seprator: HTMLDivElement = this._seprator.nativeElement;
-    const aboutMeButton: HTMLDivElement = this._aboutMeButton.nativeElement;
-    const contactMeButton: HTMLDivElement = this._contactMeButton.nativeElement;
-    const subscribeButton: HTMLDivElement = this._subscribeButton.nativeElement;
+    let aboutMeButton: HTMLDivElement;
+    let contactMeButton: HTMLDivElement;
+    let subscribeButton: HTMLDivElement;
+    if (!this.isSmallScreen) {
+      aboutMeButton = this._aboutMeButton.nativeElement;
+      contactMeButton = this._contactMeButton.nativeElement;
+      subscribeButton = this._subscribeButton.nativeElement;
+    } else {
+      header.classList.remove('header-extra-padding');
+    }
     const icon: HTMLDivElement = this._icon.nativeElement;
     const bgImage: HTMLDivElement = this._bgImage.nativeElement;
     const cancelTranstion: HTMLDivElement = this._cancelTranstion.nativeElement;
@@ -272,19 +324,25 @@ export class HeaderComponent implements OnInit {
       aboutMeText.classList.remove('aboutMeText-transition');
       header.classList.remove('header-bg-aboutMe-transition');
       bgImage.classList.remove('bgImage-transition');
-      aboutMeButton.classList.remove('zero-opacity');
-      contactMeButton.classList.remove('zero-opacity');
-      subscribeButton.classList.remove('zero-opacity');
+      if (!this.isSmallScreen) {
+        aboutMeButton.classList.remove('zero-opacity','notVisible');
+        contactMeButton.classList.remove('zero-opacity','notVisible');
+        subscribeButton.classList.remove('zero-opacity','notVisible');
+      } else {
+
+      }
     } else if (this.isSubscribeOpen) {
       this.isSubscribeOpen = false;
       placeholder.classList.remove('emial-placeholder-color-transition');
       avatarDiv.classList.remove('avatar-transition-left');
       writerName.classList.remove('writerName-transition-left');
-      subscribeButton.classList.remove('subscribeBtn-transition');
       header.classList.remove('header-bg-email-transition');
       email.classList.remove('email-transition');
-      aboutMeButton.classList.remove('zero-opacity');
-      contactMeButton.classList.remove('zero-opacity');
+      if (!this.isSmallScreen) {
+        aboutMeButton.classList.remove('zero-opacity','notVisible');
+        contactMeButton.classList.remove('zero-opacity','notVisible');
+        subscribeButton.classList.remove('subscribeBtn-transition','notVisible');
+      }
       saveEmail.classList.remove('save-email-transition');
 
       cancelTranstion.classList.add('cancelTransition-email-transition');
@@ -299,9 +357,11 @@ export class HeaderComponent implements OnInit {
       avatarDiv.classList.remove('avatar-transition-left');
       writerName.classList.remove('writerName-transition-left');
       header.classList.remove('header-bg-contactMe-transition');
-      aboutMeButton.classList.remove('zero-opacity');
-      subscribeButton.classList.remove('zero-opacity');
-      contactMeButton.classList.remove('contactMeBtn-transition');
+      if (!this.isSmallScreen) {
+        aboutMeButton.classList.remove('notVisible','zero-opacity');
+        contactMeButton.classList.remove('notVisible','contactMeBtn-transition');
+        subscribeButton.classList.remove('notVisible','zero-opacity');
+      }
       cancelTranstion.classList.remove('contactMeBtn-backBtn-transition');
       contact_info.classList.remove('contact-info-transition');
       setTimeout(() => {

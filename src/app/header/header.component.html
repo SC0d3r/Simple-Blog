@@ -1,6 +1,6 @@
 <!-- <div class="navAnimations"></div> -->
 
-<header #header>
+<header #header [class.header-extra-padding]="headerExtraPadding">
   <div class="bgImage" #bgImage>
 
   </div>
@@ -9,27 +9,37 @@
     <!-- <img src="/assets/images/myAvatar.svg" alt="avatar picture of writer"> -->
   </div>
   <div class="writerName" #writerName>
-    Sasan Kelishani
+    <a [routerLink]="['/']" style="text-decoration : none;color : black">Sasan Kelishani</a>
   </div>
-  <div *ngIf="!isSmallScreen" class="links" #links>
+  <div *ngIf="!isSmallScreen || !isBackButtonPressed" class="links" #links>
     <div class='aboutMeBtn' (click)="openAboutMe()" #aboutMeButton>About Me</div>
     <div class='contactMeBtn' (click)="openContactMe()" #contactMeButton>Contact Me</div>
     <div class='subscribeBtn' (click)="openSubscribe()" #subscribeButton>
       <mat-icon>done_all</mat-icon> Subscribe
     </div>
   </div>
-  <div (click)="toggleNav()" class='nav-icons' *ngIf="isSmallScreen">
+  <div class='nav-icons' *ngIf="isSmallScreen && (!isAboutMeOpen && !isSubscribeOpen && !isContactMeOpen)">
     <!-- <mat-icon>view_headline</mat-icon> -->
     <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>view_headline</mat-icon>
+      <mat-icon>more_vert</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>work</mat-icon>About Me</button>
-      <button mat-menu-item>
-        <mat-icon>feedback</mat-icon>Contact Me</button>
-      <button mat-menu-item>
-        <mat-icon>done_all</mat-icon>Subscribe</button>
+    <mat-menu #menu="matMenu" >
+      <button mat-menu-item (click)="openAboutMe(true)">
+        <mat-icon>work</mat-icon>
+        <span>About Me</span>
+      </button>
+      <button mat-menu-item (click)="openContactMe(true)">
+        <mat-icon>feedback</mat-icon>
+        <span>
+          Contact Me
+        </span>
+      </button>
+      <button mat-menu-item (click)="openSubscribe(true)">
+        <mat-icon>done_all</mat-icon>
+        <span>
+          Subscribe
+        </span>
+      </button>
     </mat-menu>
   </div>
   <div class='icon' #icon>
@@ -40,6 +50,7 @@
   </div>
 </header>
 <div class="aboutMe" #aboutMe>
+  <div class="extraSpace"></div>
   Hi I’m Sasan Kelishani, a front-end web designer and mobile app developer using phone gap , ionic , angular. I’ve spent the
   last 4 years honing my skills in developing web apps and consider myself a forever student. I’m constantly learning web
   technologies and other design related topics, currently playing around with React , FP and Nodejs.

@@ -16,11 +16,12 @@
 }
 .contact-info{
   text-align: center;
-  font-size: 150%;
+  font-size: calc(19px + 0.5vw);
   opacity : 0;
   position: absolute;
-  left: 34.5vw;bottom: 0;
-  width : 30vw;
+  left: calc(-90px + 38.5vw);
+  bottom: 0;
+  width : calc(150px + 25vw);
   height : 20vh;
   color: #192a56;
   /* border : 1px solid black; */
@@ -29,15 +30,17 @@
 }
 .contact-info-transition{
   opacity: 1;
+  /* text-align: left; */
   transform : translate(0,-17vh);
 }
 .contactMe-links-gmail{
   cursor: pointer;
   opacity : 0;
   position: absolute;
-  left: 32vw;bottom: 0;
-  width : 128px;
-  height : 128px;
+  left: calc(-65px + 37vw);
+  bottom: 0;
+  width : calc(32px + 7vw);
+  height : calc(32px + 7vw);
   /* border : 1px solid black; */
   /* background-color: aqua; */
   background-image : url(/assets/images/contactMe-gmail.png);
@@ -50,9 +53,10 @@
   cursor: pointer;
   opacity : 0;
   position: absolute;
-  left: 44vw;bottom: 0;
-  width : 128px;
-  height : 128px;
+  left: calc(-28px + 46.4vw);
+  bottom: 0;
+  width : calc(32px + 7vw);
+  height : calc(32px + 7vw);
   /* border : 1px solid black; */
   /* background-color: aqua; */
   background-image : url(/assets/images/contactMe-telegram.png);
@@ -65,9 +69,10 @@
   cursor: pointer;
   opacity : 0;
   position: absolute;
-  left: 56vw;bottom: 0;
-  width : 128px;
-  height : 128px;
+  left: calc(15px + 56vw);
+  bottom: 0;
+  width : calc(32px + 7vw);
+  height : calc(32px + 7vw);
   /* border : 1px solid black; */
   /* background-color: aqua; */
   background-image : url(/assets/images/contactMe-github.png);
@@ -91,7 +96,9 @@
   transform: translate(0,-50vh);
 }
 .contactMeBtn {
-  transition: opacity 2s,transform 2s 0.5s , font-size 0.2s 4s ease-in;
+  /* border : 1px solid blue; */
+  transition: width 0.2s 5s,opacity 2s,transform 2s 0.5s , font-size 0.2s 4s ease-in;
+  -webkit-transition:width 0.2s 5s,opacity 2s,transform 2s 0.5s , font-size 0.2s 4s ease-in;
 }
 
 .subscribeBtn{
@@ -106,16 +113,30 @@
   transition: opacity 2s 2s;
 }
 .subscribeBtn-transition{
-  transform: translate(-40vw,27vh);
-  font-size: 220%;
+  transform: translate(calc(-140px + -28vw),calc(-20px + 23.3vh + 1vw));
+  font-size: calc(1.5em + 1vw);
 }
 .contactMeBtn-transition{
-  transform: translate(-5vw,5vh);
-  font-size: 220%;
+  transform: translate(calc(-224px + 12vw),calc(-8px + 5vh + 0.5vw));
+  text-align: center;
+  font-size: calc(1.5em + 1vw);
 }
-
+@media(max-width : 840px){
+  .contactMeBtn-transition{
+    width : calc(5em + 3vw);
+  }
+  
+}
+.notVisible{
+  visibility: hidden;
+}
 .subscribeBtn-transition mat-icon{
   opacity: 0;
+}
+@media(max-width : 800px){
+  .subscribeBtn-transition mat-icon{
+    visibility: hidden;
+  }
 }
 .none { 
   display: none;
@@ -123,7 +144,8 @@
 .email{
   position : absolute;
   z-index: 1000;
-  left: 28vw;bottom : 0;
+  left: calc(-50px + 32vw);
+  bottom : 0;
   /* border : 1px solid blue; */
   width: 40%;
   /* display: none; */
@@ -141,8 +163,8 @@
   /* top : -10px; */
   /* display: inline-block; */
   transition: color 2s 2.5s;
-  margin-bottom: 20px;
-  font-size: 160%;
+  margin-bottom: calc(-15px + 0.5vw);
+  font-size: calc(16px + 1vw);
 }
 .email mat-form-field{
   /* border : 1px solid yellow; */
@@ -156,9 +178,15 @@
 .emailHasBeenSaved{
   /* border : 1px solid yellow; */
   color : #2C3A47;
-  text-align : center;
+  text-align: center;
   font-family: 'Lobster', cursive;
   font-size : calc(13px + 1.3vw);
+}
+@media(max-width : 510px){
+  .emailHasBeenSaved{
+    min-width: 90vw;
+    text-align : left;
+  }
 }
 .emailHasBeenSaved > button{
   /* border : 1px solid blue; */
@@ -181,29 +209,35 @@
 .cancelTransition{
   position : absolute;
   z-index: 1000;
-  left: 0;top: 33vh;
+  left: 0;
+  top: calc(-100px + 43vh);
   opacity: 0;
   transition: opacity 2s 0.2s,transform 1s 0.5s;
 }
-
+@media(max-width : 810px){
+  .cancelTransition{
+    top: calc(-186px + 43vh);
+  }
+}
 .cancelTransition button{
   transition: background-color 3s 2s;
 }
 
 .contactMeBtn-backBtn-transition{
   opacity: 1;
-  transform: translate(74vw, -22vh);
+  transform: translate(calc(-30px +  78vw), -2vh);
 }
 .contactMeBtn-backBtn-transition button{
   background-color: #b71540;
 }
 .cancelTransition-transition{
   opacity: 1;
-  transform: translateX(68vw);
+  transform: translateX(calc(-28px + 74vw));
 }
+
 .save-email-transition{
   opacity: 1;
-  transform: translateX(61vw);
+  transform: translateX(calc(-123px + 74.3vw));
 }
 .cancelTransition-email-transition{
   opacity: 0;
@@ -218,14 +252,19 @@
   /* border : 1px solid blue; */
   margin: auto;
   left: 0;right: 0;top: 20vh;bottom: 0;
-  height : 20%;
+  /* height : 20%; */
   font-size : calc(14px + 0.5vw);
   line-height: 4vh;
   text-indent: 6px;
-  width : 60%;
+  width : calc(90px + 51vw);
   transform: translateX(-30vw);
   opacity: 0;
+  /* height: 60vh; */
   transition: opacity 1s 0.6s,transform 1s 0.6s ,color 2s 2s;
+}
+.aboutMe .extraSpace{
+  /* border : 1px solid red; */
+  height : calc(5em + 11vh);
 }
 .bgImage{
   position : absolute;
@@ -245,6 +284,9 @@
   height:100vh;
   color :#ecf0f1;
 }
+.header-transition a{
+  color :#ecf0f1 !important;
+}
 .bgImage-transition{
   opacity : 1;
   z-index: 1000;
@@ -252,15 +294,15 @@
 
 .aboutMeText-transition{
   opacity: 1;
-  transform : translateX(10vh);
+  transform : translateX(calc(-5px + 5vw));
   color :#ecf0f1;
 }
 
 .avatar-transition {
-  transform: translate(22vw,180px);
+  transform: translate(calc(-95px + 29vw),calc(-10px + 23vh));
 }
 .writerName-transition{
-  transform: translate(23vw,180px);
+  transform: translate(calc(-95px + 27.5vw),calc(-10px + 23.5vh));
 
 }
 
@@ -278,6 +320,15 @@
 .writerName {
   transition: transform 2s;
 }
+@media(max-width : 370px){
+  .writerName-transition{
+    /* border : 1px solid yellow; */
+    width : 50vw;
+  }
+}
+.writerName a{
+  transition: color 2s 2s;
+}
 .links,.icon{
   transition: opacity 2s;
 }
@@ -290,6 +341,7 @@
 
 
 header{
+  /* border: 1px solid yellow; */
   background-color: #fff;
   display: grid;
   z-index: -2;
@@ -298,12 +350,19 @@ header{
   grid-template-rows: 110px 5px;
   /* width:100%; */
   height : 110px;
+  
   /* background:red; */
   transition: height 2.5s,background-color 2s 2s,color 2s 2s;
   -webkit-transition: height 2.5s,background-color 2s 2s,color 2s 2s;
 }
-
-
+.header-extra-padding {
+  padding-bottom: 100px;
+}
+@media(max-width : 455px){
+  .bgImage{
+    height: calc(100vh + 85px);
+  }
+}
 .links{
   display: grid;
   /* grid-template-columns: repeat(1fr , 3); */
