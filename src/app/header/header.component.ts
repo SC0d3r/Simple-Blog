@@ -110,12 +110,16 @@ export class HeaderComponent implements OnInit {
   @HostListener("window:resize", ["$event"])
   onResize(e) {
     const width = e.target.outerWidth;
+    const header: HTMLDivElement = this._header.nativeElement;
     // console.log(width);
     if (width < 455 && this.isAboutMeOpen) {
-      this.headerExtraPadding = true;
+      // this.headerExtraPadding = true;
+      header.classList.add('header-extra-padding');
     } else {
-      this.headerExtraPadding = false;
+      // this.headerExtraPadding = false;
+      header.classList.remove('header-extra-padding');
     }
+    // console.log(this.headerExtraPadding);
     this._showOrRemoveLinks(width);
   }
 
@@ -125,6 +129,22 @@ export class HeaderComponent implements OnInit {
     }
     else {
       this.isSmallScreen = false;
+    }
+  }
+  onEmailInputFocus() {
+    if (isPlatformBrowser(this.plafromID)) {
+      const subscribeButton: HTMLDivElement = this._subscribeButton.nativeElement;
+      const width = window.outerWidth;
+      if(width < 600){
+        subscribeButton.classList.add('notVisible');
+      }
+    }
+  }
+  onEmailInputBlur(){
+    if (isPlatformBrowser(this.plafromID)) {
+      const subscribeButton: HTMLDivElement = this._subscribeButton.nativeElement;
+      const width = window.outerWidth;
+      subscribeButton.classList.remove('notVisible');
     }
   }
   openSubscribe(isFromSmallScreen: boolean = false) {
@@ -148,7 +168,7 @@ export class HeaderComponent implements OnInit {
       if (isFromSmallScreen) {
         aboutMeButton.classList.add('notVisible');
         contactMeButton.classList.add('notVisible');
-      }else{
+      } else {
         aboutMeButton.classList.add('zero-opacity');
         contactMeButton.classList.add('zero-opacity');
       }
@@ -180,8 +200,8 @@ export class HeaderComponent implements OnInit {
       let subscribeButton: HTMLDivElement;
       contactMeButton = this._contactMeButton.nativeElement;
       // if (!isFromSmallScreen) {
-        aboutMeButton = this._aboutMeButton.nativeElement;
-        subscribeButton = this._subscribeButton.nativeElement;
+      aboutMeButton = this._aboutMeButton.nativeElement;
+      subscribeButton = this._subscribeButton.nativeElement;
       // }
       const icon: HTMLDivElement = this._icon.nativeElement;
       const cancelTranstion: HTMLDivElement = this._cancelTranstion.nativeElement;
@@ -199,7 +219,7 @@ export class HeaderComponent implements OnInit {
       if (isFromSmallScreen) {
         aboutMeButton.classList.add('notVisible');
         subscribeButton.classList.add('notVisible');
-      }else{
+      } else {
         aboutMeButton.classList.add('zero-opacity');
         subscribeButton.classList.add('zero-opacity');
       }
@@ -220,12 +240,14 @@ export class HeaderComponent implements OnInit {
   }
 
   openAboutMe(isFromSmallScreen: boolean = false) {
-
     if (!isFromSmallScreen) this.isBackButtonPressed = false;
     if (this.isSmallScreen) this.headerExtraPadding = true;
 
     setTimeout(() => {
       this.isAboutMeOpen = true;
+      if (isPlatformBrowser(this.plafromID)) {
+        window.dispatchEvent(new Event('resize'));
+      }
       const avatarDiv: HTMLDivElement = this._avatar.nativeElement;
       const writerName: HTMLDivElement = this._writerName.nativeElement;
       const header: HTMLDivElement = this._header.nativeElement;
@@ -325,9 +347,9 @@ export class HeaderComponent implements OnInit {
       header.classList.remove('header-bg-aboutMe-transition');
       bgImage.classList.remove('bgImage-transition');
       if (!this.isSmallScreen) {
-        aboutMeButton.classList.remove('zero-opacity','notVisible');
-        contactMeButton.classList.remove('zero-opacity','notVisible');
-        subscribeButton.classList.remove('zero-opacity','notVisible');
+        aboutMeButton.classList.remove('zero-opacity', 'notVisible');
+        contactMeButton.classList.remove('zero-opacity', 'notVisible');
+        subscribeButton.classList.remove('zero-opacity', 'notVisible');
       } else {
 
       }
@@ -339,9 +361,9 @@ export class HeaderComponent implements OnInit {
       header.classList.remove('header-bg-email-transition');
       email.classList.remove('email-transition');
       if (!this.isSmallScreen) {
-        aboutMeButton.classList.remove('zero-opacity','notVisible');
-        contactMeButton.classList.remove('zero-opacity','notVisible');
-        subscribeButton.classList.remove('subscribeBtn-transition','notVisible');
+        aboutMeButton.classList.remove('zero-opacity', 'notVisible');
+        contactMeButton.classList.remove('zero-opacity', 'notVisible');
+        subscribeButton.classList.remove('subscribeBtn-transition', 'notVisible');
       }
       saveEmail.classList.remove('save-email-transition');
 
@@ -358,9 +380,9 @@ export class HeaderComponent implements OnInit {
       writerName.classList.remove('writerName-transition-left');
       header.classList.remove('header-bg-contactMe-transition');
       if (!this.isSmallScreen) {
-        aboutMeButton.classList.remove('notVisible','zero-opacity');
-        contactMeButton.classList.remove('notVisible','contactMeBtn-transition');
-        subscribeButton.classList.remove('notVisible','zero-opacity');
+        aboutMeButton.classList.remove('notVisible', 'zero-opacity');
+        contactMeButton.classList.remove('notVisible', 'contactMeBtn-transition');
+        subscribeButton.classList.remove('notVisible', 'zero-opacity');
       }
       cancelTranstion.classList.remove('contactMeBtn-backBtn-transition');
       contact_info.classList.remove('contact-info-transition');

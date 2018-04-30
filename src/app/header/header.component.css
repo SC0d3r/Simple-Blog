@@ -113,7 +113,7 @@
   transition: opacity 2s 2s;
 }
 .subscribeBtn-transition{
-  transform: translate(calc(-140px + -28vw),calc(-20px + 23.3vh + 1vw));
+  transform: translate(calc(-140px + -28vw),calc(-20px + 18.3vh + 3.2vw));
   font-size: calc(1.5em + 1vw);
 }
 .contactMeBtn-transition{
@@ -274,7 +274,7 @@
   width : 100vw;
   height : 100vh;
   opacity : 0;
-  transition: opacity 100s;
+  transition: opacity 200s;
   background-image : url(/assets/images/glass.png);
   background-repeat: no-repeat;
   background-size : 100% 100%;
@@ -288,7 +288,7 @@
   color :#ecf0f1 !important;
 }
 .bgImage-transition{
-  opacity : 1;
+  opacity : 0.2;
   z-index: 1000;
 }
 
@@ -356,11 +356,11 @@ header{
   -webkit-transition: height 2.5s,background-color 2s 2s,color 2s 2s;
 }
 .header-extra-padding {
-  padding-bottom: 100px;
+  padding-bottom: calc(100px + 6vh);
 }
 @media(max-width : 455px){
   .bgImage{
-    height: calc(100vh + 85px);
+    height: calc(106vh + 100px);
   }
 }
 .links{

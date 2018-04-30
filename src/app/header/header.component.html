@@ -1,6 +1,6 @@
 <!-- <div class="navAnimations"></div> -->
 
-<header #header [class.header-extra-padding]="headerExtraPadding">
+<header #header >
   <div class="bgImage" #bgImage>
 
   </div>
@@ -83,7 +83,7 @@
 <div class="email" #email>
   <form class="example-form" #emailSubscriptionForm>
     <mat-form-field class="example-full-width">
-      <input [(ngModel)]="subscriptionInput" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+      <input (focus) = "onEmailInputFocus()" (blur) = "onEmailInputBlur()" [(ngModel)]="subscriptionInput" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
       <mat-placeholder class="placeholder" #placeholder>Email</mat-placeholder>
       <mat-hint>myEmail@example.com</mat-hint>
       <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
