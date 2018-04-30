@@ -8,11 +8,19 @@ import { VotesDBImp } from '../db/votes/VotesDBImp';
 import { ArticlesDB } from '../db/articles/ArticlesDB';
 import { resolve } from 'path';
 import { ViewsDBImp } from '../db/views/ViewsDBImp';
+import * as cors from 'cors';
 
 export const router = Router();
 
+
 const PORT = process.env.PORT || 4000;
 const hostName = process.env.host || `http://localhost:${PORT}`;
+
+const corsOptions = {
+  origin: hostName,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+router.use(cors(corsOptions));
 
 const votesDB: VotesDB = new VotesDBImp();
 const articlesDB: ArticlesDB = new ArticlesDBImp();
