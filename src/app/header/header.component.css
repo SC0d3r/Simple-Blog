@@ -175,6 +175,10 @@
   opacity : 1;
   transform: translateY(-36vh);
 }
+.email-transition mat-form-field{
+  transition: transform 1s;
+  transform: translateY(20px + 3vh);
+}
 .emailHasBeenSaved{
   /* border : 1px solid yellow; */
   color : #2C3A47;
