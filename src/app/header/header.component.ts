@@ -101,7 +101,7 @@ export class HeaderComponent implements OnInit {
 
   }
   openTelegram() {
-    console.log('dsaf');
+    // console.log('dsaf');
     this._document.location.href = 'http://telegram.me/sc0d3r';
   }
   openGithub() {
