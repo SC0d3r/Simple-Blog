@@ -17,7 +17,10 @@ const PORT = process.env.PORT || 4000;
 const hostName = process.env.host || `http://localhost:${PORT}`;
 
 const corsOptions = {
-  origin: hostName,
+  origin: '*',
+  "methods": "GET",
+  "Access-Control-Allow-Credentials": true,
+
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 router.use(cors(corsOptions));
@@ -25,12 +28,12 @@ router.use(cors(corsOptions));
 const votesDB: VotesDB = new VotesDBImp();
 const articlesDB: ArticlesDB = new ArticlesDBImp();
 const viewsDB: ViewsDB = new ViewsDBImp();
-const subscriptionDB : Subscription = new SubscriptionImp();
+const subscriptionDB: Subscription = new SubscriptionImp();
 
-router.post('/subscription' , (req,res) => {
+router.post('/subscription', (req, res) => {
   const email = req.body.email;
   subscriptionDB.saveEmail(email).then(isOk => {
-    res.json({subscription : isOk});
+    res.json({ subscription: isOk });
   });
 });
 router.post('/votes/checkIP', (req, res) => {
