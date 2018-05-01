@@ -1,7 +1,7 @@
 import { ViewsService } from './../services/views/views.service';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { ArticlesInfoService } from '../services/articles-info.service';
 import { Article } from '../services/Article';
 import { Meta, Title } from '@angular/platform-browser';
@@ -15,6 +15,7 @@ export class ArticleComponent implements OnInit {
   article: Article;
   views: number;
   constructor(
+    @Inject(PLATFORM_ID) public plafromID: any,
     @Inject(DOCUMENT) private _document: Document,
     private _route: ActivatedRoute,
     private _aritcleInfo: ArticlesInfoService,
@@ -42,9 +43,10 @@ export class ArticleComponent implements OnInit {
         }
       });
 
-    
-    this._document.documentElement.scrollTo(0, 0);
-    
+    if (isPlatformBrowser(this.plafromID)) {
+      this._document.documentElement.scrollTo(0, 0);
+    }
+
     // with above line of code it will go to the top of the page
     // even if we use forward arrow of browser
     // if you dont want that ,comment top and uncomment below
