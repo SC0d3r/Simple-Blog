@@ -26,10 +26,8 @@
     </p>
     <div class="tags">
       <div class="tags-body">
-        [&nbsp;
         <a [routerLink] = "['/tags/'+tag]" class="tag" *ngFor="let tag of article?.tags">
           {{tag}}</a>
-        ]
       </div>
       <div class="views" title='views'>
         <mat-icon>visibility</mat-icon>
