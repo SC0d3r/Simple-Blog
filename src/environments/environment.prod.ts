@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  host : 'http://localhost:4000'
+  host : 'https://sheltered-bastion-90830.herokuapp.com'
 };
