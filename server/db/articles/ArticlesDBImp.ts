@@ -4,7 +4,7 @@ import { resolve, join, basename } from 'path';
 import { unlink } from 'fs';
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync(resolve(process.cwd(), 'server', 'db', 'articles', './db.json'));
+const adapter = new FileSync(resolve(process.cwd(), 'db', 'articles', './db.json'));
 
 export class ArticlesDBImp implements ArticlesDB {
 

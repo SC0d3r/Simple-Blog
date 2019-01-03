@@ -3,7 +3,7 @@ import { resolve } from 'path';
 
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync(resolve(process.cwd(), 'server', 'db', 'subscription', './db.json'));
+const adapter = new FileSync(resolve(process.cwd(), 'db', 'subscription', './db.json'));
 
 export class SubscriptionImp implements Subscription {
   private _db: any;

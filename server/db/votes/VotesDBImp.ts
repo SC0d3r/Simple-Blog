@@ -4,7 +4,7 @@ import { resolve } from 'path';
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 // console.log(process.cwd());
-const adapter = new FileSync(resolve(process.cwd(), 'server', 'db', 'votes', './db.json'));
+const adapter = new FileSync(resolve(process.cwd(), 'db', 'votes', './db.json'));
 export class VotesDBImp implements VotesDB {
   private _db: any;
   constructor() {

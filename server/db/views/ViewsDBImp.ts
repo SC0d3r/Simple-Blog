@@ -3,7 +3,7 @@ import { resolve, join, basename } from 'path';
 import { unlink } from 'fs';
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync(resolve(process.cwd(), 'server', 'db', 'views', './db.json'));
+const adapter = new FileSync(resolve(process.cwd(), 'db', 'views', './db.json'));
 
 export class ViewsDBImp implements ViewsDB {
 
