@@ -42,9 +42,6 @@ export class LoginComponent implements OnInit {
     this._auth.checkCaptcha(captchaResponse).then(({isPassed}) => {
       this.isCaptchaSuccess = isPassed;
     }).catch(e => {
-      // TODO : FIX Recaptcha and remove the following line 
-      this.isCaptchaSuccess = true;
-
       console.log("=> HERE <=")
       console.error(e);
     });
