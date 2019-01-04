@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
     if (this.password.length === 0 || this.username.length === 0)
       return;
     this._auth.login(this.username, this.password).then(isLogged => {
-      this._router.navigate(['/admin']);
+      if(isLogged) this._router.navigate(['/admin']);
+      else console.log('username or pass is wrong')
     }).catch(err => {
       if (this.tooManyAttempts.length === 0) {
         this.tooManyAttempts = '* Too many attmepts retry after 3min';
@@ -40,6 +41,9 @@ export class LoginComponent implements OnInit {
   resolved(captchaResponse: string) {
     this._auth.checkCaptcha(captchaResponse).then(({isPassed}) => {
       this.isCaptchaSuccess = isPassed;
+    }).catch(e => {
+      console.log("=> HERE <=")
+      console.error(e);
     });
     // console.log(`Resolved captcha with response ${captchaResponse}:`);
   }
