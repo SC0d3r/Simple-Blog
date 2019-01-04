@@ -49,7 +49,7 @@ export class AdminComponent implements OnInit {
       this.tags.trim().split(','));
 
     this._articleInfo.saveArticle(newArticle);
-    console.log(newArticle);
+    console.log(JSON.stringify(newArticle , null , 1));
     this._articleInfo.uploadImage(imageFile, imageName);
     this._reset();
   }
