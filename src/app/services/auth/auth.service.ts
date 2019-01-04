@@ -44,11 +44,9 @@ export class AuthService {
       return Promise.reject(new Error('Too many attempts retry after 3 min'));
     }
     const p = (<any>hash).sha256().update(password + username).digest('hex');
-    console.log(p);
     this._attempts++;
     return this._httpClient.post<{ authenticated: boolean }>(authURL,
       { usernamePasswordHash: p } , httpOptions).toPromise().then(({ authenticated }) => {
-        console.log(authenticated)
         const isOk = authenticated;
         if (isOk) this._attempts = 0;
         this.isLoggedIn = isOk;
