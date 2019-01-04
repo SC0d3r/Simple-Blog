@@ -33,6 +33,12 @@ export class AuthService {
   }
 
   login(username: string, password: string): Promise<boolean> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
     if (this._attempts === 3) {
       this._giveAccessAfter(1000 * 60 * 3);
       return Promise.reject(new Error('Too many attempts retry after 3 min'));
@@ -40,7 +46,7 @@ export class AuthService {
     const p = (<any>hash).sha256().update(password + username).digest('hex');
     this._attempts++;
     return this._httpClient.post<{ authenticated: boolean }>(authURL,
-      { usernamePasswordHash: p }).toPromise().then(({ authenticated }) => {
+      { usernamePasswordHash: p } , httpOptions).toPromise().then(({ authenticated }) => {
         const isOk = authenticated;
         if (isOk) this._attempts = 0;
         this.isLoggedIn = isOk;
