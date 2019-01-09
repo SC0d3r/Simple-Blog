@@ -11,7 +11,8 @@
         "assets",
         "favicon.ico",
         "_redirects",
-        "google26850f9a8fcf6d17.html"
+        "google26850f9a8fcf6d17.html",
+        ".well-known"
       ],
       "index": "index.html",
       "main": "main.ts",
